@@ -100,14 +100,14 @@ ol.sub > li { counter-increment: sub; margin-top: 10px; position: relative; padd
 ol.sub > li::before {
   content: "(" counter(sub, lower-alpha) ")";
   position: absolute; left: 0; font-family: 'Open Sans', sans-serif;
-  font-weight: 700; color: var(--dark); font-size: 15px;
+  font-weight: 700; color: var(--light); font-size: 15px;
 }
 ol.sub ul, ul { margin: 6px 0; }
 ul li::marker { color: var(--dark); }
 figure { text-align: center; margin: 14px 0; }
 figure svg { max-width: 100%; height: auto; }
 details.gabarito {
-  margin-top: 30px; border: 1.5px solid var(--light); border-radius: 10px;
+  margin-top: 30px; border: 1.5px solid var(--dark); border-radius: 10px;
   overflow: hidden;
 }
 details.gabarito > summary {
@@ -181,6 +181,13 @@ ul.lab{list-style:none;padding-left:6px}
 .tot { color:#043c7c; font-weight:700; font-family:'Open Sans',sans-serif; font-size:.82em; margin-left:.18em; }
 ol.ex.questoes > li::before { content: "Questão " counter(ex) "."; }
 .pdata { font-family:'Open Sans',sans-serif; font-size:13.5px; color:#555; margin:2px 0 6px; }
+.fn-pop{max-height:60vh;overflow-y:auto;position:absolute;z-index:50;max-width:min(460px,calc(100vw - 24px));background:#fff;border:2px solid var(--dark);border-radius:10px;box-shadow:0 6px 24px rgba(0,0,0,.22);padding:12px 38px 12px 14px;font-size:.92em;line-height:1.5;display:none}
+.fn-pop.on{display:block}
+.fn-pop .fn-x{position:absolute;top:4px;right:6px;border:0;background:none;font:700 22px/1 'Open Sans',sans-serif;color:var(--dark);cursor:pointer;padding:4px 8px}
+.fn-pop .math.display{overflow-x:auto;max-width:100%}
+.fn-pop p{margin:0}
+@media(max-width:600px){.fn-pop{width:calc(100vw - 24px)}}
+a.footnote-ref{cursor:pointer}
 </style>
 </head>
 <body>
@@ -8206,6 +8213,57 @@ document.documentElement.classList.remove("nojs");
   });
   var fx=0,fxi=setInterval(function(){fixWide(); if(++fx>40) clearInterval(fxi);},500);
   show();
+})();
+</script>
+<script>
+(function(){
+  var pop=document.createElement('div');pop.className='fn-pop';pop.setAttribute('role','dialog');
+  var body=document.createElement('div');var x=document.createElement('button');x.className='fn-x';x.type='button';x.setAttribute('aria-label','Fechar');x.innerHTML='&times;';
+  pop.appendChild(x);pop.appendChild(body);document.body.appendChild(pop);
+  var cur=null;
+  function close(){pop.classList.remove('on');cur=null;}
+  function noteFor(a){
+    var id=a.getAttribute('href').slice(1),n=null;
+    var secs=document.querySelectorAll('section.footnotes');
+    for(var i=0;i<secs.length;i++){
+      if(a.compareDocumentPosition(secs[i])&Node.DOCUMENT_POSITION_FOLLOWING){
+        var li=secs[i].querySelector('li[id="'+id+'"]'); if(li){n=li;break;}
+      }
+    }
+    return n;
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a.footnote-ref');
+    if(a){
+      e.preventDefault();
+      if(cur===a){close();return;}
+      var li=noteFor(a); if(!li) return;
+      var c=li.cloneNode(true);
+      c.querySelectorAll('.footnote-back').forEach(function(b){b.remove();});
+      c.removeAttribute('id');
+      c.querySelectorAll('[id]').forEach(function(el){el.removeAttribute('id');});
+      body.innerHTML='';
+      var p=c.querySelector('p');body.appendChild(p?p:c);
+      cur=a;pop.classList.add('on');
+      var r=a.getBoundingClientRect();
+      var left=Math.max(12,Math.min(r.left+window.scrollX-20,window.scrollX+document.documentElement.clientWidth-pop.offsetWidth-12));
+      pop.style.left=left+'px';pop.style.top=(r.bottom+window.scrollY+8)+'px';var pr=pop.getBoundingClientRect();var vh=(window.visualViewport?window.visualViewport.height:window.innerHeight);if(pr.bottom>vh-10){window.scrollBy(0,pr.bottom-vh+14);}
+      return;
+    }
+    var b=e.target.closest&&e.target.closest('a.footnote-back');
+    if(b){
+      e.preventDefault();
+      var ref=b.getAttribute('href').slice(1),sec=b.closest('section.footnotes'),t=null;
+      document.querySelectorAll('a.footnote-ref').forEach(function(r){
+        if(r.id===ref&&(r.compareDocumentPosition(sec)&Node.DOCUMENT_POSITION_FOLLOWING)) t=r;
+      });
+      if(t) t.scrollIntoView({block:'center'});
+      return;
+    }
+    if(!pop.contains(e.target)) close();
+  });
+  x.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
 })();
 </script>
 </body>
