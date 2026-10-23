@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Cálculo II — Exercícios resolvidos (Listas 9, 11, 12 e 13)</title>
+<title>Cálculo II — Exercícios resolvidos (Listas 6, 7, 8, 9, 11, 12 e 13)</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
@@ -155,17 +155,1063 @@ mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width:
 table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 14px 0; }
 table th, table td { white-space: nowrap; padding: 6px 12px; border: 1px solid #c9d6e2; text-align: left; }
 table th { background: #eef5fb; color: var(--dark); font-family: 'Open Sans', sans-serif; font-size: .85em; }
+ul.lab{list-style:none;padding-left:6px}
 </style>
 </head>
 <body>
 <header class="topbar">
 <div class="t1">Cálculo II · FGV EPGE</div>
-<div class="t2">Exercícios resolvidos — Listas 9, 11, 12 e 13</div>
+<div class="t2">Exercícios resolvidos — Listas 6, 7, 8, 9, 11, 12 e 13</div>
 <div class="t3">Professora Yunelsy N Alvarez</div>
 </header>
-<nav aria-label="Listas"><a data-page="lista9" href="#lista9">Lista 9</a><a data-page="lista11" href="#lista11">Lista 11</a><a data-page="lista12" href="#lista12">Lista 12</a><a data-page="lista13" href="#lista13">Lista 13</a></nav>
+<nav aria-label="Listas"><a data-page="lista6" href="#lista6">Lista 6</a><a data-page="lista7" href="#lista7">Lista 7</a><a data-page="lista8" href="#lista8">Lista 8</a><a data-page="lista9" href="#lista9">Lista 9</a><a data-page="lista11" href="#lista11">Lista 11</a><a data-page="lista12" href="#lista12">Lista 12</a><a data-page="lista13" href="#lista13">Lista 13</a></nav>
 <div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
 <main>
+<section class="lista page" id="lista6">
+<h2><span class="lnum">Lista 6</span><span class="ltitle">Derivadas de ordem superior</span></h2>
+<ol class="ex">
+<li><p>Considere novamente a função <span class="math inline">\(f(x,y)=e^{-(x^2+y^2)}\)</span>.</p><ol class="sub"><li><p>Calcule todas as derivadas parciais de segunda ordem de <span class="math inline">\(f\)</span>.</p></li><li><p>Verifique que <span class="math inline">\(f_{xy}(x,y)=f_{yx}(x,y)\)</span> e explique por que essa igualdade também pode ser obtida pelo Teorema de Schwarz.</p></li><li><p>Calcule <span class="math inline">\(f_{xxx}\)</span>, <span class="math inline">\(f_{xxy}\)</span>, <span class="math inline">\(f_{xyy}\)</span> e <span class="math inline">\(f_{yyy}\)</span>.</p></li><li><p>Sem realizar novas derivações, determine <span class="math inline">\(f_{xyx}\)</span>, <span class="math inline">\(f_{yxx}\)</span>, <span class="math inline">\(f_{yxy}\)</span> e <span class="math inline">\(f_{yyx}\)</span>.</p></li><li><p>Determine a matriz Hessiana de <span class="math inline">\(f\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>As primeiras derivadas já foram calculadas na lista anterior: <span class="math display">\[f_x(x,y)=-2xe^{-(x^2+y^2)}
+\quad\mbox{ e }\quad
+f_y(x,y)=-2ye^{-(x^2+y^2)}.\]</span></p><ol class="sub"><li><p>Derivando novamente, obtemos <span class="math display">\[\begin{aligned}
+  f_{xx}(x,y)
+ &amp;= (4x^2-2)e^{-(x^2+y^2)},\\
+  f_{xy}(x,y) &amp;= 4xye^{-(x^2+y^2)},\\
+  f_{yx}(x,y) &amp;= 4xye^{-(x^2+y^2)},\\
+  f_{yy}(x,y)
+ &amp;= (4y^2-2)e^{-(x^2+y^2)}.\end{aligned}\]</span></p></li><li><p>Em particular, para todo <span class="math inline">\((x,y)\in\mathbb{R}^2\)</span>, temos <span class="math display">\[f_{xy}(x,y)=f_{yx}(x,y).\]</span></p><p>Além da verificação direta, essa igualdade segue do Teorema de Schwarz, pois as derivadas parciais de segunda ordem são contínuas em <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li><li><p>Para as derivadas de terceira ordem, <span class="math display">\[\begin{aligned}
+  f_{xxx}(x,y) &amp;= (12x-8x^3)e^{-(x^2+y^2)},\\
+  f_{xxy}(x,y) &amp;= (4y-8x^2y)e^{-(x^2+y^2)},\\
+  f_{xyy}(x,y) &amp;= (4x-8xy^2)e^{-(x^2+y^2)},\\
+  f_{yyy}(x,y) &amp;= (12y-8y^3)e^{-(x^2+y^2)}.\end{aligned}\]</span></p></li><li><p>Como todas essas derivadas são contínuas em <span class="math inline">\(\mathbb{R}^2\)</span>, podemos trocar a ordem das derivações. Assim, <span class="math display">\[f_{xyx}(x,y)=f_{xxy}(x,y)=f_{yxx}(x,y)
+=(4y-8x^2y)e^{-(x^2+y^2)}\]</span> e <span class="math display">\[f_{yxy}(x,y)=f_{xyy}(x,y)=f_{yyx}(x,y)
+=(4x-8xy^2)e^{-(x^2+y^2)}.\]</span></p></li><li><p>A matriz Hessiana é <span class="math display">\[\mathrm{Hess}\,f(x,y)=
+\begin{pmatrix}
+f_{xx}(x,y) &amp; f_{xy}(x,y)\\
+f_{yx}(x,y) &amp; f_{yy}(x,y)
+\end{pmatrix}
+
+
+
+
+
+=
+e^{-(x^2+y^2)}
+\begin{pmatrix}
+4x^2-2 &amp; 4xy\\
+4xy &amp; 4y^2-2
+\end{pmatrix}.\]</span></p></li></ol></div></details></li>
+<li><p>Para as funções a seguir, calcule <span class="math inline">\(h_{yy}\)</span>, <span class="math inline">\(h_{xy}\)</span> e <span class="math inline">\(h_{yx}\)</span>.</p><ol class="sub"><li><p><span class="math inline">\(h(x,y)=\cos(x^2+y)+\operatorname{sen}(xy)\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln\big((x+y)^2+(xy)^2\big)\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Para <span class="math inline">\(h(x,y)=\cos(x^2+y)+\operatorname{sen}(xy)\)</span>, a derivada <span class="math inline">\(h_y\)</span> já foi calculada na lista anterior: <span class="math display">\[h_y(x,y)=-\operatorname{sen}(x^2+y)+x\cos(xy).\]</span></p><p>Derivando novamente em relação a <span class="math inline">\(y\)</span>, <span class="math display">\[h_{yy}(x,y)
+=-\cos(x^2+y)-x^2\operatorname{sen}(xy).\]</span></p><p>Derivando <span class="math inline">\(h_y\)</span> em relação a <span class="math inline">\(x\)</span>, <span class="math display">\[h_{yx}(x,y)
+=-2x\cos(x^2+y)+\cos(xy)-xy\operatorname{sen}(xy).\]</span> Como <span class="math inline">\(h\)</span> é uma soma de composições de polinômios com as funções seno e cosseno, suas derivadas parciais de segunda ordem existem e são contínuas em todo <span class="math inline">\(\mathbb{R}^2\)</span>. Pelo Teorema de Schwarz: <span class="math display">\[h_{xy}(x,y)=h_{yx}(x,y)
+=-2x\cos(x^2+y)+\cos(xy)-xy\operatorname{sen}(xy).\]</span></p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln\big((x+y)^2+(xy)^2\big)\)</span>, a derivada em relação a <span class="math inline">\(y\)</span> já foi calculada na lista anterior: <span class="math display">\[h_y(x,y)
+=
+\frac{2(x+y)+2x^2y}{(x+y)^2+(xy)^2}.\]</span></p><p>Para calcular <span class="math inline">\(h_{yy}\)</span>, derivamos essa expressão em relação a <span class="math inline">\(y\)</span>. Pela regra do quociente, <span class="math display">\[\begin{aligned}
+h_{yy}(x,y)
+&amp;=
+\frac{
+\big(2+2x^2\big)\big((x+y)^2+(xy)^2\big)
+-
+\big(2(x+y)+2x^2y\big)
+\big(2(x+y)+2x^2y\big)
+}{
+\big((x+y)^2+(xy)^2\big)^2
+}\\
+&amp;=
+\frac{
+\big(2+2x^2\big)\big((x+y)^2+(xy)^2\big)
+-
+\big(2(x+y)+2x^2y\big)^2
+}{
+\big((x+y)^2+(xy)^2\big)^2
+}.\end{aligned}\]</span></p><p>Agora, para calcular <span class="math inline">\(h_{xy}\)</span>, derivamos <span class="math inline">\(h_y\)</span> em relação a <span class="math inline">\(x\)</span>: <span class="math display">\[\begin{aligned}
+h_{xy}(x,y)
+&amp;=
+\frac{
+(2+4xy)\big((x+y)^2+(xy)^2\big)
+-
+\big(2(x+y)+2x^2y\big)
+\big(2(x+y)+2xy^2\big)
+}{
+\big((x+y)^2+(xy)^2\big)^2
+}
+\\
+&amp;=
+\frac{
+(2+4xy)\big((x+y)^2+(xy)^2\big)
+-
+\big(2(x+y)+2x^2y\big)
+\big(2(x+y)+2xy^2\big)
+}{
+\big((x+y)^2+(xy)^2\big)^2
+}.\end{aligned}\]</span></p><p>A função está definida para <span class="math inline">\((x,y)\neq(0,0)\)</span>. Nesse domínio, as derivadas parciais de segunda ordem são contínuas, pois são quocientes de polinômios cujo denominador só se anula na origem, ponto que não pertence ao domínio. Portanto, a igualdade das derivadas mistas também segue do Teorema de Schwarz: <span class="math display">\[h_{xy}(x,y)=h_{yx}(x,y).\]</span></p></li></ol></div></details></li>
+<li><p>Determine todas as derivadas parciais de segunda ordem das funções a seguir e escreva suas matrizes Hessianas.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=y^5-3xy\)</span>.</p></li><li><p><span class="math inline">\(z(x,y)=(2x+3y)^{10}\)</span>.</p></li><li><p><span class="math inline">\(w(x,y,z)=\ln(x+2y+3z)\)</span>.</p></li><li></li></ol><p>Em cada caso, determine o domínio das derivadas parciais de segunda ordem.</p><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 3</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>As primeiras derivadas já foram calculadas na lista anterior.</p><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=y^5-3xy\)</span>, tínhamos <span class="math display">\[f_x(x,y)=-3y
+\quad\mbox{ e }\quad
+f_y(x,y)=5y^4-3x.\]</span></p><p>Logo, <span class="math display">\[f_{xx}(x,y)=0,\qquad
+f_{xy}(x,y)=-3,\qquad
+f_{yx}(x,y)=-3,\qquad
+f_{yy}(x,y)=20y^3.\]</span></p><p>Portanto, <span class="math display">\[\mathrm{Hess}\,f(x,y)=
+\begin{pmatrix}
+0&amp;-3\\
+-3&amp;20y^3
+\end{pmatrix}.\]</span></p><p>Todas as segundas derivadas parciais estão definidas em <span class="math inline">\(\mathbb{R}^2=\mathrm{Dom}(f)\)</span>. Logo, <span class="math inline">\(\mathrm{Hess}\,f\)</span> também está definido em <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li><li><p>Para <span class="math inline">\(z(x,y)=(2x+3y)^{10}\)</span>, tínhamos <span class="math display">\[z_x(x,y)=20(2x+3y)^9
+\quad\mbox{ e }\quad
+z_y(x,y)=30(2x+3y)^9.\]</span></p><p>Assim, <span class="math display">\[z_{xx}(x,y)=360(2x+3y)^8,
+\quad
+z_{xy}(x,y)=z_{yx}(x,y)=540(2x+3y)^8
+\quad\mbox{ e }\quad
+z_{yy}(x,y)=810(2x+3y)^8.\]</span></p><p>Logo, <span class="math display">\[\mathrm{Hess}\,z(x,y)
+=
+(2x+3y)^8
+\begin{pmatrix}
+360&amp;540\\
+540&amp;810
+\end{pmatrix}.\]</span></p><p>Todas as segundas derivadas parciais estão definidas em <span class="math inline">\(\mathbb{R}^2=\mathrm{Dom}(z)\)</span>. Logo, <span class="math inline">\(\mathrm{Hess}\,z\)</span> também está definido em <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li><li><p>Para <span class="math inline">\(w(x,y,z)=\ln(x+2y+3z)\)</span>, calculamos na lista anterior: <span class="math display">\[w_x(x,y)=\frac1{x+2y+3z},\qquad
+w_y(x,y)=\frac2{x+2y+3z},\qquad
+w_z(x,y)=\frac3{x+2y+3z}.\]</span> Derivando novamente, <span class="math display">\[\mathrm{Hess}\,w(x,y,z)
+=
+-\frac{1}{(x+2y+3z)^2}
+\begin{pmatrix}
+1&amp;2&amp;3\\
+2&amp;4&amp;6\\
+3&amp;6&amp;9
+\end{pmatrix}.\]</span></p><p>O domínio de todas as derivadas parciais de segunda ordem é o mesmo domínio de <span class="math inline">\(w\)</span>. <span class="math display">\[\{(x,y,z)\in\mathbb{R}^3;~x+2y+3z&gt;0\}.\]</span> O Hessiano também está definido nesse conjunto.</p></li></ol></div></details></li>
+<li><p>Para cada uma das funções a seguir, determine a matriz Hessiana e compare seu domínio com o domínio da função.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=\dfrac{e^{x^2-y^2}}{2x}\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=\dfrac{x^2y}{x^2+y^2}\)</span>.</p></li><li><p><span class="math inline">\(h(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>.</p></li><li><p><span class="math inline">\(k(x,y,z)=\dfrac{\ln(x^2+y^2+z^2+1)}{x^2+y^2+z^2}\)</span>.</p></li><li><p><span class="math inline">\(f(x,y)=\sqrt{9-x^2-y^2}\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=\ln\left(1+\sqrt{x^2+y^2}\right)\)</span>.</p></li></ol><p>Nos itens (c), (e) e (f), faça também o que se pede:</p><ul class="lab"><li><p><strong>(i)</strong> Calcule a matriz Hessiana no ponto indicado: <span class="math display">\[(0,0,0) \text{ no item (c)},\qquad
+    (1,2) \text{ no item (e)},\qquad
+    (1,0) \text{ no item (f)}.\]</span></p></li><li><p><strong>(ii)</strong> Determine os autovalores dessas matrizes.</p></li><li><p><strong>(iii)</strong> Em seguida, determine os autovalores da matriz Hessiana em um ponto qualquer do domínio.</p></li><li><p><strong>(iv)</strong> Analise para quais pontos esses autovalores são positivos, negativos ou nulos.</p></li></ul><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 4</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>As primeiras derivadas já foram calculadas na lista anterior. Partiremos delas para obter as matrizes Hessianas.</p><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=\dfrac{e^{x^2-y^2}}{2x}\)</span>, <span class="math display">\[f_x(x,y)=e^{x^2-y^2}\left(1-\frac1{2x^2}\right)
+\quad\mbox{ e }\quad
+f_y(x,y)=-\frac{y}{x}e^{x^2-y^2}.\]</span></p><p>Derivando novamente, <span class="math display">\[f_{xx}(x,y)
+=
+e^{x^2-y^2}
+\left(
+2x-\frac1x+\frac1{x^3}
+\right),
+\quad
+f_{xy}(x,y)=f_{yx}(x,y)
+=
+ye^{x^2-y^2}
+\left(
+\frac1{x^2}-2
+\right)\]</span> e <span class="math display">\[f_{yy}(x,y)
+=
+\frac{2y^2-1}{x}e^{x^2-y^2}.\]</span></p><p>Portanto, <span class="math display">\[\mathrm{Hess}\,f(x,y)
+=
+e^{x^2-y^2}
+\begin{pmatrix}
+2x-\frac1x+\frac1{x^3}
+&amp;
+y\left(\frac1{x^2}-2\right)
+\\[4pt]
+y\left(\frac1{x^2}-2\right)
+&amp;
+\frac{2y^2-1}{x}
+\end{pmatrix}.\]</span></p><p>O domínio da função e de sua Hessiana é <span class="math display">\[\{(x,y)\in\mathbb{R}^2:x\neq0\}.\]</span></p></li><li><p>Para <span class="math inline">\(g(x,y)=\dfrac{x^2y}{x^2+y^2}\)</span>, as primeiras derivadas são <span class="math display">\[g_x(x,y)=\frac{2xy^3}{(x^2+y^2)^2}
+\quad\mbox{ e }\quad
+g_y(x,y)=\frac{x^2(x^2-y^2)}{(x^2+y^2)^2}.\]</span></p><p>Derivando novamente, <span class="math display">\[g_{xx}(x,y)
+=
+\frac{2y^3(y^2-3x^2)}{(x^2+y^2)^3},
+\quad
+g_{xy}(x,y)=g_{yx}(x,y)
+=
+\frac{2xy^2(3x^2-y^2)}{(x^2+y^2)^3}\]</span> e <span class="math display">\[g_{yy}(x,y)
+=
+-\frac{2x^2y(3x^2-y^2)}{(x^2+y^2)^3}.\]</span></p><p>Logo, <span class="math display">\[\mathrm{Hess}\,g(x,y)
+=
+\frac{1}{(x^2+y^2)^3}
+\begin{pmatrix}
+2y^3(y^2-3x^2)
+&amp;
+2xy^2(3x^2-y^2)
+\\
+2xy^2(3x^2-y^2)
+&amp;
+-2x^2y(3x^2-y^2)
+\end{pmatrix}.\]</span></p><p>O domínio é <span class="math display">\[\mathbb{R}^2\setminus\{(0,0)\}.\]</span></p></li><li><p>Para <span class="math inline">\(h(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>, as primeiras derivadas já foram calculadas na lista anterior. Derivando novamente, <span class="math display">\[\mathrm{Hess}\,h(x,y,z)
+=
+\frac1{(x^2+y^2+z^2+1)^{3/2}}
+\begin{pmatrix}
+1+y^2+z^2&amp;-xy&amp;-xz\\
+-xy&amp;1+x^2+z^2&amp;-yz\\
+-xz&amp;-yz&amp;1+x^2+y^2
+\end{pmatrix}.\]</span></p><p>A função e todas as suas derivadas estão definidas em <span class="math inline">\(\mathbb{R}^3\)</span>.</p></li><li><p>Para <span class="math display">\[k(x,y,z)
+=
+\frac{\ln(x^2+y^2+z^2+1)}
+{x^2+y^2+z^2},\]</span> as primeiras derivadas já foram calculadas na lista anterior: <span class="math display">\[k_x(x,y,z)
+=
+\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right],\]</span> <span class="math display">\[k_y(x,y,z)
+=
+\frac{2y}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]\]</span> e <span class="math display">\[k_z(x,y,z)
+=
+\frac{2z}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right].\]</span></p><p>Para calcular <span class="math inline">\(k_{xx}\)</span>, derivamos <span class="math inline">\(k_x\)</span> em relação a <span class="math inline">\(x\)</span>. Usando a regra do produto, <span class="math display">\[\begin{aligned}
+k_{xx}
+&amp;=
+\frac{\partial}{\partial x}
+\left\{
+\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++2x
+\frac{\partial}{\partial x}
+\left\{
+\frac{1}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++2x
+\left\{
+-\frac{4x}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right.
+\\
+&amp;\qquad\left.
++\frac{1}{(x^2+y^2+z^2)^2}
+\frac{\partial}{\partial x}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{8x^2}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{2x(x^2+y^2+z^2+1)-2x(x^2+y^2+z^2)}
+{(x^2+y^2+z^2+1)^2}
+-\frac{2x}{x^2+y^2+z^2+1}
+\right]
+\\
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{8x^2}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{2x}{(x^2+y^2+z^2+1)^2}
+-\frac{2x}{x^2+y^2+z^2+1}
+\right]
+\\
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{8x^2}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4x^2}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2},\end{aligned}\]</span></p><p>As derivadas <span class="math inline">\(k_{yy}\)</span> e <span class="math inline">\(k_{zz}\)</span> têm a mesma forma de <span class="math inline">\(k_{xx}\)</span>, trocando <span class="math inline">\(x\)</span> por <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span>, respectivamente: <span class="math display">\[\begin{aligned}
+k_{yy}
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{8y^2}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4y^2}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2},\end{aligned}\]</span> e <span class="math display">\[\begin{aligned}
+k_{zz}
+&amp;=
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{8z^2}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4z^2}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2}.\end{aligned}\]</span></p><p>Temos também, <span class="math display">\[\begin{aligned}
+k_{xy}
+&amp;=
+\frac{\partial}{\partial y}
+\left\{
+\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+2x
+\frac{\partial}{\partial y}
+\left\{
+\frac{1}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+2x
+\left\{
+-\frac{4y}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right.
+\\
+&amp;\qquad\left.
++\frac{1}{(x^2+y^2+z^2)^2}
+\frac{\partial}{\partial y}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\right\}
+\\
+&amp;=
+-\frac{8xy}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{2y(x^2+y^2+z^2+1)-2y(x^2+y^2+z^2)}
+{(x^2+y^2+z^2+1)^2}
+-\frac{2y}{x^2+y^2+z^2+1}
+\right]
+\\
+&amp;=
+-\frac{8xy}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
++\frac{2x}{(x^2+y^2+z^2)^2}
+\left[
+\frac{2y}{(x^2+y^2+z^2+1)^2}
+-\frac{2y}{x^2+y^2+z^2+1}
+\right]
+\\
+&amp;=
+-\frac{8xy}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4xy}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2}.\end{aligned}\]</span></p><p>De maneira análoga, <span class="math display">\[\begin{aligned}
+k_{xz}
+&amp;=
+-\frac{8xz}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4xz}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2},\end{aligned}\]</span> e <span class="math display">\[\begin{aligned}
+k_{yz}
+&amp;=
+-\frac{8yz}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\quad
+-\frac{4yz}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2}.\end{aligned}\]</span></p><p>Como as derivadas de segunda ordem são contínuas no domínio da função, pelo Teorema de Schwarz, <span class="math display">\[k_{yx}(x,y,z)=k_{xy}(x,y,z),
+\quad
+k_{zx}(x,y,z)=k_{xz}(x,y,z) 
+\quad\mbox{ e }\quad
+k_{zy}(x,y,z)=k_{yz}(x,y,z).\]</span> Assim, denotando por <span class="math inline">\(I\)</span> a matriz identidade, temos</p><p><span class="math display">\[\begin{aligned}
+\mathrm{Hess}\,k(x,y,z)
+= &amp; 
+\frac{2}{(x^2+y^2+z^2)^2}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]I
+\\
+&amp; -
+\Bigg\{
+\frac{8}{(x^2+y^2+z^2)^3}
+\left[
+\frac{x^2+y^2+z^2}{x^2+y^2+z^2+1}
+-\ln(x^2+y^2+z^2+1)
+\right]
+\\
+&amp;\qquad +
+\frac{4}
+{(x^2+y^2+z^2)(x^2+y^2+z^2+1)^2}
+\Bigg\}
+\begin{pmatrix}
+x^2 &amp; xy &amp; xz\\
+xy &amp; y^2 &amp; yz\\
+xz &amp; yz &amp; z^2
+\end{pmatrix}.\end{aligned}\]</span></p><p>O domínio de todas as derivadas de segunda ordem é o mesmo da função: <span class="math display">\[\mathbb{R}^3\setminus\{(0,0,0)\}.\]</span> Logo, <span class="math inline">\(\mathrm{Hess}\,k\)</span> está definido nesse conjunto.</p></li><li><p>Para <span class="math inline">\(f(x,y)=\sqrt{9-x^2-y^2}\)</span>, as primeiras derivadas já foram calculadas na lista anterior: <span class="math display">\[f_x(x,y)=-\frac{x}{\sqrt{9-x^2-y^2}},
+\qquad
+f_y(x,y)=-\frac{y}{\sqrt{9-x^2-y^2}}.\]</span> Derivando novamente, obtemos <span class="math display">\[\mathrm{Hess}\,f(x,y)
+=
+-\frac1{(9-x^2-y^2)^{3/2}}
+\begin{pmatrix}
+9-y^2&amp;xy\\
+xy&amp;9-x^2
+\end{pmatrix}.\]</span></p><p>A função está definida nos pontos em que <span class="math inline">\(x^2+y^2\leq9\)</span>, enquanto sua Hessiana está definida apenas para quando <span class="math inline">\(x^2+y^2&lt;9\)</span>.</p></li><li><p>Para <span class="math inline">\(g(x,y)=\ln\left(1+\sqrt{x^2+y^2}\right)\)</span>, coloque <span class="math display">\[r=\sqrt{x^2+y^2}.\]</span></p><p>Para <span class="math inline">\(r&gt;0\)</span>, as primeiras derivadas já foram calculadas na lista anterior. A Hessiana pode ser escrita como <span class="math display">\[\mathrm{Hess}\,g(x,y)
+=
+\frac1{r(1+r)}I
+-
+\frac{1+2r}{r^3(1+r)^2}
+\begin{pmatrix}
+x^2&amp;xy\\
+xy&amp;y^2
+\end{pmatrix}.\]</span></p><p>A função está definida em todo <span class="math inline">\(\mathbb{R}^2\)</span>, mas a Hessiana está definida apenas em <span class="math display">\[\mathbb{R}^2\setminus\{(0,0)\}.\]</span></p></li></ol><p>Nos itens (c), (e) e (f), temos ainda:</p><ul class="lab"><li><p><strong>(i)</strong> No item (c), em <span class="math inline">\((0,0,0)\)</span>, <span class="math display">\[\mathrm{Hess}\,h(0,0,0)
+=
+\begin{pmatrix}
+1&amp;0&amp;0\\
+0&amp;1&amp;0\\
+0&amp;0&amp;1
+\end{pmatrix}.\]</span></p><p>No item (e), em <span class="math inline">\((1,2)\)</span>, <span class="math display">\[\mathrm{Hess}\,f(1,2)
+=
+-\frac18
+\begin{pmatrix}
+5&amp;2\\
+2&amp;8
+\end{pmatrix}.\]</span></p><p>No item (f), em <span class="math inline">\((1,0)\)</span>, temos <span class="math display">\[\mathrm{Hess}\,g(1,0)
+=
+\begin{pmatrix}
+-\frac14&amp;0\\
+0&amp;\frac12
+\end{pmatrix}.\]</span></p></li><li><p><strong>(ii)</strong> Para <span class="math inline">\(\mathrm{Hess}\,h(0,0,0)=I\)</span>, os três autovalores são <span class="math display">\[\lambda_1=\lambda_2=\lambda_3=1.\]</span></p><p>Para <span class="math display">\[\mathrm{Hess}\,f(1,2)
+=
+-\frac18
+\begin{pmatrix}
+5&amp;2\\
+2&amp;8
+\end{pmatrix},\]</span> os autovalores da matriz <span class="math display">\[\begin{pmatrix}
+5&amp;2\\
+2&amp;8
+\end{pmatrix}\]</span> são <span class="math inline">\(4\)</span> e <span class="math inline">\(9\)</span>. Portanto, <span class="math display">\[\lambda_1=-\frac12,
+\qquad
+\lambda_2=-\frac98.\]</span></p><p>Para <span class="math inline">\(\mathrm{Hess}\,g(1,0)\)</span>, <span class="math display">\[\lambda_1=-\frac14,
+\qquad
+\lambda_2=\frac12.\]</span></p></li><li><p><strong>(iii)</strong> Para o item (c), <span class="math display">\[\lambda_1=\frac1{(1+x^2+y^2+z^2)^{3/2}}
+\quad\mbox{ e }\quad
+\lambda_2=\lambda_3=\frac1{\sqrt{1+x^2+y^2+z^2}}.\]</span></p><p>Para o item (e), <span class="math display">\[\lambda_1=-\frac1{\sqrt{9-x^2-y^2}}
+\quad\mbox{ e }\quad
+\lambda_2=-\frac9{(9-x^2-y^2)^{3/2}}.\]</span></p><p>Para o item (f), <span class="math display">\[\lambda_1=-\frac1{\left(1+\sqrt{x^2+y^2}\right)^2}
+\quad\mbox{ e }\quad
+\lambda_2=\frac1{\sqrt{x^2+y^2}\left(1+\sqrt{x^2+y^2}\right)}.\]</span></p></li><li><p><strong>(iv)</strong> No item (c), todos os autovalores são positivos em todo o domínio.</p><p>No item (e), os dois autovalores são negativos para todo ponto com <span class="math inline">\(x^2+y^2&lt;9\)</span>.</p><p>No item (f), para todo <span class="math inline">\((x,y)\neq(0,0)\)</span>, um autovalor é negativo e o outro é positivo.</p></li></ul></div></details></li>
+<li><p>Considere a função <span class="math display">\[F(x,y)=
+\begin{cases}
+\dfrac{xy(x^2-y^2)}{x^2+y^2},&amp;(x,y)\neq(0,0),\\[6pt]
+0,&amp;(x,y)=(0,0).
+\end{cases}\]</span></p><ol class="sub"><li><p>Determine <span class="math inline">\(F_x(0,y)\)</span> e <span class="math inline">\(F_y(x,0)\)</span>.</p></li><li><p>Calcule <span class="math inline">\(F_{xy}(0,0)\)</span> e <span class="math inline">\(F_{yx}(0,0)\)</span>.</p></li><li><p>Esse resultado contradiz o Teorema de Schwarz? Justifique analisando as hipóteses do teorema.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 5</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Considere <span class="math display">\[F(x,y)=
+\begin{cases}
+\dfrac{xy(x^2-y^2)}{x^2+y^2},&amp;(x,y)\neq(0,0),\\[6pt]
+0,&amp;(x,y)=(0,0).
+\end{cases}\]</span></p><ol class="sub"><li><p>Como <span class="math inline">\(F(0,y)=0\)</span>, temos <span class="math display">\[\begin{aligned}
+F_x(0,y)
+&amp;=
+\lim_{t\to0}
+\frac{F(t,y)-F(0,y)}{t}
+=
+\lim_{t\to0}
+\frac{
+ty(t^2-y^2)
+}{
+t(t^2+y^2)
+}
+=
+\lim_{t\to0}
+y\frac{t^2-y^2}{t^2+y^2}=-y\end{aligned}\]</span> para todo <span class="math inline">\(y\in\mathbb{R}\)</span> (inclusive <span class="math inline">\(y=0\)</span>).</p><p>Analogamente, <span class="math display">\[F_y(x,0)=x\]</span> para todo <span class="math inline">\(x\in\mathbb{R}\)</span> (inclusive <span class="math inline">\(x=0\)</span>).</p></li><li><p>Agora, <span class="math display">\[\begin{aligned}
+F_{xy}(0,0)
+&amp; =
+\lim_{t\to0}
+\frac{F_x(0,t)-F_x(0,0)}{t}
+ =
+\lim_{t\to0}\frac{-t-0}{t}
+=-1.\end{aligned}\]</span></p><p>Por outro lado, <span class="math display">\[F_{yx}(0,0)
+=
+\lim_{t\to0}
+\frac{F_y(t,0)-F_y(0,0)}{t}
+=
+\lim_{t\to0}\frac{t-0}{t}
+=1.\]</span></p></li><li><p>Mesmo que tenhamos <span class="math display">\[F_{xy}(0,0)\neq F_{yx}(0,0),\]</span> isso não contradiz o Teorema de Schwarz.</p><p>O teorema não afirma que duas derivadas parciais mistas são necessariamente iguais apenas porque ambas existem em um ponto. Uma das hipóteses do Teorema de Schwarz é a continuidade das derivadas parciais de segunda ordem em uma vizinhança do ponto.</p><p>Neste exemplo, essa hipótese não é satisfeita na origem. De fato, derivando a expressão de <span class="math inline">\(F_x(x,y)\)</span> obtida para <span class="math inline">\((x,y)\neq(0,0)\)</span>, obtém-se <span class="math inline">\(F_{xy}(x,0)=1\)</span> para todo <span class="math inline">\(x\neq0\)</span>, enquanto <span class="math inline">\(F_{xy}(0,0)=-1\)</span>; logo, <span class="math inline">\(F_{xy}\)</span> não é contínua na origem. Portanto, não podemos utilizar o Teorema de Schwarz para concluir que <span class="math inline">\(F_{xy}(0,0)=F_{yx}(0,0)\)</span>.</p></li></ol></div></details></li>
+</ol><div class="pager"><span></span><a href="#lista7">Lista 7 →</a></div></section>
+<section class="lista page" id="lista7">
+<h2><span class="lnum">Lista 7</span><span class="ltitle">Funções diferenciáveis, aproximação linear, plano tangente, diferencial total</span></h2>
+<ol class="ex">
+<li><p>Para cada uma das funções a seguir, determine seu domínio e os pontos em que a função é diferenciável. Justifique sua resposta utilizando a continuidade das derivadas parciais de primeira ordem, quando possível.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=x^2y+3xy^2-y^3\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=e^{-(x^2+y^2)}\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln(x+2y)\)</span>.</p></li><li><p><span class="math inline">\(k(x,y)=\sqrt{9-x^2-y^2}\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=x^2y+3xy^2-y^3\)</span>, temos <span class="math display">\[\mathrm{Dom}(f)=\mathbb{R}^2.\]</span></p><p>As derivadas parciais são <span class="math display">\[f_x(x,y)=2xy+3y^2
+\quad\mbox{ e }\quad
+f_y(x,y)=x^2+6xy-3y^2.\]</span></p><p>Como <span class="math inline">\(f_x\)</span> e <span class="math inline">\(f_y\)</span> são contínuas em todo <span class="math inline">\(\mathbb{R}^2\)</span>, a função <span class="math inline">\(f\)</span> é diferenciável em todo <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li><li><p>Para <span class="math inline">\(g(x,y)=e^{-(x^2+y^2)}\)</span>, temos <span class="math display">\[\mathrm{Dom}(g)=\mathbb{R}^2.\]</span></p><p>As derivadas parciais são <span class="math display">\[g_x(x,y)=-2xe^{-(x^2+y^2)}
+\quad\mbox{ e }\quad
+g_y(x,y)=-2ye^{-(x^2+y^2)}.\]</span></p><p>Como ambas são contínuas em <span class="math inline">\(\mathbb{R}^2\)</span>, a função <span class="math inline">\(g\)</span> é diferenciável em todo <span class="math inline">\(\mathbb{R}^2\)</span>.</p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln(x+2y)\)</span>, devemos ter <span class="math display">\[x+2y&gt;0.\]</span></p><p>Portanto, <span class="math display">\[\mathrm{Dom}(h)=\{(x,y)\in\mathbb{R}^2:x+2y&gt;0\}.\]</span></p><p>As derivadas parciais são <span class="math display">\[h_x(x,y)=\frac{1}{x+2y}
+\quad\mbox{ e }\quad
+h_y(x,y)=\frac{2}{x+2y}.\]</span></p><p>Essas derivadas são contínuas em todo o domínio de <span class="math inline">\(h\)</span>. Logo, <span class="math inline">\(h\)</span> é diferenciável em <span class="math display">\[\{(x,y)\in\mathbb{R}^2:x+2y&gt;0\}.\]</span></p></li><li><p>Para <span class="math inline">\(k(x,y)=\sqrt{9-x^2-y^2}\)</span>, devemos ter <span class="math display">\[9-x^2-y^2\geq0.\]</span></p><p>Assim, <span class="math display">\[\mathrm{Dom}(k)=\{(x,y)\in\mathbb{R}^2:x^2+y^2\leq9\}.\]</span></p><p>No interior do domínio, ou seja, quando <span class="math inline">\(x^2+y^2&lt;9\)</span>, <span class="math display">\[k_x(x,y)=-\frac{x}{\sqrt{9-x^2-y^2}}
+\quad\mbox{ e }\quad
+k_y(x,y)=-\frac{y}{\sqrt{9-x^2-y^2}},\]</span> que são contínuas nesses pontos. Portanto, <span class="math inline">\(k\)</span> é diferenciável em <span class="math display">\[\{(x,y)\in\mathbb{R}^2:x^2+y^2&lt;9\}.\]</span></p><p>Nos pontos em que <span class="math inline">\(x^2+y^2=9\)</span>, ou seja, na fronteira do domínio, <span class="math inline">\(k\)</span> não é diferenciável: a definição de diferenciabilidade exige que a função esteja definida em todos os pontos de uma vizinhança do ponto considerado, o que não ocorre na fronteira do domínio. As derivadas parciais também não existem nesses pontos. Por exemplo, em um ponto <span class="math inline">\((x_0,y_0)\)</span> da fronteira com <span class="math inline">\(x_0\neq0\)</span>, o quociente que define <span class="math inline">\(k_x(x_0,y_0)\)</span> só está definido por um lado e cresce ilimitadamente em módulo (a reta tangente é vertical, como ocorre com <span class="math inline">\(\sqrt{a-x}\)</span> na extremidade de seu domínio); já em <span class="math inline">\((3,0)\)</span>, por exemplo, não há sequer pontos do domínio ao longo da direção de <span class="math inline">\(y\)</span> para formar o quociente que definiria <span class="math inline">\(k_y\)</span>. Assim, <span class="math inline">\(k\)</span> é diferenciável apenas no interior do domínio.</p></li></ol></div></details></li>
+<li><p>Considere as funções <span class="math display">\[f(x,y)=
+\begin{cases}
+\dfrac{x^2y}{\sqrt{x^2+y^2}},&amp;(x,y)\neq(0,0),\\[6pt]
+0,&amp;(x,y)=(0,0),
+\end{cases}
+\quad\mbox{ e }\quad
+g(x,y)=
+\begin{cases}
+\dfrac{xy}{\sqrt{x^2+y^2}},&amp;(x,y)\neq(0,0),\\[6pt]
+0,&amp;(x,y)=(0,0).
+\end{cases}\]</span></p><ol class="sub"><li><p>Calcule <span class="math inline">\(f_x(0,0)\)</span> e <span class="math inline">\(f_y(0,0)\)</span>.</p></li><li><p>Verifique se <span class="math inline">\(f\)</span> é diferenciável em <span class="math inline">\((0,0)\)</span>.</p></li><li><p>Calcule <span class="math inline">\(g_x(0,0)\)</span> e <span class="math inline">\(g_y(0,0)\)</span>.</p></li><li><p>Verifique se <span class="math inline">\(g\)</span> é diferenciável em <span class="math inline">\((0,0)\)</span>.</p></li><li><p>A existência das derivadas parciais em um ponto é suficiente para garantir que uma função seja diferenciável nesse ponto? Justifique utilizando os resultados anteriores.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Pela definição, <span class="math display">\[\begin{aligned}
+f_x(0,0)
+&amp;=
+\lim_{t\to0}\frac{f(t,0)-f(0,0)}{t}
+=
+\lim_{t\to0}\frac{0}{t}
+=0.\end{aligned}\]</span> Analogamente, <span class="math display">\[\begin{aligned}
+f_y(0,0)
+&amp;=
+\lim_{t\to0}\frac{f(0,t)-f(0,0)}{t}=
+\lim_{t\to0}\frac{0}{t}
+=0.\end{aligned}\]</span></p></li><li><p>Temos <span class="math display">\[\begin{aligned}
+\lim_{(h,k)\to(0,0)}
+\frac{
+f(h,k)-f(0,0)-f_x(0,0)h-f_y(0,0)k
+}{
+\sqrt{h^2+k^2}
+}
+&amp;=
+\lim_{(h,k)\to(0,0)} \frac{
+\frac{h^2k}{\sqrt{h^2+k^2}}-0-0\cdot h-0\cdot k
+}{
+\sqrt{h^2+k^2}
+}
+\\
+
+
+
+
+
+&amp;=
+\lim_{(h,k)\to(0,0)}
+\frac{h^2k}{h^2+k^2}
+\\
+&amp;=
+\lim_{(h,k)\to(0,0)}
+k\cdot \frac{h^2}{h^2+k^2}=0\end{aligned}\]</span> Portanto, <span class="math inline">\(f\)</span> é diferenciável em <span class="math inline">\((0,0)\)</span>.</p></li><li><p>Para <span class="math inline">\(g\)</span>, temos <span class="math display">\[\begin{aligned}
+g_x(0,0)
+&amp;=
+\lim_{t\to0}\frac{g(t,0)-g(0,0)}{t}=\lim_{t\to0}\frac{0}{t}
+=0\end{aligned}\]</span> e <span class="math display">\[\begin{aligned}
+g_y(0,0)
+&amp;=
+\lim_{t\to0}\frac{g(0,t)-g(0,0)}{t}=\lim_{t\to0}\frac{0}{t}
+=0.\end{aligned}\]</span></p></li><li><p>Temos <span class="math display">\[\begin{aligned}
+\lim_{(h,k)\to(0,0)}
+\frac{
+g(h,k)-g(0,0)-g_x(0,0)h-g_y(0,0)k
+}{
+\sqrt{h^2+k^2}
+}
+&amp;=
+\lim_{(h,k)\to(0,0)} \frac{
+\frac{hk}{\sqrt{h^2+k^2}}-0-0\cdot h-0\cdot k
+}{
+\sqrt{h^2+k^2}
+}\\
+&amp;=
+\lim_{(h,k)\to(0,0)}
+\frac{hk}{h^2+k^2}\end{aligned}\]</span> Tomando <span class="math inline">\(k=h\)</span>, <span class="math display">\[\lim_{(h,k)\to(0,0)}
+\frac{hk}{h^2+k^2}=\lim_{h\to 0}\frac{h^2}{2h^2}=\frac{1}{2}
+\neq0.\]</span> Logo, <span class="math inline">\(g\)</span> não é diferenciável em <span class="math inline">\((0,0)\)</span>.</p></li><li><p>A existência das derivadas parciais em um ponto não é suficiente para garantir a diferenciabilidade nesse ponto. De fato, para a função <span class="math inline">\(g\)</span> encontramos <span class="math inline">\(g_x(0,0)=g_y(0,0)=0\)</span>, mas <span class="math inline">\(g\)</span> não é diferenciável em <span class="math inline">\((0,0)\)</span>.</p></li></ol></div></details></li>
+<li><p>Determine a aproximação linear das funções a seguir no ponto indicado.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=e^{x+y}\)</span> em <span class="math inline">\((0,0)\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=\sqrt{x^2+y^2+1}\)</span> em <span class="math inline">\((1,1)\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln(x+2y)\)</span> em <span class="math inline">\((1,1)\)</span>.</p></li><li><p><span class="math inline">\(P(L,K)=1{,}01L^{0{,}75}K^{0{,}25}\)</span> em <span class="math inline">\((100,100)\)</span>.</p></li></ol><p>Em seguida, utilize as aproximações lineares encontradas para estimar:</p><ul class="lab"><li><p><strong>(i)</strong> <span class="math inline">\(f(0{,}02,-0{,}01)\)</span>;</p></li><li><p><strong>(ii)</strong> <span class="math inline">\(g(1{,}02,0{,}97)\)</span>;</p></li><li><p><strong>(iii)</strong> <span class="math inline">\(h(1{,}01,0{,}99)\)</span>;</p></li><li><p><strong>(iv)</strong> <span class="math inline">\(P(101,98)\)</span>.</p></li></ul><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 3</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>A aproximação linear de uma função <span class="math inline">\(f\)</span> em <span class="math inline">\((x_0,y_0)\)</span> é <span class="math display">\[L(x,y)
+=
+f(x_0,y_0)
++
+f_x(x_0,y_0)(x-x_0)
++
+f_y(x_0,y_0)(y-y_0).\]</span></p><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=e^{x+y}\)</span> no ponto <span class="math inline">\((0,0)\)</span>, <span class="math display">\[f(0,0)=1.\]</span></p><p>Além disso, <span class="math display">\[f_x(x,y)=e^{x+y}
+\quad\mbox{ e }\quad
+f_y(x,y)=e^{x+y}.\]</span></p><p>Logo, <span class="math display">\[f_x(0,0)=f_y(0,0)=1.\]</span></p><p>Portanto, <span class="math display">\[{L(x,y)=1+x+y.}\]</span></p><p>Assim, <span class="math display">\[f(0{,}02,-0{,}01)
+\approx
+L(0{,}02,-0{,}01)
+=
+1+0{,}02-0{,}01
+=1{,}01.\]</span></p></li><li><p>Para <span class="math inline">\(g(x,y)=\sqrt{x^2+y^2+1}\)</span> no ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[g(1,1)=\sqrt3.\]</span></p><p>As derivadas parciais são <span class="math display">\[g_x(x,y)=\frac{x}{\sqrt{x^2+y^2+1}}
+\quad\mbox{ e }\quad
+g_y(x,y)=\frac{y}{\sqrt{x^2+y^2+1}}.\]</span></p><p>Logo, <span class="math display">\[g_x(1,1)=g_y(1,1)=\frac1{\sqrt3}.\]</span></p><p>Portanto, <span class="math display">\[{
+L(x,y)
+=
+\sqrt3
++
+\frac{x-1}{\sqrt3}
++
+\frac{y-1}{\sqrt3}.
+}\]</span></p><p>Assim, <span class="math display">\[\begin{aligned}
+g(1{,}02,0{,}97)
+&amp;\approx
+L(1{,}02,0{,}97)
+=
+\sqrt3
++
+\frac{0{,}02}{\sqrt3}
+-
+\frac{0{,}03}{\sqrt3}
+=
+\sqrt3-\frac{0{,}01}{\sqrt3}=\frac{2,99}{\sqrt{3}}.\end{aligned}\]</span></p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln(x+2y)\)</span> no ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[h(1,1)=\ln3.\]</span></p><p>Além disso, <span class="math display">\[h_x(x,y)=\frac1{x+2y}
+\quad\mbox{ e }\quad
+h_y(x,y)=\frac2{x+2y}.\]</span></p><p>Portanto, <span class="math display">\[h_x(1,1)=\frac13
+\quad\mbox{ e }\quad
+h_y(1,1)=\frac23.\]</span></p><p>Assim, <span class="math display">\[{
+L(x,y)
+=
+\ln3+\frac13(x-1)+\frac23(y-1).
+}\]</span></p><p>Logo, <span class="math display">\[\begin{aligned}
+h(1{,}01,0{,}99)
+&amp;\approx
+L(1{,}01,0{,}99)=
+\ln3+\frac13(0{,}01)+\frac23(-0{,}01)
+=
+\ln3-\frac{0{,}01}{3}.\end{aligned}\]</span></p></li><li><p>Para <span class="math display">\[P(L,K)=1{,}01L^{0{,}75}K^{0{,}25},\]</span> temos <span class="math display">\[P(100,100)=101.\]</span></p><p>As derivadas parciais são <span class="math display">\[P_L(L,K)
+=
+0{,}7575L^{-0{,}25}K^{0{,}25}
+\quad\mbox{ e }\quad
+P_K(L,K)
+=
+0{,}2525L^{0{,}75}K^{-0{,}75}.\]</span></p><p>No ponto <span class="math inline">\((100,100)\)</span>, <span class="math display">\[P_L(100,100)=0{,}7575
+\quad\mbox{ e }\quad
+P_K(100,100)=0{,}2525.\]</span></p><p>Portanto, <span class="math display">\[{
+L(L,K)
+=
+101
++
+0{,}7575(L-100)
++
+0{,}2525(K-100).
+}\]</span></p><p>Assim, <span class="math display">\[\begin{aligned}
+P(101,98)
+&amp;\approx
+L(101,98)
+=
+101+0{,}7575(1)+0{,}2525(-2)
+=
+101+0{,}7575-0{,}505
+=
+101{,}2525.\end{aligned}\]</span></p></li></ol></div></details></li>
+<li><p>Determine a equação do plano tangente ao gráfico das funções a seguir no ponto indicado.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=e^{-(x^2+y^2)}\)</span> em <span class="math inline">\((1,0,f(1,0))\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=\sqrt{9-x^2-y^2}\)</span> em <span class="math inline">\((1,2,f(1,2))\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln\left(1+\sqrt{x^2+y^2}\right)\)</span> em <span class="math inline">\((3,4,f(3,4))\)</span>.</p></li><li><p><span class="math inline">\(P(L,K)=1{,}01L^{0{,}75}K^{0{,}25}\)</span> em <span class="math inline">\((100,100,f(100,100))\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 4</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>A equação do plano tangente ao gráfico de <span class="math inline">\(z=f(x,y)\)</span> no ponto <span class="math inline">\((x_0,y_0,f(x_0,y_0))\)</span> é <span class="math display">\[z
+=
+f(x_0,y_0)
++
+f_x(x_0,y_0)(x-x_0)
++
+f_y(x_0,y_0)(y-y_0).\]</span></p><ol class="sub"><li><p>Temos <span class="math display">\[f(1,0)=e^{-1}=\frac1e.\]</span> Também <span class="math display">\[f_x(x,y)=-2xe^{-(x^2+y^2)}
+\quad\mbox{ e }\quad
+f_y(x,y)=-2ye^{-(x^2+y^2)}.\]</span> Logo, <span class="math display">\[f_x(1,0)=-\frac2e
+\quad\mbox{ e }\quad
+f_y(1,0)=0.\]</span></p><p>Portanto, o plano tangente é <span class="math display">\[{
+z
+=
+\frac1e-\frac2e(x-1).
+}\]</span></p></li><li><p>Temos <span class="math display">\[g(1,2)=\sqrt{9-1-4}=2.\]</span> Além disso, <span class="math display">\[g_x(x,y)
+=
+-\frac{x}{\sqrt{9-x^2-y^2}}
+\quad\mbox{ e }\quad
+g_y(x,y)
+=
+-\frac{y}{\sqrt{9-x^2-y^2}}.\]</span> Assim, <span class="math display">\[g_x(1,2)=-\frac12
+\quad\mbox{ e }\quad
+g_y(1,2)=-1.\]</span></p><p>Logo, <span class="math display">\[{
+z
+=
+2-\frac12(x-1)-(y-2).
+}\]</span></p></li><li><p>Temos <span class="math display">\[h(3,4)=\ln \left(1+\sqrt{3^2+4^2}\right) =\ln 6.\]</span> As derivadas parciais são <span class="math display">\[h_x(x,y)
+=
+\frac{x}{\sqrt{x^2+y^2}\left(1+\sqrt{x^2+y^2}\right)}
+\quad\mbox{ e }\quad
+h_y(x,y)
+=
+\frac{y}{\sqrt{x^2+y^2}\left(1+\sqrt{x^2+y^2}\right)}.\]</span> Assim, <span class="math display">\[h_x(3,4)=\frac3{5\cdot6}=\frac1{10}
+\quad\mbox{ e }\quad
+h_y(3,4)=\frac4{5\cdot6}=\frac2{15}.\]</span></p><p>Portanto, <span class="math display">\[{
+z
+=
+\ln6+\frac1{10}(x-3)+\frac2{15}(y-4).
+}\]</span></p></li><li><p>Já calculamos <span class="math display">\[P(100,100)=101,\]</span> <span class="math display">\[P_L(100,100)=0{,}7575
+\quad\mbox{ e }\quad
+P_K(100,100)=0{,}2525.\]</span></p><p>Assim, a equação do plano tangente é <span class="math display">\[{
+z
+=
+101
++
+0{,}7575(L-100)
++
+0{,}2525(K-100).
+}\]</span></p></li></ol></div></details></li>
+<li><p>Para cada uma das funções do exercício anterior:</p><ol class="sub"><li><p>determine a aproximação linear no ponto indicado;</p></li><li><p>compare a expressão obtida com a equação do plano tangente;</p></li><li><p>explique a relação entre o plano tangente ao gráfico de uma função diferenciável e sua aproximação linear.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 5</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para cada função do exercício anterior, a aproximação linear no ponto indicado é:</p><ol class="sub"><li><p><span class="math inline">\(\displaystyle 
+{
+L(x,y)
+=
+\frac1e-\frac2e(x-1).
+}\)</span></p></li><li><p><span class="math inline">\(\displaystyle 
+{
+L(x,y)
+=
+2-\frac12(x-1)-(y-2).
+}\)</span></p></li><li><p><span class="math inline">\(\displaystyle 
+{
+L(x,y)
+=
+\ln6+\frac1{10}(x-3)+\frac2{15}(y-4).
+}\)</span></p></li><li><p><span class="math inline">\(\displaystyle 
+{
+L(L,K)
+=
+101
++
+0{,}7575(L-100)
++
+0{,}2525(K-100).
+}\)</span></p></li></ol><p>Comparando essas expressões com as equações dos planos tangentes obtidas no exercício anterior, observamos que a equação do plano tangente é <span class="math display">\[z=L(x,y)\]</span> Portanto, o plano tangente ao gráfico de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\((x_0,y_0,f(x_0,y_0))\)</span> é o gráfico da aproximação linear de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\((x_0,y_0)\)</span>.</p></div></details></li>
+<li><p>Calcule o diferencial total das funções a seguir.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=x^2y+y^3\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=e^{x-y}\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln(x^2+y^2)\)</span>.</p></li><li><p><span class="math inline">\(u(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 6</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=x^2y+y^3\)</span>, <span class="math display">\[f_x(x,y)=2xy
+\quad\mbox{ e }\quad
+f_y(x,y)=x^2+3y^2.\]</span></p><p>Portanto, <span class="math display">\[{
+df=2xy\,dx+(x^2+3y^2)\,dy.
+}\]</span></p></li><li><p>Para <span class="math inline">\(g(x,y)=e^{x-y}\)</span>, <span class="math display">\[g_x(x,y)=e^{x-y}
+\quad\mbox{ e }\quad
+g_y(x,y)=-e^{x-y}.\]</span></p><p>Assim, <span class="math display">\[{
+dg=e^{x-y}\,dx-e^{x-y}\,dy.
+}\]</span></p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln(x^2+y^2)\)</span>, <span class="math display">\[h_x(x,y)=\frac{2x}{x^2+y^2}
+\quad\mbox{ e }\quad
+h_y(x,y)=\frac{2y}{x^2+y^2}.\]</span></p><p>Logo, <span class="math display">\[{
+dh
+=
+\frac{2x}{x^2+y^2}\,dx
++
+\frac{2y}{x^2+y^2}\,dy.
+}\]</span></p></li><li><p>Para <span class="math inline">\(u(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>, temos <span class="math display">\[u_x=\frac{x}{\sqrt{x^2+y^2+z^2+1}},
+\quad 
+u_y=\frac{y}{\sqrt{x^2+y^2+z^2+1}}
+\quad\mbox{ e }\quad
+u_z=\frac{z}{\sqrt{x^2+y^2+z^2+1}}.\]</span></p><p>Portanto, <span class="math display">\[{
+du
+=
+\frac{x}{\sqrt{x^2+y^2+z^2+1}}\,dx
++
+\frac{y}{\sqrt{x^2+y^2+z^2+1}}\,dy
++
+\frac{z}{\sqrt{x^2+y^2+z^2+1}}\,dz.
+}\]</span></p></li></ol></div></details></li>
+<li><p>Considere <span class="math inline">\(f(x,y)=\sqrt{x^2+y^2+1}\)</span>.</p><ol class="sub"><li><p>Calcule o diferencial total <span class="math inline">\(df\)</span>.</p></li><li><p>Calcule <span class="math inline">\(df\)</span> no ponto <span class="math inline">\((1,1)\)</span> para <span class="math inline">\(dx=0{,}02\)</span> e <span class="math inline">\(dy=-0{,}03\)</span>.</p></li><li><p>Calcule a variação exata <span class="math inline">\(\Delta f=f(1{,}02,0{,}97)-f(1,1)\)</span>.</p></li><li><p>Compare <span class="math inline">\(\Delta f\)</span> com <span class="math inline">\(df\)</span>.</p></li><li><p>Explique por que <span class="math inline">\(df\)</span> pode ser utilizado como uma aproximação para <span class="math inline">\(\Delta f\)</span> quando <span class="math inline">\(dx\)</span> e <span class="math inline">\(dy\)</span> são pequenos.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 7</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Considere <span class="math inline">\(f(x,y)=\sqrt{x^2+y^2+1}\)</span>.</p><ol class="sub"><li><p>As derivadas parciais são <span class="math display">\[f_x(x,y)=\frac{x}{\sqrt{x^2+y^2+1}}
+\quad\mbox{ e }\quad
+f_y(x,y)=\frac{y}{\sqrt{x^2+y^2+1}}.\]</span></p><p>Portanto, <span class="math display">\[{
+df
+=
+\frac{x}{\sqrt{x^2+y^2+1}}\,dx
++
+\frac{y}{\sqrt{x^2+y^2+1}}\,dy.
+}\]</span></p></li><li><p>No ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[df
+=
+\frac1{\sqrt3}\,dx+\frac1{\sqrt3}\,dy.\]</span></p><p>Para <span class="math inline">\(dx=0{,}02\)</span> e <span class="math inline">\(dy=-0{,}03\)</span>, <span class="math display">\[df
+=
+\frac{0{,}02}{\sqrt3}
+-\frac{0{,}03}{\sqrt3}
+=
+-\frac{0{,}01}{\sqrt3}.
+\approx-0{,}00577.\]</span></p></li><li><p>A variação exata é <span class="math display">\[\Delta f
+=
+f(1{,}02,0{,}97)-f(1,1)
+=
+\sqrt{(1{,}02)^2+(0{,}97)^2+1}-\sqrt3
+=
+\sqrt{2{,}9813}-\sqrt3
+\approx-0{,}00541.\]</span></p></li><li><p>Temos <span class="math inline">\(df\approx-0{,}00577\)</span> e <span class="math inline">\(\Delta f\approx-0{,}00541\)</span>, que são valores muito próximos.</p></li><li><p>Quando <span class="math inline">\(dx\)</span> e <span class="math inline">\(dy\)</span> são pequenos, a diferenciabilidade de <span class="math inline">\(f\)</span> garante que <span class="math display">\[\Delta f
+\approx
+f_x(x,y)\,dx+f_y(x,y)\,dy
+=
+df,\]</span> pois o erro dessa aproximação é pequeno em comparação com o comprimento do deslocamento <span class="math inline">\(\sqrt{dx^2+dy^2}\)</span>. Em outras palavras, a aproximação linear de <span class="math inline">\(f\)</span> no ponto considerado descreve bem a variação da função para pequenos deslocamentos, e é por isso que <span class="math inline">\(df\)</span> pode ser utilizado como uma aproximação para <span class="math inline">\(\Delta f\)</span>.</p></li></ol></div></details></li>
+<li><p>Considere a função de produção de Cobb–Douglas <span class="math inline">\(P(L,K)=1{,}01L^{0{,}75}K^{0{,}25}\)</span>.</p><ol class="sub"><li><p>Determine o diferencial total <span class="math inline">\(dP\)</span>.</p></li><li><p>Calcule <span class="math inline">\(dP\)</span> no ponto <span class="math inline">\((L,K)=(194,407)\)</span>.</p></li><li><p>Utilize o diferencial total para estimar a variação na produção quando <span class="math inline">\(L\)</span> passa de <span class="math inline">\(194\)</span> para <span class="math inline">\(196\)</span> e <span class="math inline">\(K\)</span> passa de <span class="math inline">\(407\)</span> para <span class="math inline">\(412\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 8</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Considere <span class="math display">\[P(L,K)=1{,}01L^{0{,}75}K^{0{,}25}.\]</span></p><ol class="sub"><li><p>As derivadas parciais são <span class="math display">\[P_L(L,K)
+=
+0{,}7575L^{-0{,}25}K^{0{,}25}
+\quad\mbox{ e }\quad
+P_K(L,K)
+=
+0{,}2525L^{0{,}75}K^{-0{,}75}.\]</span></p><p>Logo, <span class="math display">\[{
+dP
+=
+0{,}7575L^{-0{,}25}K^{0{,}25}\,dL
++
+0{,}2525L^{0{,}75}K^{-0{,}75}\,dK.
+}\]</span></p></li><li><p>No ponto <span class="math inline">\((194,407)\)</span>, <span class="math display">\[dP = P_L(194,407)\,dL + P_K(194,407)\,dK.\]</span> Como <span class="math display">\[P_L(194,407)\approx0{,}912 \qquad\text{e}\qquad P_K(194,407)\approx0{,}145,\]</span> segue que <span class="math display">\[{ dP \approx 0{,}912\,dL+0{,}145\,dK. }\]</span></p></li><li><p>Quando <span class="math inline">\(L\)</span> passa de <span class="math inline">\(194\)</span> para <span class="math inline">\(196\)</span>, <span class="math display">\[dL=196-194=2.\]</span></p><p>Quando <span class="math inline">\(K\)</span> passa de <span class="math inline">\(407\)</span> para <span class="math inline">\(412\)</span>, <span class="math display">\[dK=412-407=5.\]</span></p><p>Portanto, <span class="math display">\[\Delta P\approx dP \approx  
+0{,}912\cdot 2+0{,}145\cdot 5
+=
+1{,}824+0{,}725
+=
+2{,}549.\]</span> O primeiro sinal de <span class="math inline">\(\approx\)</span> vem da aproximação da variação exata pelo diferencial, <span class="math inline">\(\Delta P\approx dP\)</span>, que é válida porque as variações <span class="math inline">\(dL=2\)</span> e <span class="math inline">\(dK=5\)</span> são pequenas. O segundo sinal de <span class="math inline">\(\approx\)</span> vem do uso dos valores arredondados <span class="math inline">\(P_L(194,407)\approx0{,}912\)</span> e <span class="math inline">\(P_K(194,407)\approx0{,}145\)</span> no lugar dos valores exatos das derivadas parciais.</p></li></ol></div></details></li>
+<li><p>As dimensões de uma caixa retangular são <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span>, e seu volume é dado por <span class="math inline">\(V(x,y,z)=xyz\)</span>.</p><ol class="sub"><li><p>Determine o diferencial total <span class="math inline">\(dV\)</span>.</p></li><li><p>Para uma caixa com dimensões <span class="math inline">\(x=20\)</span> cm, <span class="math inline">\(y=15\)</span> cm e <span class="math inline">\(z=10\)</span> cm, estime a variação no volume quando a dimensão <span class="math inline">\(x\)</span> aumenta <span class="math inline">\(0{,}1\)</span> cm, a dimensão <span class="math inline">\(y\)</span> diminui <span class="math inline">\(0{,}2\)</span> cm e a dimensão <span class="math inline">\(z\)</span> aumenta <span class="math inline">\(0{,}1\)</span> cm.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 9</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para uma caixa retangular, <span class="math display">\[V(x,y,z)=xyz.\]</span></p><ol class="sub"><li><p>Temos <span class="math display">\[V_x=yz,\qquad
+V_y=xz,\qquad
+V_z=xy.\]</span></p><p>Portanto, <span class="math display">\[{
+dV=yz\,dx+xz\,dy+xy\,dz.
+}\]</span></p></li><li><p>Nesse caso, as derivadas parciais devem ser avaliadas no ponto <span class="math inline">\((x_0,y_0,z_0)=(20,15,10)\)</span>: <span class="math display">\[V_x(20,15,10)=15\cdot 10=150,
+\quad
+V_y(20,15,10)=20\cdot 10=200
+\quad\mbox{ e }\quad
+V_z(20,15,10)=20\cdot 15=300.\]</span></p><p>Além disso, <span class="math display">\[dx=0{,}1,\quad
+dy=-0{,}2\quad\mbox{ e }\quad
+dz=0{,}1.\]</span> Substituindo os valores em <span class="math inline">\(dV\)</span>, obtemos <span class="math display">\[\begin{aligned}
+dV
+=
+150(0{,}1)+200(-0{,}2)+300(0{,}1)
+=
+15-40+30
+=
+5.\end{aligned}\]</span></p><p>Assim, a variação no volume é estimada por <span class="math display">\[\Delta V\approx 5\text{ cm}^3.\]</span></p></li></ol></div></details></li>
+</ol><div class="pager"><a href="#lista6">← Lista 6</a><a href="#lista8">Lista 8 →</a></div></section>
+<section class="lista page" id="lista8">
+<h2><span class="lnum">Lista 8</span><span class="ltitle">Gradiente, derivada direcional e taxa de variação</span></h2>
+<ol class="ex">
+<li><p>Calcule o gradiente das funções a seguir no ponto indicado.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=x^2y+3xy^2\)</span>, no ponto <span class="math inline">\((1,2)\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=e^{-(x^2+y^2)}\)</span>, no ponto <span class="math inline">\((1,0)\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln(x+2y)\)</span>, no ponto <span class="math inline">\((1,1)\)</span>.</p></li><li><p><span class="math inline">\(u(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>, no ponto <span class="math inline">\((1,2,2)\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=x^2y+3xy^2\)</span>, temos <span class="math display">\[f_x(x,y)=2xy+3y^2
+\quad\mbox{ e }\quad
+f_y(x,y)=x^2+6xy.\]</span></p><p>Assim, <span class="math display">\[\nabla f(x,y)=\left(2xy+3y^2,x^2+6xy\right).\]</span></p><p>No ponto <span class="math inline">\((1,2)\)</span>, <span class="math display">\[\nabla f(1,2)
+=
+\left(2\cdot 1\cdot2+3\cdot 2^2,1^2+6\cdot1\cdot2\right)
+=(16,13).\]</span></p></li><li><p>Para <span class="math inline">\(g(x,y)=e^{-(x^2+y^2)}\)</span>, temos <span class="math display">\[g_x(x,y)=-2xe^{-(x^2+y^2)}
+\quad\mbox{ e }\quad
+g_y(x,y)=-2ye^{-(x^2+y^2)}.\]</span></p><p>Logo, <span class="math display">\[\nabla g(x,y)
+=
+\left(
+-2xe^{-(x^2+y^2)},
+-2ye^{-(x^2+y^2)}
+\right).\]</span></p><p>No ponto <span class="math inline">\((1,0)\)</span>, <span class="math display">\[{
+\nabla g(1,0)
+=
+\left(-\frac{2}{e},0\right).
+}\]</span></p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln(x+2y)\)</span>, temos <span class="math display">\[h_x(x,y)=\frac{1}{x+2y}
+\quad\mbox{ e }\quad
+h_y(x,y)=\frac{2}{x+2y}.\]</span></p><p>Assim, <span class="math display">\[\nabla h(x,y)
+=
+\left(
+\frac{1}{x+2y},
+\frac{2}{x+2y}
+\right).\]</span></p><p>No ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[{
+\nabla h(1,1)
+=
+\left(\frac13,\frac23\right).
+}\]</span></p></li><li><p>Para <span class="math inline">\(u(x,y,z)=\sqrt{x^2+y^2+z^2+1}\)</span>, temos <span class="math display">\[u_x(x,y,z)
+=
+\frac{x}{\sqrt{x^2+y^2+z^2+1}},
+\quad
+u_y(x,y,z)
+=
+\frac{y}{\sqrt{x^2+y^2+z^2+1}}
+\quad\mbox{ e }\quad
+u_z(x,y,z)
+=
+\frac{z}{\sqrt{x^2+y^2+z^2+1}}.\]</span></p><p>Portanto, <span class="math display">\[\nabla u(x,y,z)
+=
+\left(
+\frac{x}{\sqrt{x^2+y^2+z^2+1}},
+\frac{y}{\sqrt{x^2+y^2+z^2+1}},
+\frac{z}{\sqrt{x^2+y^2+z^2+1}}
+\right).\]</span></p><p>No ponto <span class="math inline">\((1,2,2)\)</span>, <span class="math display">\[{
+\nabla u(1,2,2)
+=
+\left(
+\frac1{\sqrt{10}},
+\frac2{\sqrt{10}},
+\frac2{\sqrt{10}}
+\right).
+}\]</span></p></li></ol></div></details></li>
+<li><p>Para cada uma das funções a seguir, determine a derivada direcional no ponto indicado e na direção do vetor dado.</p><ol class="sub"><li><p><span class="math inline">\(f(x,y)=x^2+y^2\)</span>, no ponto <span class="math inline">\((1,2)\)</span>, na direção de <span class="math inline">\(\vec{v}=(3,4)\)</span>.</p></li><li><p><span class="math inline">\(g(x,y)=e^{x-y}\)</span>, no ponto <span class="math inline">\((0,0)\)</span>, na direção de <span class="math inline">\(\vec{v}=(1,1)\)</span>.</p></li><li><p><span class="math inline">\(h(x,y)=\ln(x^2+y^2)\)</span>, no ponto <span class="math inline">\((1,1)\)</span>, na direção de <span class="math inline">\(\vec{v}=(-1,2)\)</span>.</p></li><li><p><span class="math inline">\(k(x,y,z)=x^2+y^2+z^2\)</span>, no ponto <span class="math inline">\((1,-1,2)\)</span>, na direção de <span class="math inline">\(\vec{v}=(2,1,-2)\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>Para <span class="math inline">\(f(x,y)=x^2+y^2\)</span>, <span class="math display">\[\nabla f(x,y)=(2x,2y),\]</span> portanto, <span class="math display">\[\nabla f(1,2)=(2,4).\]</span></p><p>Precisamos do vetor unitário na direção do vetor <span class="math inline">\(\vec{v}=(3,4)\)</span>. Temos: <span class="math display">\[\|\vec{v}\|=\sqrt{3^2+4^2}=5
+\quad\mbox{ e }\quad
+\vec{u}
+=
+\left(\frac35,\frac45\right).\]</span></p><p>Assim, como <span class="math inline">\(f\)</span> é um polinômio, ela é diferenciável em todos os pontos do plano; sendo diferenciável, vale a fórmula da derivada direcional via gradiente: <span class="math display">\[\frac{\partial f}{\partial \vec{u}}(1,2)=\cdot{\nabla f(1,2)}{\vec{u}}=\cdot{(2,4)}{\left(\frac35,\frac45\right)}=\frac65+\frac{16}{5}=\frac{22}{5}.\]</span></p></li><li><p>Para <span class="math inline">\(g(x,y)=e^{x-y}\)</span>, <span class="math display">\[\nabla g(x,y)=\left(e^{x-y},-e^{x-y}\right).\]</span></p><p>No ponto <span class="math inline">\((0,0)\)</span>, <span class="math display">\[\nabla g(0,0)=(1,-1).\]</span></p><p>Como <span class="math inline">\(\vec{v}=(1,1)\)</span>, tomamos <span class="math display">\[\vec{u}
+=
+\left(\frac1{\sqrt2},\frac1{\sqrt2}\right).\]</span></p><p>Assim, <span class="math display">\[\frac{\partial g}{\partial \vec{u}}(0,0)=\cdot{(1,-1)}{\left(\frac1{\sqrt2},\frac1{\sqrt2}\right)}=\frac1{\sqrt2}-\frac1{\sqrt2}=0.\]</span></p><p>Como a derivada direcional é igual a zero, a função não apresenta variação instantânea de primeira ordem na direção de <span class="math inline">\(\vec{v}=(1,1)\)</span> no ponto <span class="math inline">\((0,0)\)</span>. De fato, nessa direção temos <span class="math inline">\(x=y\)</span>, e portanto <span class="math display">\[g(x,y)=e^{x-y}=1.\]</span> Assim, a função permanece constante ao longo dessa direção: o valor zero da derivada direcional reflete exatamente isso.</p></li><li><p>Para <span class="math inline">\(h(x,y)=\ln(x^2+y^2)\)</span>, <span class="math display">\[\nabla h(x,y)
+=
+\left(
+\frac{2x}{x^2+y^2},
+\frac{2y}{x^2+y^2}
+\right).\]</span></p><p>No ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[\nabla h(1,1)=(1,1).\]</span></p><p>Como <span class="math inline">\(\vec{v}=(-1,2)\)</span>, <span class="math display">\[\|\vec{v}\|=\sqrt5
+\quad\mbox{ e }\quad
+\vec{u}
+=
+\left(
+-\frac1{\sqrt5},
+\frac2{\sqrt5}
+\right).\]</span></p><p>Portanto, <span class="math display">\[\frac{\partial h}{\partial \vec{u}}(1,1)=\cdot{(1,1)}{\left(-\frac1{\sqrt5},\frac2{\sqrt5}\right)}=-\frac1{\sqrt5}+\frac2{\sqrt5}=\frac1{\sqrt5}.\]</span></p></li><li><p>Para <span class="math inline">\(k(x,y,z)=x^2+y^2+z^2\)</span>, <span class="math display">\[\nabla k(x,y,z)=(2x,2y,2z).\]</span></p><p>No ponto <span class="math inline">\((1,-1,2)\)</span>, <span class="math display">\[\nabla k(1,-1,2)=(2,-2,4).\]</span></p><p>Como <span class="math inline">\(\vec{v}=(2,1,-2)\)</span>, <span class="math display">\[\|\vec{v}\|
+=
+\sqrt{2^2+1^2+(-2)^2}
+=3
+\quad\mbox{ e }\quad
+\vec{u}
+=
+\left(
+\frac23,\frac13,-\frac23
+\right).\]</span></p><p>Portanto, <span class="math display">\[\frac{\partial k}{\partial \vec{u}}(1,-1,2)=\cdot{(2,-2,4)}{\left(\frac23,\frac13,-\frac23\right)}=\frac43-\frac23-\frac83=-2.\]</span></p></li></ol></div></details></li>
+<li><p>Considere <span class="math inline">\(f(x,y)=x^2+2y^2\)</span>.</p><ol class="sub"><li><p>Calcule o gradiente de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\((1,1)\)</span>.</p></li><li><p>Determine a taxa de variação de <span class="math inline">\(f\)</span> na direção de <span class="math inline">\(\vec{v}=(1,2)\)</span> quando <span class="math inline">\((x,y)=(1,1)\)</span>.</p></li><li><p>Determine a taxa de variação de <span class="math inline">\(f\)</span> na direção de <span class="math inline">\(\vec{w}=(-2,1)\)</span> quando <span class="math inline">\((x,y)=(1,1)\)</span>.</p></li><li><p>Em qual das duas direções a função cresce mais rapidamente?</p></li><li><p>Em alguma dessas direções a função diminui? Justifique utilizando o sinal da taxa de variação.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 3</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(f(x,y)=x^2+2y^2\)</span>, temos <span class="math display">\[\nabla f(x,y)=(2x,4y).\]</span></p><ol class="sub"><li><p>No ponto <span class="math inline">\((1,1)\)</span>, <span class="math display">\[{\nabla f(1,1)=(2,4).}\]</span></p></li><li><p>Para <span class="math inline">\(\vec{v}=(1,2)\)</span>, <span class="math display">\[\|\vec{v}\|=\sqrt5
+\quad\mbox{ e }\quad
+\vec{u}
+=
+\left(
+\frac1{\sqrt5},
+\frac2{\sqrt5}
+\right).\]</span></p><p>Assim, <span class="math display">\[\frac{\partial f}{\partial \vec{u}}(1,1)=\cdot{(2,4)}{\left(\frac1{\sqrt5},\frac2{\sqrt5}\right)}=\frac2{\sqrt5}+\frac8{\sqrt5}=\frac{10}{\sqrt5}=2\sqrt5.\]</span></p></li><li><p>Para <span class="math inline">\(\vec{w}=(-2,1)\)</span>, <span class="math display">\[\|\vec{w}\|=\sqrt5
+\quad\mbox{ e }\quad
+\vec{u}
+=
+\left(
+-\frac2{\sqrt5},
+\frac1{\sqrt5}
+\right).\]</span></p><p>Logo, <span class="math display">\[\frac{\partial f}{\partial \vec{u}}(1,1)=\cdot{(2,4)}{\left(-\frac2{\sqrt5},\frac1{\sqrt5}\right)}=-\frac4{\sqrt5}+\frac4{\sqrt5}=0.\]</span></p></li><li><p>Na direção de <span class="math inline">\(\vec{v}=(1,2)\)</span>, a taxa de variação é <span class="math inline">\(2\sqrt5\)</span>, enquanto na direção de <span class="math inline">\(\vec{w}=(-2,1)\)</span> ela é zero. Portanto, entre as duas direções consideradas, a função cresce mais rapidamente na direção de de <span class="math inline">\(\vec{v}\)</span>.</p></li><li><p>A função não diminui em nenhuma das duas direções consideradas. Na direção de <span class="math inline">\(\vec{v}\)</span>, a taxa é positiva, portanto a função aumenta. Na direção de <span class="math inline">\(\vec{w}\)</span>, a taxa é zero, portanto não há variação instantânea <em>de primeira ordem</em> nessa direção.</p><p>O fato de a derivada direcional ser igual a zero não significa que a função seja constante ao longo dessa direção. De fato, consideremos um pequeno segmento centrado no ponto <span class="math inline">\((1,1)\)</span> e na direção de <span class="math inline">\(\vec{w}\)</span>. Se <span class="math inline">\(\vec{u}\)</span> é o vetor unitário na direção de <span class="math inline">\(\vec{w}\)</span>, podemos parametrizar os pontos desse segmento por <span class="math display">\[(x,y)
+=
+(1,1)+t\vec{u}
+=
+\left(
+1-\frac{2t}{\sqrt{5}},
+1+\frac{t}{\sqrt{5}}
+\right),
+\qquad
+t\in(-\delta,\delta),\]</span> para <span class="math inline">\(\delta&gt;0\)</span> suficientemente pequeno. Como <span class="math inline">\(\vec{u}\)</span> é unitário, a distância entre o ponto <span class="math inline">\((x,y)\)</span> e o ponto <span class="math inline">\((1,1)\)</span> é</p><p>exatamente <span class="math inline">\(t\)</span>. Avaliando a função nesses pontos, obtemos a função de uma única variável <span class="math display">\[\varphi(t)=
+f\left(1-\frac{2t}{\sqrt{5}},1+\frac{t}{\sqrt{5}}\right)=\left(1-\frac{2t}{\sqrt{5}}\right)^2+2\left(1+\frac{t}{\sqrt{5}}\right)^2
+
+=3+\frac{6}{5}t^2,\]</span> que não é constante ao longo desse segmento (seu valor depende de <span class="math inline">\(t^2\)</span>). Observe agora que a derivada da função <span class="math inline">\(\varphi\)</span> em <span class="math inline">\(t=0\)</span> coincide com a derivada direcional de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\((1,1)\)</span> na direção de <span class="math inline">\(\vec{u}\)</span>. De fato, <span class="math display">\[\varphi&#39;(0)
+=
+\lim_{t\to0}
+\frac{\varphi(t)-\varphi(0)}{t}
+=
+\lim_{t\to0}
+\frac{
+f\left((1,1)+t\vec{u}\right)-f(1,1)
+}{t}=\frac{\partial f}{\partial \vec{u}}(1,1)=0.\]</span> Assim, a aproximação linear de <span class="math inline">\(\varphi\)</span> em <span class="math inline">\(t=0\)</span> é a função constante <span class="math display">\[L(t)=\varphi(0)+\varphi&#39;(0)t=3.\]</span> Portanto, embora <span class="math inline">\(\varphi(t)=3+\frac65t^2\)</span> não seja constante, sua aproximação linear em <span class="math inline">\(t=0\)</span> é constante. Em outras palavras, a variação de <span class="math inline">\(f\)</span> ao longo dessa direção não apresenta um termo de <em>primeira ordem</em> em <span class="math inline">\(t\)</span>.</p></li></ol></div></details></li>
+<li><p>Considere <span class="math inline">\(f(x,y)=e^{-(x^2+y^2)}\)</span>.</p><ol class="sub"><li><p>Calcule o gradiente de <span class="math inline">\(f\)</span> no ponto <span class="math inline">\((1,0)\)</span>.</p></li><li><p>Determine a taxa de variação de <span class="math inline">\(f\)</span> na direção de <span class="math inline">\(\vec{v}=(1,1)\)</span> quando <span class="math inline">\((x,y)=(1,0)\)</span>.</p></li><li><p>Determine a taxa de variação de <span class="math inline">\(f\)</span> na direção de <span class="math inline">\(\vec{w}=(-1,0)\)</span> quando <span class="math inline">\((x,y)=(1,0)\)</span>.</p></li><li><p>Interprete o sinal das taxas de variação encontradas nos itens anteriores.</p></li><li><p>Em que direção ocorre a maior taxa de aumento de <span class="math inline">\(f\)</span> quando <span class="math inline">\((x,y)=(1,0)\)</span>?</p></li><li><p>Determine o valor dessa taxa máxima de variação.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 4</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(f(x,y)=e^{-(x^2+y^2)}\)</span>, temos <span class="math display">\[\nabla f(x,y)
+=
+\left(
+-2xe^{-(x^2+y^2)},
+-2ye^{-(x^2+y^2)}
+\right).\]</span></p><ol class="sub"><li><p>No ponto <span class="math inline">\((1,0)\)</span>, <span class="math display">\[{
+\nabla f(1,0)
+=
+\left(-\frac2e,0\right).
+}\]</span></p></li><li><p>Para <span class="math inline">\(\vec{v}=(1,1)\)</span>, <span class="math display">\[\vec{u}
+=
+\left(
+\frac1{\sqrt2},
+\frac1{\sqrt2}
+\right).\]</span> Assim, <span class="math display">\[\frac{\partial f}{\partial \vec{u}}(1,0)=\cdot{\left(-\frac2e,0\right)}{\left(\frac1{\sqrt2},\frac1{\sqrt2}\right)}=-\frac{2}{e\sqrt2}=-\frac{\sqrt2}{e}.\]</span></p></li><li><p>O vetor <span class="math inline">\(\vec{w}=(-1,0)\)</span> já é unitário. Assim, <span class="math display">\[\frac{\partial f}{\partial \vec{w}}(1,0)=\cdot{\left(-\frac2e,0\right)}{(-1,0)}=\frac2e.\]</span></p></li><li><p>Na direção de <span class="math inline">\(\vec{v}=(1,1)\)</span>, a taxa de variação é negativa. Portanto, <span class="math inline">\(f\)</span> diminui nessa direção.</p><p>Na direção de <span class="math inline">\(\vec{w}=(-1,0)\)</span>, a taxa de variação é positiva. Portanto, <span class="math inline">\(f\)</span> aumenta nessa direção.</p></li><li><p>A maior taxa de aumento ocorre na direção do gradiente: <span class="math display">\[\nabla f(1,0)
+=
+\left(-\frac2e,0\right).\]</span></p></li><li><p>O valor da maior taxa de variação é a norma do gradiente: <span class="math display">\[\begin{aligned}
+\|\nabla f(1,0)\|
+=
+\sqrt{
+\left(-\frac2e\right)^2+0^2
+}
+=
+\frac2e.\end{aligned}\]</span></p></li></ol></div></details></li>
+<li><p>Considere a função <span class="math inline">\(T(x,y)=100-x^2-2y^2\)</span>, que representa a temperatura em uma região, onde <span class="math inline">\(T\)</span> é medida em graus Celsius e <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> são medidos em quilômetros. Uma pessoa está no ponto <span class="math inline">\((2,1)\)</span>.</p><ol class="sub"><li><p>Determine o gradiente de <span class="math inline">\(T\)</span> no ponto <span class="math inline">\((2,1)\)</span>.</p></li><li><p>Se a pessoa se deslocar na direção do vetor <span class="math inline">\(\vec{v}=(3,4)\)</span>, determine a taxa instantânea de variação da temperatura.</p></li><li><p>A temperatura aumenta ou diminui nessa direção? Interprete o resultado.</p></li><li><p>Estime a variação da temperatura correspondente a um pequeno deslocamento de <span class="math inline">\(0{,}2\)</span> km na direção de <span class="math inline">\(\vec{v}=(3,4)\)</span>.</p></li><li><p>Em que direção a pessoa deve caminhar para que a temperatura aumente o mais rapidamente possível?</p></li><li><p>Qual é a maior taxa instantânea de aumento da temperatura nesse ponto?</p></li><li><p>Em que direção a temperatura diminui o mais rapidamente possível? Qual é o valor dessa taxa?</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 5</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math display">\[T(x,y)=100-x^2-2y^2,\]</span> temos <span class="math display">\[\nabla T(x,y)=(-2x,-4y).\]</span></p><ol class="sub"><li><p>No ponto <span class="math inline">\((2,1)\)</span>, <span class="math display">\[{\nabla T(2,1)=(-4,-4).}\]</span></p></li><li><p>Como <span class="math inline">\(\vec{v}=(3,4)\)</span>, <span class="math display">\[\vec{u}
+=
+\left(\frac35,\frac45\right).\]</span></p><p>Assim, <span class="math display">\[\frac{\partial T}{\partial \vec{u}}(2,1)=\cdot{(-4,-4)}{\left(\frac35,\frac45\right)}=-\frac{12}{5}-\frac{16}{5}=-\frac{28}{5}=-5,6.\]</span></p></li><li><p>Como a taxa de variação é negativa, a temperatura diminui nessa direção. Assim, ao aumentar simultaneamente as coordenadas <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> na proporção <span class="math inline">\(3:4\)</span>, a temperatura diminui instantaneamente à taxa de <span class="math inline">\(5{,}6\ ^\circ\mathrm{C/km}\)</span>. Ou seja, para cada <span class="math inline">\(1\)</span> km de deslocamento nessa direção, a temperatura diminui aproximadamente <span class="math inline">\(5{,}6\,^\circ\mathrm{C}\)</span>.</p></li><li><p>A variação da temperatura é <em>aproximadamente</em> igual à taxa de variação na direção considerada multiplicada pelo comprimento do deslocamento. Para um deslocamento de <span class="math inline">\(0{,}2\)</span> km, temos <span class="math display">\[\Delta T
+\approx
+\frac{\partial T}{\partial \vec{u}}(2,1) \cdot 0{,}2 
+=(-5{,}6)\cdot 0{,}2 
+=
+-1{,}12.\]</span> Portanto, para esse pequeno deslocamento, a temperatura diminui aproximadamente <span class="math inline">\({1{,}12\,^\circ\mathrm{C}}\)</span>.</p></li><li><p>A temperatura aumenta mais rapidamente na direção do vetor gradiente: <span class="math display">\[{\nabla T(2,1)=(-4,-4)}.\]</span></p></li><li><p>A maior taxa instantânea de aumento é <span class="math display">\[{
+\|\nabla T(2,1)\|=4\sqrt2\ ^\circ\mathrm{C/km}.
+}\]</span></p></li><li><p>A temperatura diminui mais rapidamente na direção oposta ao gradiente. Nessa direção, a taxa de variação é <span class="math inline">\({-4\sqrt2\ ^\circ\mathrm{C/km}.}\)</span></p></li></ol></div></details></li>
+<li><p>A altura de uma superfície é dada por <span class="math display">\[H(x,y)=50-2x^2-y^2,\]</span> onde <span class="math inline">\(H\)</span> e as coordenadas <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> são medidas em metros. Considere o ponto <span class="math inline">\((1,2)\)</span>.</p><ol class="sub"><li><p>Calcule <span class="math inline">\(\nabla H(1,2)\)</span>.</p></li><li><p>Determine a taxa instantânea de variação da altura na direção de <span class="math inline">\(\vec{v}=(1,1)\)</span>.</p></li><li><p>Uma pessoa caminha, a partir desse ponto, nessa mesma direção. A pessoa está subindo ou descendo? Justifique.</p></li><li><p>Em que direção ocorre a maior taxa de aumento da altura por unidade de deslocamento?</p></li><li><p>Qual é a maior taxa instantânea de aumento da altura?</p></li><li><p>Em que direção ocorre a maior taxa de diminuição da altura por unidade de deslocamento?</p></li><li><p>Qual é a maior taxa instantânea de diminuição da altura?</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 6</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math display">\[H(x,y)=50-2x^2-y^2,\]</span> temos <span class="math display">\[\nabla H(x,y)=(-4x,-2y).\]</span></p><ol class="sub"><li><p>No ponto <span class="math inline">\((1,2)\)</span>, <span class="math display">\[{\nabla H(1,2)=(-4,-4).}\]</span></p></li><li><p>Para <span class="math inline">\(\vec{v}=(1,1)\)</span>, <span class="math display">\[\vec{u}
+=
+\left(
+\frac1{\sqrt2},
+\frac1{\sqrt2}
+\right).\]</span></p><p>Assim, <span class="math display">\[\frac{\partial H}{\partial \vec{u}}(1,2)=\cdot{(-4,-4)}{\left(\frac1{\sqrt2},\frac1{\sqrt2}\right)}=-\frac8{\sqrt2}=-4\sqrt2.\]</span></p></li><li><p>Como a taxa de variação é negativa, a altura está diminuindo. Portanto, a pessoa está descendo.</p></li><li><p>A maior taxa de aumento da altura por unidade de deslocamento ocorre na direção do vetor gradiente no ponto considerado: <span class="math display">\[\nabla H(1,2)=(-4,-4).\]</span></p></li><li><p>A maior taxa de aumento da altura por unidade de deslocamento é igual a <span class="math display">\[{
+\|\nabla H(1,2)\|=4\sqrt2.
+}\]</span></p></li><li><p>A maior taxa de diminuição da altura por unidade de deslocamento ocorre no sentido oposto ao vetor gradiente: <span class="math display">\[-\nabla H(1,2)=(4,4).\]</span></p></li><li><p>Nessa direção, a derivada direcional vale <span class="math inline">\(-\|\nabla H\|=-4\sqrt{2}\)</span>. Assim, a altura <em>diminui</em> à taxa de <span class="math inline">\(\|\nabla H\|\)</span> unidades de altura por unidade de deslocamento.</p><p>O sinal negativo aparece na derivada direcional porque indica que a função está diminuindo. Quando dizemos “taxa de diminuição”, estamos nos referindo à intensidade dessa diminuição, dada pelo valor positivo <span class="math inline">\(\|\nabla H\|\)</span>.</p></li></ol></div></details></li>
+</ol><div class="pager"><a href="#lista7">← Lista 7</a><a href="#lista9">Lista 9 →</a></div></section>
 <section class="lista page" id="lista9">
 <h2><span class="lnum">Lista 9</span><span class="ltitle">Regra da Cadeia</span></h2>
 <ol class="ex">
@@ -491,7 +1537,7 @@ D_p(p(s,\tau),m(s,\tau))\,p_\tau(s,\tau)+D_m(p(s,\tau),m(s,\tau))\,m_\tau(s,\tau
 <li><p>Em <span class="math inline">\((s,\tau)=(0,1)\)</span>, um aumento de uma unidade em <span class="math inline">\(s\)</span> diminui a demanda em aproximadamente <span class="math inline">\(7{,}5\)</span> unidades: o aumento do preço reduz a demanda em <span class="math inline">\(8\)</span>, e o aumento da renda a eleva em apenas <span class="math inline">\(0{,}5\)</span>, de modo que o efeito do preço domina. Já um aumento de uma unidade em <span class="math inline">\(\tau\)</span> diminui a demanda em aproximadamente <span class="math inline">\(8\)</span> unidades, e isso acontece somente pelo canal do preço, pois a renda não depende de <span class="math inline">\(\tau\)</span>.</p></li>
 </ol></div></details></li>
 </ol>
-<div class="pager"><span></span><a href="#lista11">Lista 11 →</a></div></section>
+<div class="pager"><a href="#lista8">← Lista 8</a><a href="#lista11">Lista 11 →</a></div></section>
 <section class="lista page" id="lista11">
 <h2><span class="lnum">Lista 11</span><span class="ltitle">Integrais duplas</span></h2>
 <ol class="ex"><li><p>Considere a integral <span class="math inline">\(\displaystyle\iint_R f(x, y)\,dA\)</span>, onde <span class="math inline">\(R\)</span> é a região limitada pelas retas de equação <span class="math inline">\(x-3y=0\)</span>, <span class="math inline">\(3x-y=0\)</span> e <span class="math inline">\(x+y=4\)</span>.</p><ol class="sub"><li><p>Desenhe a região <span class="math inline">\(R\)</span>.</p></li><li><p>Escreva a integral com ordem de integração primeiro em <span class="math inline">\(x\)</span> e depois em <span class="math inline">\(y\)</span>.</p></li><li><p>Escreva a integral com ordem de integração primeiro em <span class="math inline">\(y\)</span> e depois em <span class="math inline">\(x\)</span>.</p></li><li><p>Calcule a integral para <span class="math inline">\(f(x,y) = xy\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>A região é a seguinte:</p><p><figure><svg height="212.66pt" version="1.2" viewbox="0 0 205.3 212.66" width="205.3pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
