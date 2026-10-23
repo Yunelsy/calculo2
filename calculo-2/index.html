@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>Cálculo II — Exercícios resolvidos (Listas 10–12)</title>
+<title>Cálculo II — Exercícios resolvidos (Listas 9, 11, 12 e 13)</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
@@ -160,14 +160,340 @@ table th { background: #eef5fb; color: var(--dark); font-family: 'Open Sans', sa
 <body>
 <header class="topbar">
 <div class="t1">Cálculo II · FGV EPGE</div>
-<div class="t2">Exercícios resolvidos — Listas 10, 11 e 12</div>
+<div class="t2">Exercícios resolvidos — Listas 9, 11, 12 e 13</div>
 <div class="t3">Professora Yunelsy N Alvarez</div>
 </header>
-<nav aria-label="Listas"><a data-page="lista10" href="#lista10">Lista 10</a><a data-page="lista11" href="#lista11">Lista 11</a><a data-page="lista12" href="#lista12">Lista 12</a></nav>
+<nav aria-label="Listas"><a data-page="lista9" href="#lista9">Lista 9</a><a data-page="lista11" href="#lista11">Lista 11</a><a data-page="lista12" href="#lista12">Lista 12</a><a data-page="lista13" href="#lista13">Lista 13</a></nav>
 <div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
 <main>
-<section class="lista page" id="lista10">
-<h2><span class="lnum">Lista 10</span><span class="ltitle">Integrais duplas</span></h2>
+<section class="lista page" id="lista9">
+<h2><span class="lnum">Lista 9</span><span class="ltitle">Regra da Cadeia</span></h2>
+<ol class="ex">
+<li><p>Seja <span class="math inline">\(f(x,y)=(x^2+y^2)e^{xy}\)</span>, onde <span class="math inline">\(x(t)=t^2+1\)</span> e <span class="math inline">\(y(t)=\sen t\)</span>. Considere <span class="math inline">\(z(t)=f(x(t),y(t))\)</span>.</p>
+<ol class="sub">
+<li><p>Use a Regra da Cadeia para determinar <span class="math inline">\(\dfrac{dz}{dt}\)</span>.</p></li>
+<li><p>Calcule <span class="math inline">\(\dfrac{dz}{dt}\)</span> em <span class="math inline">\(t=0\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(f(x,y)=(x^2+y^2)e^{xy}\)</span>, temos <span class="math display">\[f_x(x,y)=2xe^{xy}+y(x^2+y^2)e^{xy}
+\quad\mbox{ e }\quad
+f_y(x,y)=2ye^{xy}+x(x^2+y^2)e^{xy}.\]</span> Como <span class="math inline">\(x(t)=t^2+1\)</span> e <span class="math inline">\(y(t)=\sen t\)</span>, <span class="math display">\[x'(t)=2t
+\quad\mbox{ e }\quad
+y'(t)=\cos t.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, se <span class="math inline">\(z(t)=f(x(t),y(t))\)</span>, então a derivada de <span class="math inline">\(z\)</span> em relação a <span class="math inline">\(t\)</span> é dada por <span class="math display">\[\frac{dz}{dt}(t)=f_x(x(t),y(t))\,x'(t)+f_y(x(t),y(t))\,y'(t),\]</span> ou seja, multiplicamos cada derivada parcial de <span class="math inline">\(f\)</span> pela derivada da variável correspondente e somamos os resultados. Substituindo as expressões encontradas acima, <span class="math display">\[\begin{aligned}
+\frac{dz}{dt}(t)
+&amp; =f_x(x(t),y(t))\,x'(t)+f_y(x(t),y(t))\,y'(t),
+\\
+&amp;=
+\left[2x+y(x^2+y^2)\right]e^{xy}\cdot 2t
++
+\left[2y+x(x^2+y^2)\right]e^{xy}\cdot \cos t,\end{aligned}\]</span> com <span class="math inline">\(x(t)=t^2+1\)</span> e <span class="math inline">\(y(t)=\sen t\)</span>. Substituindo, <span class="math display">\[\begin{aligned}
+\frac{dz}{dt}(t)
+={}&amp;\left[2(t^2+1)+\sen t\left((t^2+1)^2+\sen^2 t\right)\right]e^{(t^2+1)\sen t}\cdot 2t\\
+&amp;+\left[2\sen t+(t^2+1)\left((t^2+1)^2+\sen^2 t\right)\right]e^{(t^2+1)\sen t}\cdot \cos t.\end{aligned}\]</span></p></li>
+<li><p>Em <span class="math inline">\(t=0\)</span>, temos <span class="math inline">\(x(0)=1\)</span> e <span class="math inline">\(y(0)=0\)</span>. Assim, <span class="math display">\[f_x(1,0)=2\cdot1\cdot e^{0}+0=2
+\quad\mbox{ e }\quad
+f_y(1,0)=0+1\cdot(1^2+0^2)e^{0}=1.\]</span> Além disso, <span class="math inline">\(x'(0)=0\)</span> e <span class="math inline">\(y'(0)=\cos 0=1\)</span>. Logo, <span class="math display">\[\frac{dz}{dt}(0)=2\cdot 0+1\cdot 1={1}.\]</span></p></li>
+</ol></div></details></li>
+<li><p>Seja <span class="math inline">\(f(x,y)=\ln\left((x+y)^2+(xy)^2\right)\)</span> e considere a curva <span class="math inline">\(x(t)=e^t\)</span> e <span class="math inline">\(y(t)=t^2+1\)</span>.</p>
+<ol class="sub">
+<li><p>Determine <span class="math inline">\(\dfrac{d}{dt}f(x(t),y(t))\)</span> usando a Regra da Cadeia.</p></li>
+<li><p>Calcule essa derivada em <span class="math inline">\(t=0\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(f(x,y)=\ln\left((x+y)^2+(xy)^2\right)\)</span>, seja <span class="math inline">\(u=(x+y)^2+(xy)^2\)</span>. Então <span class="math display">\[f_x(x,y)=\frac{2(x+y)+2xy^2}{u}
+\quad\mbox{ e }\quad
+f_y(x,y)=\frac{2(x+y)+2x^2y}{u}.\]</span> Como <span class="math inline">\(x(t)=e^t\)</span> e <span class="math inline">\(y(t)=t^2+1\)</span>, <span class="math display">\[x'(t)=e^t
+\quad\mbox{ e }\quad
+y'(t)=2t.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, a derivada de <span class="math inline">\(f(x(t),y(t))\)</span> em relação a <span class="math inline">\(t\)</span> é dada por <span class="math display">\[\frac{d}{dt}f(x(t),y(t))=f_x(x(t),y(t))\,x'(t)+f_y(x(t),y(t))\,y'(t),\]</span> ou seja, cada derivada parcial de <span class="math inline">\(f\)</span> entra multiplicada pela derivada da variável correspondente. Substituindo as expressões calculadas acima, <span class="math display">\[{
+\frac{d}{dt}f(x(t),y(t))
+=
+\frac{2(x+y)+2xy^2}{(x+y)^2+(xy)^2}\,e^t
++
+\frac{2(x+y)+2x^2y}{(x+y)^2+(xy)^2}\,2t,
+}\]</span> com <span class="math inline">\(x(t)=e^t\)</span> e <span class="math inline">\(y(t)=t^2+1\)</span>. Substituindo, <span class="math display">\[\frac{d}{dt}f(x(t),y(t))
+=
+\frac{\left[2\left(e^t+t^2+1\right)+2e^t(t^2+1)^2\right]e^t
++\left[2\left(e^t+t^2+1\right)+2e^{2t}(t^2+1)\right]2t}
+{\left(e^t+t^2+1\right)^2+\left(e^t(t^2+1)\right)^2}.\]</span></p></li>
+<li><p>Em <span class="math inline">\(t=0\)</span>, temos <span class="math inline">\(x(0)=1\)</span> e <span class="math inline">\(y(0)=1\)</span>. Então <span class="math display">\[u=(1+1)^2+(1\cdot1)^2=5,\]</span> <span class="math display">\[f_x(1,1)=\frac{2\cdot2+2\cdot1}{5}=\frac65
+\quad\mbox{ e }\quad
+f_y(1,1)=\frac{2\cdot2+2\cdot1}{5}=\frac65.\]</span> Como <span class="math inline">\(x'(0)=e^0=1\)</span> e <span class="math inline">\(y'(0)=0\)</span>, <span class="math display">\[\frac{d}{dt}f(x(t),y(t))\Big|_{t=0}
+=
+\frac65\cdot1+\frac65\cdot0
+={\frac65}.\]</span></p></li>
+</ol></div></details></li>
+<li><p>Considere <span class="math inline">\(z=f(x,y)=e^{xy}+\ln(1+x^2+y^2)\)</span>, onde <span class="math inline">\(x=u+2v\)</span> e <span class="math inline">\(y=u-v\)</span>.</p>
+<ol class="sub">
+<li><p>Determine <span class="math inline">\(\dfrac{\partial z}{\partial u}\)</span> utilizando a Regra da Cadeia.</p></li>
+<li><p>Determine <span class="math inline">\(\dfrac{\partial z}{\partial v}\)</span> utilizando a Regra da Cadeia.</p></li>
+<li><p>Calcule essas derivadas no ponto <span class="math inline">\((u,v)=(1,0)\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 3</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(z(x,y)=e^{xy}+\ln(1+x^2+y^2)\)</span>, temos <span class="math display">\[z_x(x,y)=ye^{xy}+\frac{2x}{1+x^2+y^2}
+\quad\mbox{ e }\quad
+z_y(x,y)=xe^{xy}+\frac{2y}{1+x^2+y^2}.\]</span> Como <span class="math inline">\(x(u,v)=u+2v\)</span> e <span class="math inline">\(y(u,v)=u-v\)</span>, <span class="math display">\[x_u(u,v)=1,\quad y_u(u,v)=1,\quad x_v(u,v)=2,\quad y_v(u,v)=-1.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[\begin{aligned}
+\frac{\partial z}{\partial u}(u,v)
+&amp;=
+z_x(x(u,v),y(u,v))\,x_u(u,v)+z_y(x(u,v),y(u,v))\,y_u(u,v)\\
+&amp;=
+\left(ye^{xy}+\frac{2x}{1+x^2+y^2}\right)
++
+\left(xe^{xy}+\frac{2y}{1+x^2+y^2}\right),\end{aligned}\]</span> com <span class="math inline">\(x(u,v)=u+2v\)</span> e <span class="math inline">\(y(u,v)=u-v\)</span>. Substituindo e agrupando, <span class="math display">\[\frac{\partial z}{\partial u}(u,v)
+=
+(2u+v)\,e^{(u+2v)(u-v)}
++\frac{2(2u+v)}{1+(u+2v)^2+(u-v)^2}.\]</span></p></li>
+<li><p>Analogamente, <span class="math display">\[\begin{aligned}
+\frac{\partial z}{\partial v}(u,v)
+&amp;=
+z_x(x(u,v),y(u,v))\,x_v(u,v)+z_y(x(u,v),y(u,v))\,y_v(u,v)\\
+&amp;=
+2\left(ye^{xy}+\frac{2x}{1+x^2+y^2}\right)
+-
+\left(xe^{xy}+\frac{2y}{1+x^2+y^2}\right),\end{aligned}\]</span> com <span class="math inline">\(x(u,v)=u+2v\)</span> e <span class="math inline">\(y(u,v)=u-v\)</span>. Substituindo e agrupando, <span class="math display">\[\frac{\partial z}{\partial v}(u,v)
+=
+(u-4v)\,e^{(u+2v)(u-v)}
++\frac{2u+10v}{1+(u+2v)^2+(u-v)^2}.\]</span></p></li>
+<li><p>No ponto <span class="math inline">\((u,v)=(1,0)\)</span>, temos <span class="math inline">\(x(1,0)=1\)</span> e <span class="math inline">\(y(1,0)=1\)</span>. Então <span class="math display">\[z_x(1,1)=e+\frac{2}{3}
+\quad\mbox{ e }\quad
+z_y(1,1)=e+\frac{2}{3}.\]</span> Assim, <span class="math display">\[\frac{\partial z}{\partial u}(1,0)
+=
+\left(e+\frac23\right)+\left(e+\frac23\right)
+={2e+\frac43}\]</span> e <span class="math display">\[\frac{\partial z}{\partial v}(1,0)
+=
+2\left(e+\frac23\right)-\left(e+\frac23\right)
+={e+\frac23}.\]</span></p></li>
+</ol></div></details></li>
+<li><p>Seja <span class="math inline">\(z=\dfrac{e^{xy}}{1+x^2+y^2}\)</span>, onde <span class="math inline">\(x=u^2+v\)</span> e <span class="math inline">\(y=u-v^2\)</span>.</p>
+<p>Determine <span class="math inline">\(\dfrac{\partial z}{\partial u}\)</span> e <span class="math inline">\(\dfrac{\partial z}{\partial v}\)</span> utilizando a Regra da Cadeia.</p><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 4</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(z(x,y)=\dfrac{e^{xy}}{1+x^2+y^2}\)</span>, temos <span class="math display">\[z_x(x,y)=\frac{e^{xy}\left[y(1+x^2+y^2)-2x\right]}{(1+x^2+y^2)^2}
+\quad\mbox{ e }\quad
+z_y(x,y)=\frac{e^{xy}\left[x(1+x^2+y^2)-2y\right]}{(1+x^2+y^2)^2}.\]</span> Como <span class="math inline">\(x(u,v)=u^2+v\)</span> e <span class="math inline">\(y(u,v)=u-v^2\)</span>, <span class="math display">\[x_u(u,v)=2u,\quad y_u(u,v)=1,\quad x_v(u,v)=1,\quad y_v(u,v)=-2v.\]</span> Pela Regra da Cadeia, <span class="math display">\[{
+\frac{\partial z}{\partial u}(u,v)
+=
+z_x(x(u,v),y(u,v))\cdot 2u+z_y(x(u,v),y(u,v))\cdot 1
+}\]</span> <span class="math display">\[{
+\frac{\partial z}{\partial v}(u,v)
+=
+z_x(x(u,v),y(u,v))\cdot 1+z_y(x(u,v),y(u,v))\cdot(-2v),
+}\]</span> isto é, <span class="math display">\[\frac{\partial z}{\partial u}(u,v)
+=
+\frac{e^{xy}\left\{2u\left[y(1+x^2+y^2)-2x\right]+x(1+x^2+y^2)-2y\right\}}{(1+x^2+y^2)^2},\]</span> <span class="math display">\[\frac{\partial z}{\partial v}(u,v)
+=
+\frac{e^{xy}\left\{y(1+x^2+y^2)-2x-2v\left[x(1+x^2+y^2)-2y\right]\right\}}{(1+x^2+y^2)^2},\]</span> com <span class="math inline">\(x(u,v)=u^2+v\)</span> e <span class="math inline">\(y(u,v)=u-v^2\)</span>. Substituindo, e escrevendo <span class="math inline">\(S(u,v)=1+(u^2+v)^2+(u-v^2)^2\)</span>, <span class="math display">\[\begin{aligned}
+\frac{\partial z}{\partial u}(u,v)
+&amp;=
+\frac{e^{(u^2+v)(u-v^2)}\left\{2u\left[(u-v^2)S(u,v)-2(u^2+v)\right]+(u^2+v)S(u,v)-2(u-v^2)\right\}}{S(u,v)^2},
+\\
+\frac{\partial z}{\partial v}(u,v)
+&amp;=
+\frac{e^{(u^2+v)(u-v^2)}\left\{(u-v^2)S(u,v)-2(u^2+v)-2v\left[(u^2+v)S(u,v)-2(u-v^2)\right]\right\}}{S(u,v)^2}.\end{aligned}\]</span></p></div></details></li>
+<li><p>Considere <span class="math inline">\(z=(x^2+y^2)e^{x^2+y^2}\)</span>, com <span class="math inline">\(x=u\cos v\)</span> e <span class="math inline">\(y=u\sen v\)</span>.</p>
+<ol class="sub">
+<li><p>Use a Regra da Cadeia para determinar <span class="math inline">\(z_u\)</span> e <span class="math inline">\(z_v\)</span>.</p></li>
+<li><p>Simplifique os resultados obtidos.</p></li>
+<li><p>Explique por que <span class="math inline">\(z_v=0\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 5</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Seja <span class="math inline">\(s=x^2+y^2\)</span>. Para <span class="math inline">\(z(x,y)=s\,e^{s}\)</span>, <span class="math display">\[z_x(x,y)=(1+s)e^{s}\cdot 2x
+\quad\mbox{ e }\quad
+z_y(x,y)=(1+s)e^{s}\cdot 2y.\]</span> Como <span class="math inline">\(x(u,v)=u\cos v\)</span> e <span class="math inline">\(y(u,v)=u\sen v\)</span>, <span class="math display">\[x_u(u,v)=\cos v,\quad y_u(u,v)=\sen v,\quad x_v(u,v)=-u\sen v,\quad y_v(u,v)=u\cos v.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[\begin{aligned}
+z_u(u,v)&amp;=z_x(x(u,v),y(u,v))\,x_u(u,v)+z_y(x(u,v),y(u,v))\,y_u(u,v)\\
+&amp;=
+2(1+s)e^{s}\left(x\cos v+y\sen v\right),
+\end{aligned}\]</span> <span class="math display">\[\begin{aligned}
+z_v(u,v)&amp;=z_x(x(u,v),y(u,v))\,x_v(u,v)+z_y(x(u,v),y(u,v))\,y_v(u,v)\\
+&amp;=
+2(1+s)e^{s}\left(-xu\sen v+yu\cos v\right).
+\end{aligned}\]</span> Substituindo <span class="math inline">\(x(u,v)=u\cos v\)</span>, <span class="math inline">\(y(u,v)=u\sen v\)</span> e <span class="math inline">\(s=u^2\cos^2 v+u^2\sen^2 v\)</span>, <span class="math display">\[z_u(u,v)=2\left(1+u^2\cos^2 v+u^2\sen^2 v\right)e^{u^2\cos^2 v+u^2\sen^2 v}\left(u\cos^2 v+u\sen^2 v\right),\]</span> <span class="math display">\[z_v(u,v)=2\left(1+u^2\cos^2 v+u^2\sen^2 v\right)e^{u^2\cos^2 v+u^2\sen^2 v}\left(-u^2\cos v\sen v+u^2\sen v\cos v\right).\]</span></p></li>
+<li><p>Substituindo <span class="math inline">\(x(u,v)=u\cos v\)</span> e <span class="math inline">\(y(u,v)=u\sen v\)</span>, <span class="math display">\[x\cos v+y\sen v=u\cos^2 v+u\sen^2 v=u\]</span> e <span class="math display">\[-xu\sen v+yu\cos v=-u^2\cos v\sen v+u^2\sen v\cos v=0.\]</span> Além disso, <span class="math inline">\(s=x^2+y^2=u^2\cos^2 v+u^2\sen^2 v=u^2\)</span>. Portanto, <span class="math display">\[{
+z_u(u,v)=2u\,(1+u^2)\,e^{u^2}
+\quad\mbox{ e }\quad
+z_v(u,v)=0.
+}\]</span></p></li>
+<li><p>Em coordenadas polares, <span class="math inline">\(u\)</span> é a distância do ponto <span class="math inline">\((x,y)\)</span> à origem e <span class="math inline">\(v\)</span> é o ângulo. A função <span class="math inline">\(z(x,y)=(x^2+y^2)e^{x^2+y^2}\)</span> depende de <span class="math inline">\((x,y)\)</span> apenas através de <span class="math inline">\(x^2+y^2=u^2\)</span>, isto é, apenas da distância à origem. Como <span class="math inline">\(v\)</span> muda apenas o ângulo, e não a distância, <span class="math inline">\(z\)</span> não varia com <span class="math inline">\(v\)</span>. Logo, <span class="math inline">\(z_v(u,v)=0\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>Considere <span class="math inline">\(z=\sqrt{x^2+y^2+1}\)</span>, com <span class="math inline">\(x=u\cos v\)</span> e <span class="math inline">\(y=u\sen v\)</span>.</p>
+<ol class="sub">
+<li><p>Use a Regra da Cadeia para determinar <span class="math inline">\(z_u\)</span> e <span class="math inline">\(z_v\)</span>.</p></li>
+<li><p>Simplifique os resultados obtidos.</p></li>
+<li><p>Explique por que o resultado obtido para <span class="math inline">\(z_v\)</span> é compatível com a forma da função.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 6</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(z(x,y)=\sqrt{x^2+y^2+1}\)</span>, <span class="math display">\[z_x(x,y)=\frac{x}{\sqrt{x^2+y^2+1}}
+\quad\mbox{ e }\quad
+z_y(x,y)=\frac{y}{\sqrt{x^2+y^2+1}}.\]</span> Como <span class="math inline">\(x(u,v)=u\cos v\)</span> e <span class="math inline">\(y(u,v)=u\sen v\)</span>, <span class="math display">\[x_u(u,v)=\cos v,\quad y_u(u,v)=\sen v,\quad x_v(u,v)=-u\sen v,\quad y_v(u,v)=u\cos v.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[z_u(u,v)=\frac{x\cos v+y\sen v}{\sqrt{x^2+y^2+1}}
+\quad\mbox{ e }\quad
+z_v(u,v)=\frac{-xu\sen v+yu\cos v}{\sqrt{x^2+y^2+1}}.\]</span> Substituindo <span class="math inline">\(x(u,v)=u\cos v\)</span> e <span class="math inline">\(y(u,v)=u\sen v\)</span>, <span class="math display">\[z_u(u,v)=\frac{u\cos^2 v+u\sen^2 v}{\sqrt{u^2\cos^2 v+u^2\sen^2 v+1}}
+\quad\mbox{ e }\quad
+z_v(u,v)=\frac{-u^2\cos v\sen v+u^2\sen v\cos v}{\sqrt{u^2\cos^2 v+u^2\sen^2 v+1}}.\]</span></p></li>
+<li><p>Como <span class="math inline">\(x^2+y^2=u^2\)</span>, <span class="math inline">\(x\cos v+y\sen v=u\)</span> e <span class="math inline">\(-xu\sen v+yu\cos v=0\)</span> (mesmas contas do exercício anterior), <span class="math display">\[{
+z_u(u,v)=\frac{u}{\sqrt{u^2+1}}
+\quad\mbox{ e }\quad
+z_v(u,v)=0.
+}\]</span></p></li>
+<li><p>A função <span class="math inline">\(z(x,y)=\sqrt{x^2+y^2+1}\)</span> depende de <span class="math inline">\((x,y)\)</span> apenas através de <span class="math inline">\(x^2+y^2\)</span>, isto é, apenas da distância à origem, que é <span class="math inline">\(u\)</span>. Girar o ponto em torno da origem (variar <span class="math inline">\(v\)</span> com <span class="math inline">\(u\)</span> fixo) não altera essa distância. Portanto, é natural que <span class="math inline">\(z_v(u,v)=0\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>A produção de uma empresa é modelada por <span class="math inline">\(P(K,L)=2K^{1/2}L^{1/2}\)</span>, onde <span class="math inline">\(K\)</span> representa o capital utilizado e <span class="math inline">\(L\)</span> representa a quantidade de trabalho. Suponha que, ao longo do tempo, tenhamos <span class="math inline">\(K(t)=100+4t\)</span> e <span class="math inline">\(L(t)=64+2t\)</span>.</p>
+<ol class="sub">
+<li><p>Determine uma expressão para a taxa instantânea de variação da produção, <span class="math inline">\(\dfrac{dP}{dt}\)</span>.</p></li>
+<li><p>Calcule essa taxa em <span class="math inline">\(t=0\)</span>.</p></li>
+<li><p>Interprete economicamente o resultado.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 7</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(P(K,L)=2K^{1/2}L^{1/2}\)</span>, <span class="math display">\[P_K(K,L)=K^{-1/2}L^{1/2}=\sqrt{\frac{L}{K}}
+\quad\mbox{ e }\quad
+P_L(K,L)=K^{1/2}L^{-1/2}=\sqrt{\frac{K}{L}}.\]</span> Como <span class="math inline">\(K(t)=100+4t\)</span> e <span class="math inline">\(L(t)=64+2t\)</span>, temos <span class="math inline">\(K'(t)=4\)</span> e <span class="math inline">\(L'(t)=2\)</span>.</p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[{
+\frac{dP}{dt}(t)
+=
+P_K(K(t),L(t))\,K'(t)+P_L(K(t),L(t))\,L'(t)
+=
+4\sqrt{\frac{L}{K}}+2\sqrt{\frac{K}{L}},
+}\]</span> com <span class="math inline">\(K(t)=100+4t\)</span> e <span class="math inline">\(L(t)=64+2t\)</span>. Substituindo, <span class="math display">\[\frac{dP}{dt}(t)=4\sqrt{\frac{64+2t}{100+4t}}+2\sqrt{\frac{100+4t}{64+2t}}.\]</span></p></li>
+<li><p>Em <span class="math inline">\(t=0\)</span>, <span class="math inline">\(K(0)=100\)</span> e <span class="math inline">\(L(0)=64\)</span>. Então <span class="math display">\[P_K(100,64)=\sqrt{\frac{64}{100}}=\frac45
+\quad\mbox{ e }\quad
+P_L(100,64)=\sqrt{\frac{100}{64}}=\frac54.\]</span> Logo, <span class="math display">\[\frac{dP}{dt}(0)
+=
+4\cdot\frac45+2\cdot\frac54
+=
+\frac{16}{5}+\frac52
+={\frac{57}{10}=5{,}7}.\]</span></p></li>
+<li><p>Em <span class="math inline">\(t=0\)</span>, a produção está aumentando à taxa de <span class="math inline">\(5{,}7\)</span> unidades de produto por unidade de tempo. Dessas, <span class="math inline">\(\frac{16}{5}=3{,}2\)</span> vêm do aumento do capital e <span class="math inline">\(\frac52=2{,}5\)</span> vêm do aumento do trabalho.</p></li>
+</ol></div></details></li>
+<li><p>A receita de uma empresa depende do preço <span class="math inline">\(p\)</span> de seu produto e do investimento <span class="math inline">\(A\)</span> em publicidade segundo <span class="math inline">\(R(p,A)=200p-p^2+4pA\)</span>.</p>
+<p>Suponha que o preço e o investimento em publicidade variem com o tempo de acordo com <span class="math inline">\(p(t)=50+t\)</span> e <span class="math inline">\(A(t)=10+2t\)</span>.</p>
+<ol class="sub">
+<li><p>Use a Regra da Cadeia para determinar <span class="math inline">\(\dfrac{dR}{dt}\)</span>.</p></li>
+<li><p>Determine a taxa de variação da receita em <span class="math inline">\(t=0\)</span>.</p></li>
+<li><p>Identifique, separadamente, a contribuição da variação do preço e da variação do investimento em publicidade para a taxa obtida.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 8</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(R(p,A)=200p-p^2+4pA\)</span>, <span class="math display">\[R_p(p,A)=200-2p+4A
+\quad\mbox{ e }\quad
+R_A(p,A)=4p.\]</span> Como <span class="math inline">\(p(t)=50+t\)</span> e <span class="math inline">\(A(t)=10+2t\)</span>, temos <span class="math inline">\(p'(t)=1\)</span> e <span class="math inline">\(A'(t)=2\)</span>.</p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[{
+\frac{dR}{dt}(t)
+=
+R_p(p(t),A(t))\,p'(t)+R_A(p(t),A(t))\,A'(t)
+=
+(200-2p+4A)\cdot1+4p\cdot2,
+}\]</span> com <span class="math inline">\(p(t)=50+t\)</span> e <span class="math inline">\(A(t)=10+2t\)</span>. Substituindo, <span class="math display">\[\frac{dR}{dt}(t)=\left[200-2(50+t)+4(10+2t)\right]\cdot1+4(50+t)\cdot2=540+14t.\]</span></p></li>
+<li><p>Em <span class="math inline">\(t=0\)</span>, <span class="math inline">\(p(0)=50\)</span> e <span class="math inline">\(A(0)=10\)</span>. Então <span class="math display">\[R_p(50,10)=200-100+40=140
+\quad\mbox{ e }\quad
+R_A(50,10)=4\cdot50=200.\]</span> Assim, <span class="math display">\[\frac{dR}{dt}(0)=140\cdot1+200\cdot2={540}.\]</span></p></li>
+<li><p>A contribuição da variação do preço é <span class="math display">\[R_p(50,10)\,p'(0)=140\cdot1={140},\]</span> e a contribuição da variação do investimento em publicidade é <span class="math display">\[R_A(50,10)\,A'(0)=200\cdot2={400}.\]</span> A soma é <span class="math inline">\(140+400=540\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>O custo de produção de uma empresa é dado por <span class="math inline">\(C(q,w)=q^2+qw+10w\)</span>, onde <span class="math inline">\(q\)</span> é a quantidade produzida e <span class="math inline">\(w\)</span> é o custo unitário do trabalho.</p>
+<p>Ambas as variáveis dependem de um índice econômico <span class="math inline">\(s\)</span> segundo <span class="math inline">\(q(s)=20+3s\)</span> e <span class="math inline">\(w(s)=5+s^2\)</span>.</p>
+<ol class="sub">
+<li><p>Determine <span class="math inline">\(\dfrac{dC}{ds}\)</span> utilizando a Regra da Cadeia.</p></li>
+<li><p>Calcule <span class="math inline">\(\dfrac{dC}{ds}\)</span> em <span class="math inline">\(s=1\)</span>.</p></li>
+<li><p>Interprete o significado econômico dessa derivada.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 9</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(C(q,w)=q^2+qw+10w\)</span>, <span class="math display">\[C_q(q,w)=2q+w
+\quad\mbox{ e }\quad
+C_w(q,w)=q+10.\]</span> Como <span class="math inline">\(q(s)=20+3s\)</span> e <span class="math inline">\(w(s)=5+s^2\)</span>, temos <span class="math inline">\(q'(s)=3\)</span> e <span class="math inline">\(w'(s)=2s\)</span>.</p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[{
+\frac{dC}{ds}(s)
+=
+C_q(q(s),w(s))\,q'(s)+C_w(q(s),w(s))\,w'(s)
+=
+3(2q+w)+2s(q+10),
+}\]</span> com <span class="math inline">\(q(s)=20+3s\)</span> e <span class="math inline">\(w(s)=5+s^2\)</span>. Substituindo, <span class="math display">\[\frac{dC}{ds}(s)=3\left[2(20+3s)+5+s^2\right]+2s\left[(20+3s)+10\right]=135+78s+9s^2.\]</span></p></li>
+<li><p>Em <span class="math inline">\(s=1\)</span>, <span class="math inline">\(q(1)=23\)</span> e <span class="math inline">\(w(1)=6\)</span>. Então <span class="math display">\[C_q(23,6)=2\cdot23+6=52
+\quad\mbox{ e }\quad
+C_w(23,6)=23+10=33.\]</span> Como <span class="math inline">\(q'(1)=3\)</span> e <span class="math inline">\(w'(1)=2\)</span>, <span class="math display">\[\frac{dC}{ds}(1)=52\cdot3+33\cdot2=156+66={222}.\]</span></p></li>
+<li><p>Em <span class="math inline">\(s=1\)</span>, o custo de produção está aumentando a uma taxa de <span class="math inline">\(222\)</span> unidades monetárias por unidade do índice <span class="math inline">\(s\)</span>. Dessas, <span class="math inline">\(156\)</span> vêm do aumento da quantidade produzida e <span class="math inline">\(66\)</span> vêm do aumento do custo unitário do trabalho.</p></li>
+</ol></div></details></li>
+<li><p>A demanda por um produto depende de seu preço <span class="math inline">\(p\)</span> e da renda média <span class="math inline">\(m\)</span> dos consumidores: <span class="math inline">\(D(p,m)=500-4p+2m\)</span>.</p>
+<p>Por sua vez, o preço e a renda dependem do tempo segundo <span class="math inline">\(p(t)=40+0{,}5t\)</span> e <span class="math inline">\(m(t)=100+2t\)</span>.</p>
+<ol class="sub">
+<li><p>Determine a taxa instantânea de variação da demanda em relação ao tempo.</p></li>
+<li><p>A demanda está aumentando ou diminuindo?</p></li>
+<li><p>Separe o efeito da variação do preço do efeito da variação da renda sobre a demanda.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 10</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(D(p,m)=500-4p+2m\)</span>, <span class="math display">\[D_p(p,m)=-4
+\quad\mbox{ e }\quad
+D_m(p,m)=2.\]</span> Como <span class="math inline">\(p(t)=40+0{,}5t\)</span> e <span class="math inline">\(m(t)=100+2t\)</span>, temos <span class="math inline">\(p'(t)=0{,}5\)</span> e <span class="math inline">\(m'(t)=2\)</span>.</p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[{
+\frac{dD}{dt}(t)
+=
+D_p(p(t),m(t))\,p'(t)+D_m(p(t),m(t))\,m'(t)
+=
+(-4)(0{,}5)+2\cdot2
+=2.
+}\]</span></p></li>
+<li><p>Como <span class="math inline">\(\dfrac{dD}{dt}(t)=2&gt;0\)</span>, a demanda está aumentando (a <span class="math inline">\(2\)</span> unidades por unidade de tempo, em todo instante).</p></li>
+<li><p>O efeito da variação do preço é <span class="math display">\[D_p(p(t),m(t))\,p'(t)=(-4)(0{,}5)=-2,\]</span> isto é, o aumento do preço, sozinho, <em>diminui</em> a demanda. O efeito da variação da renda é <span class="math display">\[D_m(p(t),m(t))\,m'(t)=2\cdot2=4,\]</span> isto é, o aumento da renda, sozinho, <em>aumenta</em> a demanda. Como <span class="math inline">\(4&gt;2\)</span>, o efeito da renda domina e o resultado líquido é <span class="math inline">\(-2+4=2&gt;0\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>O lucro de uma empresa depende da quantidade produzida <span class="math inline">\(q\)</span> e do preço de um insumo <span class="math inline">\(c\)</span> segundo <span class="math inline">\(\Pi(q,c)=80q-q^2-cq\)</span>.</p>
+<p>As variáveis <span class="math inline">\(q\)</span> e <span class="math inline">\(c\)</span> dependem de dois parâmetros econômicos <span class="math inline">\(u\)</span> e <span class="math inline">\(v\)</span> segundo <span class="math inline">\(q=u+2v\)</span> e <span class="math inline">\(c=10+u-v\)</span>.</p>
+<ol class="sub">
+<li><p>Determine <span class="math inline">\(\dfrac{\partial \Pi}{\partial u}\)</span>.</p></li>
+<li><p>Determine <span class="math inline">\(\dfrac{\partial \Pi}{\partial v}\)</span>.</p></li>
+<li><p>Calcule ambas as taxas em <span class="math inline">\((u,v)=(10,5)\)</span>.</p></li>
+<li><p>Interprete o significado de cada uma delas.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 11</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(\Pi(q,c)=80q-q^2-cq\)</span>, <span class="math display">\[\Pi_q(q,c)=80-2q-c
+\quad\mbox{ e }\quad
+\Pi_c(q,c)=-q.\]</span> Como <span class="math inline">\(q(u,v)=u+2v\)</span> e <span class="math inline">\(c(u,v)=10+u-v\)</span>, <span class="math display">\[q_u(u,v)=1,\quad c_u(u,v)=1,\quad q_v(u,v)=2,\quad c_v(u,v)=-1.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[\begin{aligned}
+\frac{\partial\Pi}{\partial u}(u,v)
+&amp;=
+\Pi_q(q(u,v),c(u,v))\,q_u(u,v)+\Pi_c(q(u,v),c(u,v))\,c_u(u,v)\\
+&amp;=
+(80-2q-c)-q
+=80-3q-c.
+\end{aligned}\]</span> Substituindo <span class="math inline">\(q(u,v)=u+2v\)</span> e <span class="math inline">\(c(u,v)=10+u-v\)</span>, <span class="math display">\[{
+\frac{\partial\Pi}{\partial u}(u,v)=70-4u-5v.
+}\]</span></p></li>
+<li><p>Analogamente, <span class="math display">\[\begin{aligned}
+\frac{\partial\Pi}{\partial v}(u,v)
+&amp;=
+\Pi_q(q(u,v),c(u,v))\,q_v(u,v)+\Pi_c(q(u,v),c(u,v))\,c_v(u,v)\\
+&amp;=
+2(80-2q-c)+q
+=160-3q-2c,
+\end{aligned}\]</span> e, substituindo, <span class="math display">\[{
+\frac{\partial\Pi}{\partial v}(u,v)=140-5u-4v.
+}\]</span></p></li>
+<li><p>Em <span class="math inline">\((u,v)=(10,5)\)</span>, <span class="math display">\[\frac{\partial\Pi}{\partial u}(10,5)=70-40-25={5}
+\quad\mbox{ e }\quad
+\frac{\partial\Pi}{\partial v}(10,5)=140-50-20={70}.\]</span></p></li>
+<li><p>No ponto <span class="math inline">\((10,5)\)</span>, temos <span class="math inline">\(q(10,5)=20\)</span> e <span class="math inline">\(c(10,5)=15\)</span>. A derivada <span class="math inline">\(\dfrac{\partial\Pi}{\partial u}(10,5)=5&gt;0\)</span> indica que, se <span class="math inline">\(u\)</span> aumentar uma unidade (com <span class="math inline">\(v\)</span> fixo), o lucro aumenta aproximadamente <span class="math inline">\(5\)</span> unidades monetárias. A derivada <span class="math inline">\(\dfrac{\partial\Pi}{\partial v}(10,5)=70&gt;0\)</span> indica que, se <span class="math inline">\(v\)</span> aumentar uma unidade (com <span class="math inline">\(u\)</span> fixo), o lucro aumenta aproximadamente <span class="math inline">\(70\)</span> unidades monetárias. Ou seja, nesse ponto o lucro é muito mais sensível a <span class="math inline">\(v\)</span> do que a <span class="math inline">\(u\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>A demanda por um produto depende do preço <span class="math inline">\(p\)</span> e da renda média <span class="math inline">\(m\)</span> dos consumidores segundo <span class="math inline">\(D(p,m)=800-4p+2\sqrt{m}\)</span>.</p>
+<p>Suponha que tanto o preço quanto a renda dependam de um índice econômico <span class="math inline">\(s\)</span>, mas que apenas o preço dependa também de uma taxa <span class="math inline">\(\tau\)</span>. Mais precisamente, <span class="math inline">\(p=p(s,\tau)=40+2s+\tau^2\)</span> e <span class="math inline">\(m=m(s)=100+5s\)</span>.</p>
+<ol class="sub">
+<li><p>Utilize a Regra da Cadeia para determinar <span class="math inline">\(\dfrac{\partial D}{\partial s}\)</span>.</p></li>
+<li><p>Utilize a Regra da Cadeia para determinar <span class="math inline">\(\dfrac{\partial D}{\partial \tau}\)</span>.</p></li>
+<li><p>Calcule essas taxas em <span class="math inline">\((s,\tau)=(0,1)\)</span>.</p></li>
+<li><p>Interprete economicamente os resultados obtidos.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 12</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Para <span class="math inline">\(D(p,m)=800-4p+2\sqrt m\)</span>, <span class="math display">\[D_p(p,m)=-4
+\quad\mbox{ e }\quad
+D_m(p,m)=\frac1{\sqrt m}.\]</span> Como <span class="math inline">\(p(s,\tau)=40+2s+\tau^2\)</span> e <span class="math inline">\(m(s,\tau)=100+5s\)</span>, <span class="math display">\[p_s(s,\tau)=2,\quad p_\tau(s,\tau)=2\tau,\quad m_s(s,\tau)=5,\quad m_\tau(s,\tau)=0.\]</span></p>
+<ol class="sub">
+<li><p>Pela Regra da Cadeia, <span class="math display">\[{
+\frac{\partial D}{\partial s}(s,\tau)
+=
+D_p(p(s,\tau),m(s,\tau))\,p_s(s,\tau)+D_m(p(s,\tau),m(s,\tau))\,m_s(s,\tau)
+=
+-8+\frac{5}{\sqrt{100+5s}}.
+}\]</span></p></li>
+<li><p>Como <span class="math inline">\(m\)</span> não depende de <span class="math inline">\(\tau\)</span>, <span class="math display">\[{
+\frac{\partial D}{\partial \tau}(s,\tau)
+=
+D_p(p(s,\tau),m(s,\tau))\,p_\tau(s,\tau)+D_m(p(s,\tau),m(s,\tau))\,m_\tau(s,\tau)
+=
+(-4)(2\tau)+0
+=-8\tau.
+}\]</span></p></li>
+<li><p>Em <span class="math inline">\((s,\tau)=(0,1)\)</span>, temos <span class="math inline">\(m(0,1)=100\)</span> e <span class="math inline">\(\sqrt m=10\)</span>. Então <span class="math display">\[\frac{\partial D}{\partial s}(0,1)=-8+\frac{5}{10}={-\frac{15}{2}=-7{,}5}
+\quad\mbox{ e }\quad
+\frac{\partial D}{\partial \tau}(0,1)={-8}.\]</span></p></li>
+<li><p>Em <span class="math inline">\((s,\tau)=(0,1)\)</span>, um aumento de uma unidade em <span class="math inline">\(s\)</span> diminui a demanda em aproximadamente <span class="math inline">\(7{,}5\)</span> unidades: o aumento do preço reduz a demanda em <span class="math inline">\(8\)</span>, e o aumento da renda a eleva em apenas <span class="math inline">\(0{,}5\)</span>, de modo que o efeito do preço domina. Já um aumento de uma unidade em <span class="math inline">\(\tau\)</span> diminui a demanda em aproximadamente <span class="math inline">\(8\)</span> unidades, e isso acontece somente pelo canal do preço, pois a renda não depende de <span class="math inline">\(\tau\)</span>.</p></li>
+</ol></div></details></li>
+</ol>
+<div class="pager"><span></span><a href="#lista11">Lista 11 →</a></div></section>
+<section class="lista page" id="lista11">
+<h2><span class="lnum">Lista 11</span><span class="ltitle">Integrais duplas</span></h2>
 <ol class="ex"><li><p>Considere a integral <span class="math inline">\(\displaystyle\iint_R f(x, y)\,dA\)</span>, onde <span class="math inline">\(R\)</span> é a região limitada pelas retas de equação <span class="math inline">\(x-3y=0\)</span>, <span class="math inline">\(3x-y=0\)</span> e <span class="math inline">\(x+y=4\)</span>.</p><ol class="sub"><li><p>Desenhe a região <span class="math inline">\(R\)</span>.</p></li><li><p>Escreva a integral com ordem de integração primeiro em <span class="math inline">\(x\)</span> e depois em <span class="math inline">\(y\)</span>.</p></li><li><p>Escreva a integral com ordem de integração primeiro em <span class="math inline">\(y\)</span> e depois em <span class="math inline">\(x\)</span>.</p></li><li><p>Calcule a integral para <span class="math inline">\(f(x,y) = xy\)</span>.</p></li></ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub"><li><p>A região é a seguinte:</p><p><figure><svg height="212.66pt" version="1.2" viewbox="0 0 205.3 212.66" width="205.3pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="surface1">
 <path d="M 515.776075 586.723843 L 1238.622976 827.698941 L 756.711976 1309.570744 Z M 515.776075 586.723843 " style="fill-rule:nonzero;fill:rgb(90.234375%,95.896912%,98.242188%);fill-opacity:1;stroke-width:3.9851;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(90.234375%,92.381287%,94.921875%);stroke-opacity:1;stroke-miterlimit:10;" transform="matrix(0.0996602,0,0,-0.0996602,0,212.129262)"></path>
@@ -1605,8 +1931,8 @@ V
 \\[8pt] &amp; = e \\ &amp; \;\; - (e-1)
 \\[8pt]
 &amp; = 1\end{aligned}\]</span></span></span> Logo, <span class="math display">\[\hbox{$\displaystyle \iint_R y\,dA$} \goodbreak = \hbox{$\displaystyle \frac{e}{2}$} \goodbreak - \hbox{$\displaystyle 1$}\]</span></p></li></ol></div></details></li></ol>
-<div class="pager"><span></span><a href="#lista11">Lista 11 →</a></div></section><section class="lista page" id="lista11">
-<h2><span class="lnum">Lista 11</span><span class="ltitle">Integrais duplas em coordenadas polares</span></h2>
+<div class="pager"><a href="#lista9">← Lista 9</a><a href="#lista12">Lista 12 →</a></div></section><section class="lista page" id="lista12">
+<h2><span class="lnum">Lista 12</span><span class="ltitle">Integrais duplas em coordenadas polares</span></h2>
 <ol class="ex"><li><p>A figura mostra uma <em>rosa polar</em> de quatro pétalas, descrita pela equação implícita <span class="math inline">\(\left(x^2 + y^2\right)^3 = 4x^2y^2.\)</span> <span>Calcule a área de uma das suas pétalas</span>.</p><p><figure><svg height="239.38pt" version="1.2" viewbox="0 0 239.12 239.38" width="239.12pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="surface1">
 <path d="M 31.874686 1165.753413 L 2263.730031 1165.753413 " style="fill:none;stroke-width:3.9851;stroke-linecap:butt;stroke-linejoin:miter;stroke:rgb(0%,0%,0%);stroke-opacity:1;stroke-miterlimit:10;" transform="matrix(0.0996333,0,0,-0.0996333,0,238.632273)"></path>
@@ -1964,8 +2290,8 @@ A
 &amp;= \frac{8}{3} \int_0^{\pi} \left( \frac{3}{8} - \frac{\cos(2\theta)}{2} + \frac{\cos(4\theta)}{8} \right) d\theta
 \\ &amp; = \frac{8}{3} \cdot \frac{3\pi}{8} \\ &amp; \;\; = \pi.
 \end{aligned}\]</span></span></span></p></div></details></li></ol>
-<div class="pager"><a href="#lista10">← Lista 10</a><a href="#lista12">Lista 12 →</a></div></section><section class="lista page" id="lista12">
-<h2><span class="lnum">Lista 12</span><span class="ltitle">Integrais triplas</span></h2>
+<div class="pager"><a href="#lista11">← Lista 11</a><a href="#lista13">Lista 13 →</a></div></section><section class="lista page" id="lista13">
+<h2><span class="lnum">Lista 13</span><span class="ltitle">Integrais triplas</span></h2>
 <div class="remark"><p class="remark-title">Observação</p> Para visualizar as regiões de integração, use o GeoGebra 3D (<a href="https://www.geogebra.org/3d">https://www.geogebra.org/3d</a>): digite as equações das superfícies que limitam cada sólido (por exemplo, <span class="math inline">\(z = 4 - x^2\)</span> no Exercício 2) e observe a região que elas determinam. </div><ol class="ex"><li><p>Calcule o volume do sólido <span class="math inline">\(E\)</span> limitado pelos planos coordenados e pelo plano <span class="math inline">\(2x + y + z = 2\)</span>.</p><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>No primeiro octante, o plano <span class="math inline">\(2x + y + z = 2\)</span> intersecta os eixos coordenados nos pontos <span class="math inline">\((1,0,0)\)</span>, <span class="math inline">\((0,2,0)\)</span> e <span class="math inline">\((0,0,2)\)</span>. Assim, o sólido <span class="math inline">\(E\)</span> é descrito por <span class="math display">\[\hbox{$\displaystyle 0$} \goodbreak \leq \hbox{$\displaystyle x$} \goodbreak \leq \hbox{$\displaystyle 1,$} \goodbreak \quad \hbox{$\displaystyle 0$} \goodbreak \leq \hbox{$\displaystyle y$} \goodbreak \leq \hbox{$\displaystyle 2$} \goodbreak - \hbox{$\displaystyle 2x$} \goodbreak \quad \hbox{$\displaystyle \mbox{e}$} \goodbreak \quad \hbox{$\displaystyle 0$} \goodbreak \leq \hbox{$\displaystyle z$} \goodbreak \leq \hbox{$\displaystyle 2$} \goodbreak - \hbox{$\displaystyle 2x$} \goodbreak - \hbox{$\displaystyle y.$}\]</span></p><p>Logo, <span class="eqpair" data-show="one"><span class="eqv one"><span class="math display">\[\begin{aligned}
 V
 &amp; = \iiint_E 1\,dV
@@ -2081,7 +2407,7 @@ V
 &amp; = 2 \left( x - \frac{x^3}{3} \right) \Big|_{-1}^1
 \\ &amp; = 2 \cdot \frac{4}{3} \\ &amp; \;\; = \frac{8}{3}.
 \end{aligned}\]</span></span></span></p></div></details></li></ol>
-<div class="pager"><a href="#lista11">← Lista 11</a></div></section>
+<div class="pager"><a href="#lista12">← Lista 12</a></div></section>
 </main>
 <footer>© 2026 Yunelsy N Alvarez</footer>
 <script>
