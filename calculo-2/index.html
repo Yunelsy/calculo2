@@ -82,14 +82,14 @@ ol.sub > li { counter-increment: sub; margin-top: 10px; position: relative; padd
 ol.sub > li::before {
   content: "(" counter(sub, lower-alpha) ")";
   position: absolute; left: 0; font-family: 'Open Sans', sans-serif;
-  font-weight: 700; color: var(--dark); font-size: 15px;
+  font-weight: 700; color: var(--light); font-size: 15px;
 }
 ol.sub ul, ul { margin: 6px 0; }
 ul li::marker { color: var(--dark); }
 figure { text-align: center; margin: 14px 0; }
 figure svg { max-width: 100%; height: auto; }
 details.gabarito {
-  margin-top: 30px; border: 1.5px solid var(--light); border-radius: 10px;
+  margin-top: 30px; border: 1.5px solid var(--dark); border-radius: 10px;
   overflow: hidden;
 }
 details.gabarito > summary {
