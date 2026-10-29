@@ -14,6 +14,14 @@ window.MathJax = {
   svg: { fontCache: 'global' },
   startup: { ready: function(){
     MathJax.startup.defaultReady();
+    MathJax.startup.document.inputJax[0].postFilters.add(function(data){
+      function restrict(node){ if(!node)return;
+        if(node.kind==='mo') node.attributes.set('linebreak', /^[+\u2212=]$/.test(node.getText())?'auto':'nobreak');
+        if(node.kind==='mspace') node.attributes.set('linebreak','nobreak');
+        (node.childNodes||[]).forEach(restrict);
+      }
+      restrict(data.math.root);
+    });
     var o=MathJax.startup.output, orig=o.typeset;
     o.typeset=function(math,doc){
       o.options.displayOverflow = window.eqMode==='break' ? 'linebreak' : 'scroll';
