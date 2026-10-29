@@ -42,6 +42,10 @@ window.MathJax = {
 .example-solution>summary:focus-visible{outline:2px solid #0494d4;outline-offset:-4px}
 .solution-body{padding:4px 18px 18px;min-width:0}
 @media(max-width:600px){.example-solution>summary{padding:10px 12px}.solution-body{padding:2px 12px 14px}}
+
+/* Example: no outer box (solution box only). Figure labels: sans bold lightblue as in the LaTeX item labels. */
+.example{border:0;border-radius:0;padding:0;background:transparent}
+.fl{font-family:"Open Sans",sans-serif;font-weight:700;color:#0494d4;font-size:.88em}
 </style></head><body><header><strong>Cálculo II 2026</strong><p>Notas de aula</p><p>Professora Yunelsy N Alvarez</p></header><nav aria-label="Cálculo II"><a href="../">Início</a><a aria-current="page" href="notas-de-aula.html">Notas de aula</a><a href="./">Listas</a><a href="provas/">Provas</a></nav><nav aria-label="Aulas"><a href="#aula-1">Aula 1</a></nav><div class="tools"><span>Equações:</span><button data-mode="scroll">Rolar de lado</button><button data-mode="break">Quebrar linhas</button></div><main><div id="vector-0"></div>
 <h1 id="aula-1"><span>Aula 1</span>Noções sobre conjuntos no espaço euclidiano</h1>
 <h2 id="conjuntos-no-espaço-euclidiano">Conjuntos no Espaço Euclidiano</h2>
@@ -50,15 +54,15 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-1"></div>
-<figcaption>(a) O ponto <span class="math inline">\((2,3)\)</span> em <span class="math inline">\(\R^2\)</span>.</figcaption>
+<figcaption><span class="fl">(a)</span> O ponto <span class="math inline">\((2,3)\)</span> em <span class="math inline">\(\R^2\)</span>.</figcaption>
 <span id="fig:ponto_R2"></span>
 </div>
 <div class="subfigure">
 <div id="vector-2"></div>
-<figcaption>(b) O ponto <span class="math inline">\((2,3,4)\)</span> em <span class="math inline">\(\R^3\)</span>.</figcaption>
+<figcaption><span class="fl">(b)</span> O ponto <span class="math inline">\((2,3,4)\)</span> em <span class="math inline">\(\R^3\)</span>.</figcaption>
 <span id="fig:ponto_R3"></span>
 </div>
-<figcaption>Figura 1.1: Pontos no espaço euclidiano.</figcaption>
+<figcaption><span class="fl">Figura 1.1:</span> Pontos no espaço euclidiano.</figcaption>
 <span id="fig:ex_pontos"></span>
 </figure>
 <p>Lembramos também que a distância entre dois pontos <span class="math inline">\(\Point{x}=(x_1, x_2, \ldots, x_n)\)</span> e <span class="math inline">\(\Point{y}=(y_1, y_2, \ldots, y_n)\)</span> no espaço euclidiano <span class="math inline">\(\mathbb{R}^n\)</span> é dada pela fórmula <span class="math display">\[\dist(\Point{x},\Point{y}) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \cdots + (x_n - y_n)^2}.\]</span> Claramente, a distância é sempre um valor não negativo e representa o comprimento do segmento de reta que conecta os dois pontos.</p>
@@ -83,15 +87,15 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-3"></div>
-<figcaption>(a) A reta <span class="math inline">\(r\)</span> que passa por <span class="math inline">\((0,0)\)</span> e <span class="math inline">\((2,3)\)</span>.</figcaption>
+<figcaption><span class="fl">(a)</span> A reta <span class="math inline">\(r\)</span> que passa por <span class="math inline">\((0,0)\)</span> e <span class="math inline">\((2,3)\)</span>.</figcaption>
 <span id="fig:2-reta_r"></span>
 </div>
 <div class="subfigure">
 <div id="vector-4"></div>
-<figcaption>(b) O círculo <span class="math inline">\(C(O,1)\)</span></figcaption>
+<figcaption><span class="fl">(b)</span> O círculo <span class="math inline">\(C(O,1)\)</span></figcaption>
 <span id="fig:2-circulo"></span>
 </div>
-<figcaption>Figura 1.2: Exemplos de conjuntos no plano</figcaption>
+<figcaption><span class="fl">Figura 1.2:</span> Exemplos de conjuntos no plano</figcaption>
 <span id="fig:2"></span>
 </figure>
 <p>No espaço euclidiano tridimensional também conhecemos vários exemplos de conjuntos. Por exemplo, os planos são descritos por uma equação linear da forma</p>
@@ -108,16 +112,16 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-5"></div>
-<figcaption>(a) Porção, no primeiro octante, do plano de equação <span class="math inline">\(x+y+z=2\)</span>.</figcaption>
+<figcaption><span class="fl">(a)</span> Porção, no primeiro octante, do plano de equação <span class="math inline">\(x+y+z=2\)</span>.</figcaption>
 <span id="exem:plano"></span>
 </div>
 <div class="subfigure">
 <div id="sphere-vector"></div>
-<figcaption>(b) A esfera de equação <span class="math inline">\(x^2+y^2+z^2=1\)</span>.<br/>
+<figcaption><span class="fl">(b)</span> A esfera de equação <span class="math inline">\(x^2+y^2+z^2=1\)</span>.<br/>
  </figcaption>
 <span id="fig:esfera"></span>
 </div>
-<figcaption>Figura 1.3: Exemplos de conjuntos em <span class="math inline">\(\R^3\)</span>.</figcaption>
+<figcaption><span class="fl">Figura 1.3:</span> Exemplos de conjuntos em <span class="math inline">\(\R^3\)</span>.</figcaption>
 </figure>
 <p>Voltemos agora a <span class="math inline">\(\mathbb{R}^2\)</span>. Até aqui, vimos exemplos como retas e círculos, formados por pontos que estão sobre determinadas curvas. Podemos, no entanto, considerar também conjuntos que “preenchem” uma parte do plano. Por exemplo, considere o conjunto</p>
 <span id="eq:quadrado_aberto"></span>
@@ -132,27 +136,27 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-6"></div>
-<figcaption>(a) O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_aberto">(1.5)</a>.</figcaption>
+<figcaption><span class="fl">(a)</span> O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_aberto">(1.5)</a>.</figcaption>
 <span id="fig:quadrado-aberto"></span>
 </div>
 <div class="subfigure">
 <div id="vector-7"></div>
-<figcaption>(b) O quadrado <span class="math inline">\(\overline{Q}\)</span> definido em <a href="#eq:quadrado_fechado">(1.6)</a>.</figcaption>
+<figcaption><span class="fl">(b)</span> O quadrado <span class="math inline">\(\overline{Q}\)</span> definido em <a href="#eq:quadrado_fechado">(1.6)</a>.</figcaption>
 <span id="fig:quadrado-fechado"></span>
 </div>
-<figcaption>Figura 1.4: </figcaption>
+<figcaption><span class="fl">Figura 1.4:</span> </figcaption>
 </figure>
 <p>Um raciocínio similar mostra que o conjunto <span class="math display">\[D=\left\{(x,y,z)\in\mathbb{R}^3;\;-1\leq x\leq 1,\;-1\leq y\leq 1,\;-1\leq z\leq 1\right\}\]</span> corresponde ao cubo mostrado na Figura <a href="#fig:cubo_lado2">1.5</a>, cujas faces pertencem ao conjunto.</p>
 <figure class="figure">
 <div id="vector-8"></div>
-<figcaption>Figura 1.5: O cubo definido por <span class="math inline">\(-1\leq x,y,z\leq1\)</span>.</figcaption>
+<figcaption><span class="fl">Figura 1.5:</span> O cubo definido por <span class="math inline">\(-1\leq x,y,z\leq1\)</span>.</figcaption>
 <span id="fig:cubo_lado2"></span>
 </figure>
 <p>Suponha agora que queiramos considerar não apenas os pontos que estão sobre um círculo (ou uma esfera), mas também todos os pontos que o “preenchem”. Como podemos representar <em>analiticamente</em> o conjunto dos pontos que preenchem o círculo <span class="math inline">\(C(O,1)\)</span> da Figura <a href="#fig:2-circulo">1.2b</a>?</p>
 <p>Para responder a essa pergunta, observe que qualquer um desses pontos <span class="math inline">\((x,y)\)</span> está a uma distância da origem estritamente menor do que <span class="math inline">\(1\)</span>. Denotando essa distância por <span class="math inline">\(r\)</span>, vemos que <span class="math inline">\((x,y)\)</span> pertence ao círculo centrado na origem e de raio <span class="math inline">\(r\)</span>, isto é, a <span class="math inline">\(C(O,r)\)</span>. Daí, <span class="math display">\[x^2+y^2=r^2\]</span> e, sendo <span class="math inline">\(r&lt;1\)</span>, temos <span class="math display">\[x^2+y^2&lt;1.\]</span> Logo, o conjunto procurado é <span class="math display">\[B(O,1)=\left\{(x,y)\in\mathbb{R}^2;\;x^2+y^2&lt;1\right\},\]</span> como ilustra a Figura <a href="#fig:2-circulo_2">1.6</a>.</p>
 <figure class="figure">
 <div id="vector-9"></div>
-<figcaption>Figura 1.6: A bola <span class="math inline">\(B(O,1)\)</span> de raio 1 e o ponto <span class="math inline">\((x,y)\)</span>.</figcaption>
+<figcaption><span class="fl">Figura 1.6:</span> A bola <span class="math inline">\(B(O,1)\)</span> de raio 1 e o ponto <span class="math inline">\((x,y)\)</span>.</figcaption>
 <span id="fig:2-circulo_2"></span>
 </figure>
 <p>Em termos matemáticos, o conjunto assim obtido é chamado de <em>bola aberta</em> de raio <span class="math inline">\(1\)</span> centrada na origem, em <span class="math inline">\(\mathbb{R}^2\)</span>. De forma geral, uma <em>bola aberta</em> em <span class="math inline">\(\mathbb{R}^n\)</span> é o conjunto de todos os pontos cuja distância a um ponto fixado é menor que um dado raio positivo. Esse ponto fixado é chamado de <em>centro</em> da bola, e o número positivo que determina essa distância é chamado de <em>raio</em>. Mais precisamente, dado um ponto <span class="math inline">\(\Point{x}_0=\left(x_1^0,x_2^0,\dots,x_n^0\right)\in\R^n\)</span>, a bola aberta de raio <span class="math inline">\(r&gt;0\)</span> centrada em <span class="math inline">\(\Point{x}_0\)</span> é denotada por <span class="math inline">\(B(\Point{x}_0, r)\)</span> e é definida como: <span class="math display">\[B\left(\Point{x}_0, r\right) = \{\Point{x}=(x_1,x_2,\dots,x_n) \in \mathbb{R}^n ;~ \dist(\Point{x}, \Point{x}_0) &lt; r\},\]</span> onde <span class="math inline">\(\text{dist}(\Point{x}, \Point{y})\)</span> representa a distância entre os pontos <span class="math inline">\(\Point{x}\)</span> e <span class="math inline">\(\Point{y}\)</span> em <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
@@ -180,15 +184,15 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-10"></div>
-<figcaption>(a) O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_aberto">(1.5)</a> é um conjunto aberto</figcaption>
+<figcaption><span class="fl">(a)</span> O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_aberto">(1.5)</a> é um conjunto aberto</figcaption>
 <span id="fig:quadrado-aberto-e-aberto"></span>
 </div>
 <div class="subfigure">
 <div id="vector-11"></div>
-<figcaption>(b) O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_fechado">(1.6)</a> não é um conjunto aberto</figcaption>
+<figcaption><span class="fl">(b)</span> O quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_fechado">(1.6)</a> não é um conjunto aberto</figcaption>
 <span id="fig:quadrado-fechado-nao-e-aberto"></span>
 </div>
-<figcaption>Figura 1.7: </figcaption>
+<figcaption><span class="fl">Figura 1.7:</span> </figcaption>
 </figure>
 <p>Até aqui usamos o termo <em>bola aberta</em> apenas como nomenclatura. O seguinte exercício justifica o nome.</p>
 <div class="box exercise"><h3>Exercício 1.1</h3>
@@ -204,7 +208,7 @@ window.MathJax = {
 <p>Por exemplo, o conjunto complementar da bola aberta <span class="math inline">\(B(O,1)\)</span> representada na Figura <a href="#fig:2-circulo_2">1.6</a> é o conjunto de pontos <span class="math display">\[B(O,1)^c= \left\{(x,y)\in\R^2;~x^2+y^2 \geq 1\right\}.\]</span> De fato, seguindo o mesmo raciocínio que antes, qualquer ponto <span class="math inline">\((x,y)\in B(O,1)^c\)</span> está em uma circunferência de raio <span class="math inline">\(r\geq 1\)</span> como se mostra na Figura <a href="#fig:2-circulo_3">1.9</a> (lembre que a circunferência de raio 1 não faz parte da bola aberta <span class="math inline">\(B(O,1)\)</span>.)</p>
 <figure class="figure">
 <div id="vector-13"></div>
-<figcaption>Figura 1.9: Representação de <span class="math inline">\(B(O,1)^c\)</span> e um ponto <span class="math inline">\((x,y)\in B(O,1)^c\)</span>.</figcaption>
+<figcaption><span class="fl">Figura 1.9:</span> Representação de <span class="math inline">\(B(O,1)^c\)</span> e um ponto <span class="math inline">\((x,y)\in B(O,1)^c\)</span>.</figcaption>
 <span id="fig:2-circulo_3"></span>
 </figure>
 <div class="box definition"><h3>Definição 1.3 (Conjunto fechado)</h3>
@@ -217,15 +221,15 @@ window.MathJax = {
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-14"></div>
-<figcaption>(a) Representação de <span class="math inline">\(B(O,1)\cup \{(1,0)\}\)</span>.</figcaption>
+<figcaption><span class="fl">(a)</span> Representação de <span class="math inline">\(B(O,1)\cup \{(1,0)\}\)</span>.</figcaption>
 <span id="fig:2-circulo+ponto"></span>
 </div>
 <div class="subfigure">
 <div id="vector-15"></div>
-<figcaption>(b) Representação de <span class="math inline">\((B(O,1)\cup \{(1,0)\})^c\)</span>.</figcaption>
+<figcaption><span class="fl">(b)</span> Representação de <span class="math inline">\((B(O,1)\cup \{(1,0)\})^c\)</span>.</figcaption>
 <span id="fig:2-circulo+ponto-complemento"></span>
 </div>
-<figcaption>Figura 1.10: </figcaption>
+<figcaption><span class="fl">Figura 1.10:</span> </figcaption>
 </figure>
 <p>O exemplo anterior mostra que as propriedades de um conjunto ser <em>aberto</em> ou <em>fechado</em> são independentes. Em particular, um conjunto que não é aberto não é necessariamente fechado e, da mesma forma, um conjunto que não é fechado não é necessariamente aberto. Além disso, os conjuntos <span class="math inline">\(\R^n\)</span> e <span class="math inline">\(\emptyset\)</span> são simultaneamente abertos e fechados.</p>
 <div class="box exercise"><h3>Exercício 1.2</h3>
@@ -333,15 +337,15 @@ B(\Point{x},r)\cap D^c\neq\emptyset
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-24"></div>
-<figcaption>(a) Três pontos interiores de <span class="math inline">\({B(O,1)}\)</span>.</figcaption>
+<figcaption><span class="fl">(a)</span> Três pontos interiores de <span class="math inline">\({B(O,1)}\)</span>.</figcaption>
 <span id="fig:2-circulo_5"></span>
 </div>
 <div class="subfigure">
 <div id="vector-25"></div>
-<figcaption>(b) Um ponto não interior de <span class="math inline">\(\overline{B(O,1)}\)</span>.</figcaption>
+<figcaption><span class="fl">(b)</span> Um ponto não interior de <span class="math inline">\(\overline{B(O,1)}\)</span>.</figcaption>
 <span id="fig:2-circulo_6"></span>
 </div>
-<figcaption>Figura 1.12: </figcaption>
+<figcaption><span class="fl">Figura 1.12:</span> </figcaption>
 </figure>
 <p>Analogamente, para o quadrado <span class="math inline">\(Q\)</span> definido em <a href="#eq:quadrado_aberto">(1.5)</a> e o quadrado fechado <span class="math inline">\(\overline{Q}\)</span> definido em <a href="#eq:quadrado_fechado">(1.6)</a>, temos <span class="math display">\[Q^\circ=Q
 \qquad\text{e}\qquad
@@ -358,22 +362,22 @@ B(\Point{x},r)\cap D^c\neq\emptyset
 <figure class="figure">
 <div class="subfigure">
 <div id="vector-26"></div>
-<figcaption>(a) A reta <span class="math inline">\(r\)</span></figcaption>
+<figcaption><span class="fl">(a)</span> A reta <span class="math inline">\(r\)</span></figcaption>
 <span id="fig:2-reta_r_fechado"></span>
 </div>
 <div class="subfigure">
 <div id="vector-27"></div>
-<figcaption>(b) O círculo <span class="math inline">\(C\)</span></figcaption>
+<figcaption><span class="fl">(b)</span> O círculo <span class="math inline">\(C\)</span></figcaption>
 <span id="fig:2-circulo_fechado"></span>
 </div>
-<figcaption>Figura 1.13: Exemplos de conjuntos com interior vazio.</figcaption>
+<figcaption><span class="fl">Figura 1.13:</span> Exemplos de conjuntos com interior vazio.</figcaption>
 <span id="fig:2_fechado"></span>
 </figure>
 <p>De forma análoga, verifica-se que, em <span class="math inline">\(\mathbb{R}^3\)</span>, os planos e as esferas também possuem interior vazio, assim como as superfícies que estudamos até o momento.</p>
 <p>Observe, porém, que o fato de um conjunto não conter nenhum ponto interior não significa que ele seja fechado. De fato, pode acontecer de sua fronteira conter pontos que não pertencem ao próprio conjunto. Para ver isso, considere, por exemplo, o conjunto <span class="math display">\[D=C(O,1)\setminus\{(1,0)\},\]</span> representado na Figura <a href="#fig:circulo_sem_ponto">1.14</a>. Assim como o círculo <span class="math inline">\(C(O,1)\)</span>, esse conjunto possui interior vazio. No entanto, <span class="math inline">\(\partial D=C(O,1)\)</span>, de modo que <span class="math inline">\((1,0)\in\partial D\)</span>, embora <span class="math inline">\((1,0)\notin D\)</span>. Portanto, <span class="math inline">\(\partial D\not\subset D\)</span>, e, consequentemente, <span class="math inline">\(D\)</span> não é fechado.</p>
 <figure class="figure">
 <div id="vector-28"></div>
-<figcaption>Figura 1.14: Representação de <span class="math inline">\(C(O,1)\setminus\{(1,0)\}\)</span>.</figcaption>
+<figcaption><span class="fl">Figura 1.14:</span> Representação de <span class="math inline">\(C(O,1)\setminus\{(1,0)\}\)</span>.</figcaption>
 <span id="fig:circulo_sem_ponto"></span>
 </figure>
 <p>Nos exemplos que vimos até agora, há ainda uma característica importante a ser observada. Alguns conjuntos, como os círculos em <span class="math inline">\(\mathbb{R}^2\)</span> e as esferas em <span class="math inline">\(\mathbb{R}^3\)</span>, permanecem inteiramente contidos em uma porção finita do espaço. Intuitivamente, podemos dizer que esses conjuntos possuem um “tamanho limitado”. Em contraste, conjuntos como as retas em <span class="math inline">\(\mathbb{R}^2\)</span> e os planos em <span class="math inline">\(\mathbb{R}^3\)</span> se estendem indefinidamente.</p>
