@@ -193,15 +193,32 @@ ol.ex.questoes > li::before { content: "Questão " counter(ex) "."; }
 @media(max-width:600px){.fn-pop{width:calc(100vw - 24px)}}
 a.footnote-ref{cursor:pointer}
 </style>
+
+<style>
+/* Navegação global dentro do cabeçalho; itens da página fora, com sublinhado (2026-10-31) */
+.topbar nav.sitenav{position:static;background:transparent;border-bottom:none;margin-top:16px;padding:0 8px;gap:8px;justify-content:center;flex-wrap:wrap}
+.topbar nav.sitenav a{color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.85);padding:4px 11px;font-size:14px}
+.topbar nav.sitenav a:hover{background:rgba(255,255,255,.15);color:#fff}
+.topbar nav.sitenav a[aria-current="page"]{background:#fff;border-color:#fff;color:var(--dark)}
+nav.pagetabs{position:sticky;top:0;z-index:5;background:#fff;border-bottom:2px solid #d7e5f2;gap:4px;padding:0 10px}
+nav.pagetabs a{color:#5b7186;background:transparent;border:none;border-radius:0;padding:11px 12px 8px;border-bottom:3px solid transparent;margin-bottom:-2px;font-size:15px}
+nav.pagetabs a:hover{background:transparent;color:var(--dark)}
+nav.pagetabs a.active{background:transparent;color:var(--dark);border-bottom:3px solid var(--light)}
+.eqtoggle{gap:16px;align-items:baseline;padding:9px 14px;border-bottom:1px solid #e3ebf3}
+.eqtoggle span{font-size:12px;color:#677d92}
+.eqtoggle button{background:none;border:none;border-radius:0;border-bottom:2px solid transparent;padding:0 0 1px;color:#47617c;font-size:13px}
+.eqtoggle button.on{background:none;color:var(--dark);border-color:transparent;border-bottom:2px solid var(--dark)}
+</style>
 </head>
 <body>
 <header class="topbar">
 <div class="t1">Cálculo II · FGV EPGE</div>
 <div class="t2">Provas com critérios de correção</div>
 <div class="t3">Professora Yunelsy N Alvarez</div>
-</header>
 <nav class="sitenav" aria-label="Cálculo II"><a href="../../">Início</a><a href="../notas-de-aula.html">Notas de aula</a><a href="../">Listas</a><a aria-current="page" href="./">Provas</a></nav>
-<nav aria-label="Provas"><a data-page="teste1" href="#teste1">Teste 1</a><a data-page="prova-a1" href="#prova-a1">Prova A1</a><a data-page="teste2" href="#teste2">Teste 2</a></nav>
+</header>
+
+<nav class="pagetabs" aria-label="Provas"><a data-page="teste1" href="#teste1">Teste 1</a><a data-page="prova-a1" href="#prova-a1">Prova A1</a><a data-page="teste2" href="#teste2">Teste 2</a></nav>
 <div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
 <main>
 <section class="lista page" id="teste1">
