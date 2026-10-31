@@ -46,7 +46,22 @@ window.MathJax = {
 /* Example: no outer box (solution box only). Figure labels: sans bold darkblue (#043c7c) as in the LaTeX caption format. */
 .example{border:0;border-radius:0;padding:0;background:transparent}
 .fl{font-family:"Open Sans",sans-serif;font-weight:700;color:#043c7c;font-size:.88em}
-</style></head><body><header><strong>Cálculo II 2026</strong><p>Notas de aula</p><p>Professora Yunelsy N Alvarez</p></header><nav aria-label="Cálculo II"><a href="../">Início</a><a aria-current="page" href="notas-de-aula.html">Notas de aula</a><a href="./">Listas</a><a href="provas/">Provas</a></nav><nav aria-label="Aulas"><a href="#aula-1">Aula 1</a></nav><div class="tools"><span>Equações:</span><button data-mode="scroll">Rolar de lado</button><button data-mode="break">Quebrar linhas</button></div><main><div hidden="" id="vector-0"></div>
+</style>
+<style>
+/* Navegação global dentro do cabeçalho; itens da página fora, com sublinhado (2026-10-31) */
+header nav.sitenav{max-width:none;margin:16px 0 0;padding:0;justify-content:center;gap:8px}
+header nav.sitenav a{border:1.5px solid rgba(255,255,255,.85);background:transparent;color:#fff;padding:4px 11px;border-radius:16px;font-size:14px;font-weight:600}
+header nav.sitenav a:hover{background:rgba(255,255,255,.15)}
+header nav.sitenav a[aria-current="page"]{background:#fff;border-color:#fff;color:#043c7c}
+nav.pagetabs{border-bottom:2px solid #d7e5f2;gap:4px;padding:0 22px;margin-top:0}
+nav.pagetabs a{border:none;border-radius:0;background:transparent;color:#5b7186;padding:11px 12px 8px;border-bottom:3px solid transparent;margin-bottom:-2px;font-weight:600}
+nav.pagetabs a:hover{color:#043c7c;background:transparent}
+.tools{gap:16px;align-items:baseline;border-bottom:1px solid #e3ebf3;padding-bottom:9px}
+.tools span{font-size:12px;color:#677d92}
+.tools button{border:none;border-radius:0;background:none;color:#47617c;font-size:13px;font-weight:600;padding:0 0 1px;border-bottom:2px solid transparent}
+.tools button.on{background:none;color:#043c7c;border-bottom:2px solid #043c7c}
+</style>
+</head><body><header><strong>Cálculo II 2026</strong><p>Notas de aula</p><p>Professora Yunelsy N Alvarez</p><nav class="sitenav" aria-label="Cálculo II"><a href="../">Início</a><a aria-current="page" href="notas-de-aula.html">Notas de aula</a><a href="./">Listas</a><a href="provas/">Provas</a></nav></header><nav class="pagetabs" aria-label="Aulas"><a href="#aula-1">Aula 1</a></nav><div class="tools"><span>Equações:</span><button data-mode="scroll">Rolar de lado</button><button data-mode="break">Quebrar linhas</button></div><main><div hidden="" id="vector-0"></div>
 <h1 id="aula-1"><span>Aula 1</span>Noções sobre conjuntos no espaço euclidiano</h1>
 <h2 id="conjuntos-no-espaço-euclidiano">Conjuntos no Espaço Euclidiano</h2>
 <p>Começaremos lembrando que o símbolo <span class="math inline">\(\mathbb{R}^n\)</span> representa o espaço euclidiano <span class="math inline">\(n\)</span>-dimensional, também conhecido como espaço real <span class="math inline">\(n\)</span>-dimensional, e é o conjunto das <span class="math inline">\(n\)</span>-tuplas <span class="math inline">\(\Point{x}=(x_1, x_2, \ldots, x_n)\)</span> em que cada coordenada <span class="math inline">\(x_i\)</span> é um número real correspondente à coordenada do ponto no espaço. O índice <span class="math inline">\(n\)</span> em <span class="math inline">\(\mathbb{R}^n\)</span> indica o número de dimensões do espaço euclidiano.</p>
