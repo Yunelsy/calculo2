@@ -75,6 +75,10 @@ nav a {
   border: 1.5px solid var(--light);
 }
 nav a:hover { background: var(--light); color: #fff; }
+nav.sitenav {
+  position: static; border-bottom: none; flex-wrap: wrap; padding-bottom: 2px;
+}
+nav.sitenav a[aria-current="page"] { background: var(--dark); border-color: var(--dark); color: #fff; }
 main { max-width: 900px; margin: 0 auto; padding: 12px clamp(14px,4vw,32px) 60px; }
 section.lista { margin-top: 34px; }
 h2 {
@@ -196,6 +200,7 @@ a.footnote-ref{cursor:pointer}
 <div class="t2">Provas com critérios de correção</div>
 <div class="t3">Professora Yunelsy N Alvarez</div>
 </header>
+<nav class="sitenav" aria-label="Cálculo II"><a href="../../">Início</a><a href="../notas-de-aula.html">Notas de aula</a><a href="../">Listas</a><a aria-current="page" href="./">Provas</a></nav>
 <nav aria-label="Provas"><a data-page="teste1" href="#teste1">Teste 1</a><a data-page="prova-a1" href="#prova-a1">Prova A1</a><a data-page="teste2" href="#teste2">Teste 2</a></nav>
 <div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
 <main>
