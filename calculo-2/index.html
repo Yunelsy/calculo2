@@ -57,6 +57,10 @@ nav a {
   border: 1.5px solid var(--light);
 }
 nav a:hover { background: var(--light); color: #fff; }
+nav.sitenav {
+  position: static; border-bottom: none; flex-wrap: wrap; padding-bottom: 2px;
+}
+nav.sitenav a[aria-current="page"] { background: var(--dark); border-color: var(--dark); color: #fff; }
 main { max-width: 900px; margin: 0 auto; padding: 12px clamp(14px,4vw,32px) 60px; }
 section.lista { margin-top: 34px; }
 h2 {
@@ -165,6 +169,7 @@ ul.lab{list-style:none;padding-left:6px}
 <div class="t2">Exercícios resolvidos — Listas 6, 7, 8, 9, 11, 12 e 13</div>
 <div class="t3">Professora Yunelsy N Alvarez</div>
 </header>
+<nav class="sitenav" aria-label="Cálculo II"><a href="../">Início</a><a href="notas-de-aula.html">Notas de aula</a><a aria-current="page" href="./">Listas</a><a href="provas/">Provas</a></nav>
 <nav aria-label="Listas"><a data-page="lista6" href="#lista6">Lista 6</a><a data-page="lista7" href="#lista7">Lista 7</a><a data-page="lista8" href="#lista8">Lista 8</a><a data-page="lista9" href="#lista9">Lista 9</a><a data-page="lista11" href="#lista11">Lista 11</a><a data-page="lista12" href="#lista12">Lista 12</a><a data-page="lista13" href="#lista13">Lista 13</a></nav>
 <div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
 <main>
