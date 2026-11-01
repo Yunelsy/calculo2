@@ -210,16 +210,7 @@ nav.pagetabs a.active{color:#043c7c;border-bottom-color:#0494d4}
 </div>
 <figcaption><span class="fl">Figura 1.7:</span> </figcaption>
 </figure>
-<p>Até aqui usamos o termo <em>bola aberta</em> apenas como nomenclatura. O seguinte exercício justifica o nome.</p>
-<div class="box exercise"><h3>Exercício 1.1</h3>
-<span id="exer:bolas_abertas"></span>
-<p>Mostre que as bolas abertas são conjuntos abertos.</p>
-<div class="solution-label">Solução</div>
-<p>Deve-se seguir a mesma ideia que usamos no Exemplo <a href="#exem:quadrado_aberto">1.1</a>: considera-se um ponto qualquer na bola, por exemplo, <span class="math inline">\((x_0, y_0)\)</span>, e se faz a escolha de um raio <span class="math inline">\(r_0 &gt; 0\)</span> tal que a bola aberta <span class="math inline">\(B((x_0, y_0), r_0)\)</span> esteja completamente contida nela.</p>
-<figure class="figure">
-<div id="vector-12"></div>
-</figure>
-</div>
+<p>Até aqui usamos o termo <em>bola aberta</em> apenas como nomenclatura.</p>
 <p>Lembremos que o <em>complemento de um conjunto</em> <span class="math inline">\(D\subset\R^n\)</span>, denotado por <span class="math inline">\(D^c\)</span>, é o conjunto <span class="math display">\[D^c = \left\{x \in \mathbb{R}^n ;~ x \notin D\right\}.\]</span> Ou seja, é o conjunto de todos os pontos de <span class="math inline">\(\R^n\)</span> que não pertencem a <span class="math inline">\(D\)</span>.</p>
 <p>Por exemplo, o conjunto complementar da bola aberta <span class="math inline">\(B(O,1)\)</span> representada na Figura <a href="#fig:2-circulo_2">1.6</a> é o conjunto de pontos <span class="math display">\[B(O,1)^c= \left\{(x,y)\in\R^2;~x^2+y^2 \geq 1\right\}.\]</span> De fato, seguindo o mesmo raciocínio que antes, qualquer ponto <span class="math inline">\((x,y)\in B(O,1)^c\)</span> está em uma circunferência de raio <span class="math inline">\(r\geq 1\)</span> como se mostra na Figura <a href="#fig:2-circulo_3">1.9</a> (lembre que a circunferência de raio 1 não faz parte da bola aberta <span class="math inline">\(B(O,1)\)</span>.)</p>
 <figure class="figure">
@@ -248,9 +239,6 @@ nav.pagetabs a.active{color:#043c7c;border-bottom-color:#0494d4}
 <figcaption><span class="fl">Figura 1.10:</span> </figcaption>
 </figure>
 <p>O exemplo anterior mostra que as propriedades de um conjunto ser <em>aberto</em> ou <em>fechado</em> são independentes. Em particular, um conjunto que não é aberto não é necessariamente fechado e, da mesma forma, um conjunto que não é fechado não é necessariamente aberto. Além disso, os conjuntos <span class="math inline">\(\R^n\)</span> e <span class="math inline">\(\emptyset\)</span> são simultaneamente abertos e fechados.</p>
-<div class="box exercise"><h3>Exercício 1.2</h3>
-<p>Mostre que o quadrado <span class="math inline">\(\overline{Q}\)</span> do Exemplo <a href="#exem:quadrado_fechado">1.2</a> é um conjunto fechado.</p>
-</div>
 <p>Observemos agora que a distinção entre um conjunto <span class="math inline">\(D\)</span> e seu complementar <span class="math inline">\(D^c\)</span> sugere naturalmente a existência de pontos que delimitam esses dois conjuntos. Essa ideia conduz à noção de <em>fronteira</em> de um conjunto.</p>
 <div class="box definition"><h3>Definição 1.4 (Fronteira de um conjunto)</h3>
 <span id="def:fronteira"></span>
@@ -327,9 +315,6 @@ B(\Point{x},r)\cap D^c\neq\emptyset
 <p>Tal conjunto é</p>
 <p><span class="math display">\[\left\{(x,y,z)\in\R^3;~10\,x+50\,y+100\,z=3000,~x\geq0,~y\geq 0,~z\geq0 \right\}.\]</span> A fronteira é a união desses quatro conjuntos.</p>
 </div></details></div>
-<div class="box exercise"><h3>Exercício 1.3</h3>
-<p>Mostre que a fronteira de um conjunto coincide com a fronteira do seu complementar.</p>
-</div>
 <div class="box definition"><h3>Definição 1.6 (Interior de um conjunto)</h3>
 <span id="def:interior_conjunto"></span>
 <p>O <em>interior</em> de um conjunto <span class="math inline">\(D\subset\mathbb{R}^n\)</span>, denotado por <span class="math inline">\(D^\circ\)</span>, é definido por <span class="math display">\[D^\circ
@@ -348,7 +333,7 @@ B(\Point{x},r)\cap D^c\neq\emptyset
 <p>Da definição de interior, temos <span class="math display">\[B(p,r)^\circ=B(p,r)
 \qquad\text{e}\qquad
 \overline{B(p,r)}^\circ=B(p,r).\]</span></p>
-<p>A primeira igualdade decorre diretamente do Exercício <a href="#exer:bolas_abertas">1.1</a>. De fato, como <span class="math inline">\(B(p,r)\)</span> é um conjunto aberto, para todo ponto <span class="math inline">\(x\in B(p,r)\)</span> existe uma bola aberta centrada em <span class="math inline">\(x\)</span> e inteiramente contida em <span class="math inline">\(B(p,r)\)</span>. Portanto, todo ponto de <span class="math inline">\(B(p,r)\)</span> é ponto interior e, consequentemente, <span class="math inline">\(B(p,r)^\circ=B(p,r)\)</span>.</p>
+<p>A primeira igualdade decorre diretamente do fato de as bolas abertas serem conjuntos abertos.class="math inline">\(B(p,r)\)</span> é um conjunto aberto, para todo ponto <span class="math inline">\(x\in B(p,r)\)</span> existe uma bola aberta centrada em <span class="math inline">\(x\)</span> e inteiramente contida em <span class="math inline">\(B(p,r)\)</span>. Portanto, todo ponto de <span class="math inline">\(B(p,r)\)</span> é ponto interior e, consequentemente, <span class="math inline">\(B(p,r)^\circ=B(p,r)\)</span>.</p>
 <p>Para a segunda igualdade, note que todo ponto de <span class="math inline">\(B(p,r)\)</span> admite uma bola aberta suficientemente pequena inteiramente contida em <span class="math inline">\(\overline{B(p,r)}\)</span>. Por outro lado, se <span class="math inline">\(\dist(x,p)=r\)</span>, toda bola aberta centrada em <span class="math inline">\(x\)</span> contém pontos que não pertencem a <span class="math inline">\(\overline{B(p,r)}\)</span>. Portanto, os pontos da esfera não pertencem ao interior da bola fechada e, consequentemente, <span class="math display">\[\overline{B(p,r)}^\circ=B(p,r).\]</span></p>
 <figure class="figure">
 <div class="subfigure">
@@ -371,9 +356,6 @@ B(\Point{x},r)\cap D^c\neq\emptyset
 <p>Para todo conjunto <span class="math inline">\(D\subset\R^n\)</span>, temos que <span class="math inline">\(D^\circ = D\setminus\partial D\)</span>.</p>
 </div>
 <p>Por exemplo, na Figura <a href="#fig:2-circulo+ponto">1.10a</a>, consideramos o conjunto <span class="math inline">\(D=B(O,1)\cup\{(1,0)\}\)</span>. Sua fronteira é o círculo <span class="math inline">\(C(O,1)\)</span>, isto é, <span class="math inline">\(\partial D=C(O,1)\)</span>. Em particular, <span class="math inline">\((1,0)\in\partial D\)</span>. Como esse é o único ponto da fronteira que pertence a <span class="math inline">\(D\)</span>, ao removê-lo obtemos <span class="math inline">\(D\setminus\partial D=B(O,1)\)</span>. Portanto, <span class="math display">\[D^\circ=B(O,1),\]</span> que já sabemos que é aberto.</p>
-<div class="box exercise"><h3>Exercício 1.4</h3>
-<p>Determine o interior dos conjuntos de restrições orçamentárias apresentados nos Exemplos <a href="#exem:modelo1">1.3</a> e <a href="#exem:modelo2">1.4</a>.</p>
-</div>
 <p>Por outro lado, existem conjuntos nos quais não “cabe” nenhuma bola aberta, como ocorre com as retas e os círculos e, de modo geral, com as curvas consideradas até aqui (ver Figura <a href="#fig:2_fechado">1.13</a>). De fato, em ambos os casos, qualquer bola aberta centrada em um ponto do conjunto contém pontos que não pertencem ao próprio conjunto. Logo, não existem pontos interiores e, portanto, esses conjuntos possuem interior vazio. Isso implica também que todo ponto de <span class="math inline">\(D\)</span> é um ponto de fronteira. Em outras palavras, <span class="math inline">\(D\subset\partial D\)</span>.</p>
 <figure class="figure">
 <div class="subfigure">
