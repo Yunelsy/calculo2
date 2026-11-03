@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="nojs">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Cálculo II — Exercícios resolvidos (Lista 14: Otimização sem restrições)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<script>
+var eqMode="scroll";try{eqMode=localStorage.getItem("eqMode")==="break"?"break":"scroll";}catch(e){}
+window.eqMode=eqMode;
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']],
+    processEscapes: true,
+    macros: { sen: "\\operatorname{sen}" }
+  },
+  output: { font: 'mathjax-tex', displayOverflow: 'linebreak', linebreaks: { inline: false, width: '92%' } },
+  svg: { fontCache: 'global' },
+  startup: { ready: function(){
+    MathJax.startup.defaultReady();
+    var o=MathJax.startup.output, orig=o.typeset;
+    o.typeset=function(math,doc){
+      o.options.displayOverflow = (math.display && /\\begin\{aligned\}/.test(math.math)) ? 'overflow' : 'linebreak';
+      return orig.call(o,math,doc);
+    };
+  } }
+};
+</script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+<style>
+:root { --dark: #043c7c; --light: #0494d4; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(17px, 1.2vw + 13px, 20px); line-height: 1.55; overflow-wrap: break-word; color: #1a1a1a;
+  margin: 0; background: #fff;
+}
+.topbar {
+  background: linear-gradient(100deg, var(--dark) 0%, #0a4d99 40%, var(--light) 100%);
+  color: #fff; text-align: center; padding: 34px 16px 26px;
+}
+.topbar .t1 { font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: .5px; text-transform: uppercase; }
+.topbar .t2 { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 17px; margin-top: 6px; opacity: .95; }
+.topbar .t3 { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; margin-top: 14px; opacity: .9; }
+nav {
+  position: sticky; top: 0; z-index: 5; background: #fff;
+  border-bottom: 2px solid var(--light);
+  display: flex; gap: 6px; justify-content: center; padding: 10px 8px; flex-wrap: wrap;
+}
+nav a {
+  font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14.5px;
+  color: var(--dark); text-decoration: none; padding: 5px 14px; border-radius: 16px;
+  border: 1.5px solid var(--light);
+}
+nav a:hover { background: var(--light); color: #fff; }
+nav.sitenav {
+  position: static; border-bottom: none; flex-wrap: wrap; padding-bottom: 2px;
+}
+nav.sitenav a[aria-current="page"] { background: var(--dark); border-color: var(--dark); color: #fff; }
+main { max-width: 900px; margin: 0 auto; padding: 12px clamp(14px,4vw,32px) 60px; }
+section.lista { margin-top: 34px; }
+h2 {
+  font-family: 'Open Sans', sans-serif; color: var(--dark);
+  border-bottom: 2.5px solid var(--light); padding-bottom: 8px; margin: 26px 0 6px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+h2 .lnum { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); }
+h2 .ltitle { font-size: 23px; font-weight: 700; }
+h3 {
+  font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 700;
+  color: var(--dark); margin: 26px 0 4px;
+}
+ol.ex { counter-reset: ex; list-style: none; padding-left: 0; }
+ol.ex > li { counter-increment: ex; margin-top: 22px; }
+ol.ex > li::before {
+  content: "Exercício " counter(ex) ".";
+  display: block; font-family: 'Open Sans', sans-serif; font-weight: 700;
+  color: var(--light); font-size: 15.5px; margin-bottom: 2px;
+}
+ol.sub { counter-reset: sub; list-style: none; padding-left: 6px; margin-top: 6px; }
+ol.sub > li { counter-increment: sub; margin-top: 10px; position: relative; padding-left: 38px; }
+ol.sub > li::before {
+  content: "(" counter(sub, lower-alpha) ")";
+  position: absolute; left: 0; font-family: 'Open Sans', sans-serif;
+  font-weight: 700; color: var(--light); font-size: 15px;
+}
+ol.sub ul, ul { margin: 6px 0; }
+ul li::marker { color: var(--dark); }
+figure { text-align: center; margin: 14px 0; }
+figure svg { max-width: 100%; height: auto; }
+details.gabarito {
+  margin-top: 30px; border: 1.5px solid var(--dark); border-radius: 10px;
+  overflow: hidden;
+}
+details.gabarito > summary {
+  cursor: pointer; list-style: none; padding: 12px 18px;
+  display: flex; align-items: baseline; gap: 10px;
+  user-select: none;
+}
+details.gabarito > summary::-webkit-details-marker { display: none; }
+details.gabarito > summary .h3 {
+  font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 15.5px; color: var(--light);
+}
+details.gabarito > summary .hint { font-family: 'Open Sans', sans-serif; font-size: 12.5px; color: #555; }
+details.gabarito > summary::after {
+  content: "+"; margin-left: auto; font-family: 'Open Sans', sans-serif;
+  font-weight: 700; color: var(--dark); font-size: 18px;
+}
+details.gabarito[open] > summary::after { content: "–"; }
+.gab-body { padding: 4px 18px 18px; }
+.remark {
+  border-left: 2.5px solid #d33; background: rgba(221,51,51,.06);
+  padding: 10px 14px; margin: 16px 0;
+}
+.remark .remark-title {
+  font-family: 'Open Sans', sans-serif; font-weight: 700; color: #d33;
+  margin: 0 0 4px; font-size: 15px;
+}
+footer {
+  margin-top: 50px; padding: 18px; text-align: center;
+  font-family: 'Open Sans', sans-serif; font-size: 13px; color: #666;
+  border-top: 1.5px solid var(--light);
+}
+a { color: var(--dark); }
+@media (max-width: 600px) { body { font-size: 18px; } .topbar .t1 { font-size: 21px; } }
+
+.page { display: none; }
+.page.active, .nojs .page { display: block; }
+nav a.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+nav { overflow-x: auto; flex-wrap: nowrap; }
+nav a { white-space: nowrap; flex: 0 0 auto; }
+@media (min-width: 700px) { nav { justify-content: center; } }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 2px 0; }
+mjx-container { max-width: 100%; }
+figure { margin: 14px 0; } figure svg { max-width: 100%; height: auto; }
+details.gabarito { background: transparent; }
+details.gabarito > summary { flex-wrap: wrap; }
+ol.ex > li > details.gabarito { margin-top: 18px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 44px; }
+.pager a { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--dark); border: 1.5px solid var(--light); border-radius: 16px; padding: 6px 16px; }
+.pager a:hover { background: var(--light); color: #fff; }
+@media (max-width: 600px) {
+  .topbar { padding: 22px 12px 18px; } .topbar .t2 { font-size: 15px; } .topbar .t3 { font-size: 13px; margin-top: 8px; }
+  h2 .ltitle { font-size: 20px; }
+  ol.sub { padding-left: 0; } ol.sub > li { padding-left: 30px; }
+  details.gabarito > summary { padding: 10px 12px; } .gab-body { padding: 2px 12px 14px; }
+  details.gabarito > summary .hint { display: none; }
+}
+@media (min-width: 1100px) { main { max-width: 980px; } }
+@media (max-width: 480px) { mjx-container[display="true"] { font-size: 92%; } }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.eqpair .split{display:none}[data-eq=break] .eqpair .split{display:block}[data-eq=break] .eqpair .one{display:none}.eqtoggle{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 10px 0;font-family:'Open Sans',sans-serif;font-size:13px;color:#555}
+.eqtoggle button{font:inherit;font-weight:600;color:var(--dark);background:#fff;border:1.5px solid var(--light);border-radius:14px;padding:3px 12px;cursor:pointer}
+.eqtoggle button.on{background:var(--dark);border-color:var(--dark);color:#fff}
+table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 14px 0; }
+table th, table td { white-space: nowrap; padding: 6px 12px; border: 1px solid #c9d6e2; text-align: left; }
+table th { background: #eef5fb; color: var(--dark); font-family: 'Open Sans', sans-serif; font-size: .85em; }
+ul.lab{list-style:none;padding-left:6px}
+@media (max-width: 699px) { nav { justify-content: flex-start; } }
+#lista14 > ol.ex > li > ol.sub > li .math.inline{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto;overflow-y:hidden}.lista14-footnote{position:relative}.lista14-footnote button{border:0;background:none;color:var(--dark);cursor:pointer;font:inherit;padding:0 2px}.lista14-note{position:absolute;z-index:20;left:0;bottom:1.5em;width:min(280px,65vw);padding:12px;background:white;border:1.5px solid var(--dark);border-radius:6px;box-shadow:0 3px 12px #0002;font-size:17px}
+</style>
+
+<style>
+/* Navegação global dentro do cabeçalho; itens da página fora, com sublinhado (2026-10-31) */
+.topbar nav.sitenav{position:static;background:transparent;border-bottom:none;margin-top:16px;padding:0 8px;gap:8px;justify-content:center;flex-wrap:wrap}
+.topbar nav.sitenav a{color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.85);padding:4px 11px;font-size:14px}
+.topbar nav.sitenav a:hover{background:rgba(255,255,255,.15);color:#fff}
+.topbar nav.sitenav a[aria-current="page"]{background:#fff;border-color:#fff;color:var(--dark)}
+nav.pagetabs{position:sticky;top:0;z-index:5;background:#fff;border-bottom:2px solid #d7e5f2;gap:4px;padding:0 10px}
+nav.pagetabs a{color:#5b7186;background:transparent;border:none;border-radius:0;padding:11px 12px 8px;border-bottom:3px solid transparent;margin-bottom:-2px;font-size:15px}
+nav.pagetabs a:hover{background:transparent;color:var(--dark)}
+nav.pagetabs a.active{background:transparent;color:var(--dark);border-bottom:3px solid var(--light)}
+.eqtoggle{gap:16px;align-items:baseline;padding:9px 14px;border-bottom:1px solid #e3ebf3}
+.eqtoggle span{font-size:12px;color:#677d92}
+.eqtoggle button{background:none;border:none;border-radius:0;border-bottom:2px solid transparent;padding:0 0 1px;color:#47617c;font-size:13px}
+.eqtoggle button.on{background:none;color:var(--dark);border-color:transparent;border-bottom:2px solid var(--dark)}
+#lista14 > ol.ex > li > ol.sub > li .math.inline{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto;overflow-y:hidden}.lista14-footnote{position:relative}.lista14-footnote button{border:0;background:none;color:var(--dark);cursor:pointer;font:inherit;padding:0 2px}.lista14-note{position:absolute;z-index:20;left:0;bottom:1.5em;width:min(280px,65vw);padding:12px;background:white;border:1.5px solid var(--dark);border-radius:6px;box-shadow:0 3px 12px #0002;font-size:17px}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="t1">Cálculo II · FGV EPGE</div>
+<nav class="sitenav" aria-label="Cálculo II"><a href="../">Início</a><a href="../aulas/">Aulas</a><a href="notas-de-aula.html">Notas de aula</a><a aria-current="page" href="./">Listas</a><a href="provas/">Provas</a></nav>
+</header>
+
+<nav class="pagetabs" aria-label="Listas"><a data-page="lista6" href="./#lista6">Lista 6</a><a data-page="lista7" href="./#lista7">Lista 7</a><a data-page="lista8" href="./#lista8">Lista 8</a><a data-page="lista9" href="./#lista9">Lista 9</a><a data-page="lista11" href="./#lista11">Lista 11</a><a data-page="lista12" href="./#lista12">Lista 12</a><a data-page="lista13" href="./#lista13">Lista 13</a><a class="active" data-page="lista14" aria-current="page" href="lista14.html">Lista 14</a></nav>
+<div class="eqtoggle" role="group" aria-label="Equações longas"><span>Equações longas:</span><button type="button" data-mode="scroll">Rolar de lado</button><button type="button" data-mode="break">Quebrar linhas</button></div>
+<main><section class="lista page active" id="lista14"><h2><span class="lnum">Lista 14</span><span class="ltitle">Otimização sem restrições</span></h2><ol class="ex">
+<li><p>Determine todos os pontos críticos de cada uma das funções a seguir e classifique cada um deles como ponto de mínimo local, ponto de máximo local ou ponto de sela.</p>
+<ol class="sub">
+<li><p><span class="math inline">\(f(x,y)=x^2+xy+y^2-3x-3y\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=e^{-(x^2+xy+y^2)}\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=\sqrt{9-x^2-y^2}+x+y\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=x^3+y^3-3xy\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y,z)=\sqrt{x^2+y^2+z^2+1}+\dfrac{x+y+z}{2}\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y,z)=-x^2-y^2-z^2-xy-yz+4x+4y+4z\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y,z)=x^2+2y^2-z^2+2xy\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=x^4-4x^3+7x^2+2xy+y^2-8x-4y+5\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y,z)=x^4+y^4+x^2+y^2+z^2+2xy+2xz+2yz-2x-2y-2z+1\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub">
+<li><p>Para <span class="math inline">\(f(x,y)=x^2+xy+y^2-3x-3y\)</span>, as derivadas parciais são <span class="math display">\[f_x(x,y)=2x+y-3
+\quad\mbox{ e }\quad
+f_y(x,y)=x+2y-3.\]</span> Os pontos críticos são as soluções do sistema <span class="math display">\[\begin{cases}
+2x+y=3,\\
+x+2y=3.
+\end{cases}\]</span> Resolvendo obtemos um único ponto crítico: <span class="math inline">\((1,1)\)</span>.</p>
+<p>A matriz Hessiana é constante: <span class="math display">\[\operatorname{Hess} f(x,y)=
+\begin{pmatrix}
+2&amp;1\\
+1&amp;2
+\end{pmatrix}.\]</span> Seus autovalores são as raízes de <span class="math display">\[\det
+\begin{pmatrix}
+2-\lambda&amp;1\\
+1&amp;2-\lambda
+\end{pmatrix}
+=(2-\lambda)^2-1=\lambda^2-4\lambda+3=0,\]</span> ou seja, <span class="math inline">\(\lambda_1=1\)</span> e <span class="math inline">\(\lambda_2=3\)</span>. Como ambos são positivos, <span class="math inline">\((1,1)\)</span> é ponto de mínimo local, com <span class="math inline">\(f(1,1)=-3\)</span>.</p>
+<p>Equivalentemente, poderia ter sido observado que <span class="math inline">\(\det\operatorname{Hess} f=3&gt;0\)</span> e <span class="math inline">\(f_{xx}=2&gt;0\)</span>, o que confirma o mínimo local pelo critério do determinante<span class="lista14-footnote"><button aria-expanded="false" aria-label="Nota 1" onclick="var n=this.nextElementSibling;n.hidden=!n.hidden;this.setAttribute('aria-expanded',!n.hidden)" type="button"><sup>1</sup></button><span class="lista14-note" hidden="">Claramente, basta escolher um dos dois métodos.</span></span>.</p></li>
+<li><p>Para <span class="math inline">\(f(x,y)=e^{-(x^2+xy+y^2)}\)</span>, escreva <span class="math inline">\(g(x,y)=x^2+xy+y^2\)</span>, de modo que <span class="math inline">\(f=e^{-g}\)</span>. Como <span class="math inline">\(e^{-g(x,y)}&gt;0\)</span> para todo <span class="math inline">\((x,y)\)</span>, as derivadas <span class="math display">\[f_x(x,y)=-(2x+y)e^{-g(x,y)}
+\quad\mbox{ e }\quad
+f_y(x,y)=-(x+2y)e^{-g(x,y)}\]</span> se anulam simultaneamente somente quando <span class="math display">\[\begin{cases}
+2x+y=0
+\\
+x+2y=0,
+\end{cases}\]</span> cuja única solução é <span class="math inline">\((0,0)\)</span>.</p>
+<p>Derivando novamente, <span class="math display">\[\begin{aligned}
+f_{xx}(x,y)&amp;=\big((2x+y)^2-2\big)e^{-g(x,y)},\\
+f_{xy}(x,y)=f_{yx}(x,y)&amp;=\big((2x+y)(x+2y)-1\big)e^{-g(x,y)},\\
+f_{yy}(x,y)&amp;=\big((x+2y)^2-2\big)e^{-g(x,y)}.\end{aligned}\]</span> Portanto, a matriz Hessiana de <span class="math inline">\(f\)</span> em cada ponto é dada por <span class="math display">\[\operatorname{Hess} f(x,y)=
+e^{-g(x,y)}
+\begin{pmatrix}
+(2x+y)^2-2&amp;(2x+y)(x+2y)-1\\
+(2x+y)(x+2y)-1&amp;(x+2y)^2-2
+\end{pmatrix}.\]</span></p>
+<p>No ponto <span class="math inline">\((0,0)\)</span>, temos <span class="math display">\[\operatorname{Hess} f(0,0)=
+\begin{pmatrix}
+-2&amp;-1\\
+-1&amp;-2
+\end{pmatrix}.\]</span> Os autovalores são as raízes de <span class="math inline">\((-2-\lambda)^2-1=\lambda^2+4\lambda+3=0\)</span>, ou seja, <span class="math inline">\(\lambda_1=-1\)</span> e <span class="math inline">\(\lambda_2=-3\)</span>. Como ambos são negativos, <span class="math inline">\((0,0)\)</span> é ponto de máximo local, com <span class="math inline">\(f(0,0)=1\)</span>.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} f(0,0)=3&gt;0\)</span> e <span class="math inline">\(f_{xx}(0,0)=-2&lt;0\)</span>, o que confirma o máximo local pelo critério do determinante.</p></li>
+<li><p>O domínio de <span class="math inline">\(f(x,y)=\sqrt{9-x^2-y^2}+x+y\)</span> é o disco fechado <span class="math inline">\(x^2+y^2\leq9\)</span>, e <span class="math inline">\(f\)</span> é diferenciável nos pontos com <span class="math inline">\(x^2+y^2&lt;9\)</span>. Escrevendo <span class="math inline">\(s=\sqrt{9-x^2-y^2}\)</span>, <span class="math display">\[f_x(x,y)=1-\frac{x}{s}
+\quad\mbox{ e }\quad
+f_y(x,y)=1-\frac{y}{s}.\]</span> Como <span class="math inline">\(s&gt;0\)</span>, as equações <span class="math display">\[\begin{cases}
+f_x(x,y)=1-\dfrac{x}{s}=0,
+\\[.5em]
+f_y(x,y)=1-\dfrac{y}{s}=0.
+\end{cases}\]</span> O único ponto crítico é a seolução desse sistema: <span class="math inline">\((\sqrt3,\sqrt3)\)</span>.</p>
+<p>A matriz Hessiana de <span class="math inline">\(f\)</span> já foi calculada na Lista 6 (Exercício 4(e)): <span class="math display">\[\operatorname{Hess} f(x,y)=
+-\frac{1}{(9-x^2-y^2)^{3/2}}
+\begin{pmatrix}
+9-y^2&amp;xy\\
+xy&amp;9-x^2
+\end{pmatrix},\]</span> pois a parcela linear <span class="math inline">\(x+y\)</span> tem derivadas segundas nulas. Em <span class="math inline">\((\sqrt3,\sqrt3)\)</span>, temos <span class="math inline">\(9-x^2-y^2=3\)</span> e <span class="math display">\[\operatorname{Hess} f(\sqrt3,\sqrt3)=
+-\frac{1}{3\sqrt3}
+\begin{pmatrix}
+6&amp;3\\
+3&amp;6
+\end{pmatrix}
+=
+-\frac{\sqrt3}{3}
+\begin{pmatrix}
+2&amp;1\\
+1&amp;2
+\end{pmatrix}.\]</span> Os autovalores de <span class="math inline">\(\begin{pmatrix}2&amp;1\\1&amp;2\end{pmatrix}\)</span> são <span class="math inline">\(1\)</span> e <span class="math inline">\(3\)</span>; logo, os autovalores de <span class="math inline">\(\operatorname{Hess} f(\sqrt3,\sqrt3)\)</span> são <span class="math display">\[\lambda_1=-\frac{\sqrt3}{3}
+\quad\mbox{ e }\quad
+\lambda_2=-\sqrt3,\]</span> ambos negativos. Portanto, <span class="math inline">\((\sqrt3,\sqrt3)\)</span> é ponto de máximo local, com <span class="math inline">\(f(\sqrt3,\sqrt3)=3\sqrt3\)</span>.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} f(\sqrt3,\sqrt3)=1&gt;0\)</span> e <span class="math inline">\(f_{xx}(\sqrt3,\sqrt3)=-\dfrac{2\sqrt3}{3}&lt;0\)</span>, o que confirma o máximo local pelo critério do determinante.</p>
+<p>Observe que, na fronteira do domínio, <span class="math inline">\(f(x,y)=x+y\leq3\sqrt2&lt;3\sqrt3\)</span>; como <span class="math inline">\((\sqrt3,\sqrt3)\)</span> é o único ponto crítico no interior, o máximo local é, na verdade, global.</p></li>
+<li><p>Os pontos críticos de <span class="math inline">\(f(x,y)=x^3+y^3-3xy\)</span> são as soluções de <span class="math display">\[\begin{cases}
+f_x(x,y)=3x^2-3y=0,
+\\
+f_y(x,y)=3y^2-3x=0,
+\end{cases}\]</span> cujas soluções são <span class="math inline">\((0,0)\)</span> e <span class="math inline">\((1,1)\)</span>.</p>
+<p>A matriz Hessiana de <span class="math inline">\(f\)</span> é <span class="math display">\[\operatorname{Hess} f(x,y)=
+\begin{pmatrix}
+6x&amp;-3\\
+-3&amp;6y
+\end{pmatrix}.\]</span></p>
+<p>Em <span class="math inline">\((0,0)\)</span>, <span class="math display">\[\operatorname{Hess} f(0,0)=
+\begin{pmatrix}
+0&amp;-3\\
+-3&amp;0
+\end{pmatrix},\]</span> cujos autovalores são as raízes de <span class="math inline">\(\lambda^2-9=0\)</span>: <span class="math inline">\(\lambda_1=-3\)</span> e <span class="math inline">\(\lambda_2=3\)</span>. Como há um autovalor positivo e um negativo, <span class="math inline">\((0,0)\)</span> é ponto de sela.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} f(0,0)=-9&lt;0\)</span>, o que já caracteriza o ponto de sela pelo critério do determinante.</p>
+<p>Em <span class="math inline">\((1,1)\)</span>, <span class="math display">\[\operatorname{Hess} f(1,1)=
+\begin{pmatrix}
+6&amp;-3\\
+-3&amp;6
+\end{pmatrix},\]</span> cujos autovalores são as raízes de <span class="math inline">\((6-\lambda)^2-9=0\)</span>: <span class="math inline">\(\lambda_1=3\)</span> e <span class="math inline">\(\lambda_2=9\)</span>. Como ambos são positivos, <span class="math inline">\((1,1)\)</span> é ponto de mínimo local, com <span class="math inline">\(f(1,1)=-1\)</span>.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} f(1,1)=27&gt;0\)</span> e <span class="math inline">\(f_{xx}(1,1)=6&gt;0\)</span>, o que confirma o mínimo local pelo critério do determinante.</p></li>
+<li><p>Escrevendo <span class="math inline">\(s=\sqrt{x^2+y^2+z^2+1}\)</span>, as derivadas parciais de <span class="math display">\[f(x,y,z)=\sqrt{x^2+y^2+z^2+1}+\dfrac{x+y+z}{2}\]</span> são <span class="math display">\[f_x(x,y,z)=\frac{x}{s}+\frac12,\qquad
+f_y(x,y,z)=\frac{y}{s}+\frac12,\qquad
+f_z(x,y,z)=\frac{z}{s}+\frac12.\]</span> A solução do sistema <span class="math display">\[\begin{cases}
+\dfrac{x}{s}+\dfrac12=0,\\[.5em]
+\dfrac{y}{s}+\dfrac12=0,\\[.5em]
+\dfrac{z}{s}+\dfrac12=0.
+\end{cases}\]</span> é <span class="math inline">\((-1,-1,-1)\)</span> (lembre que <span class="math inline">\(s\geq1\)</span>).</p>
+<p>A matriz Hessiana de <span class="math inline">\(\sqrt{x^2+y^2+z^2+1}\)</span> já foi calculada na Lista 6 (Exercício 4(c)): <span class="math display">\[\operatorname{Hess} f(x,y,z)=
+\frac{1}{(x^2+y^2+z^2+1)^{3/2}}
+\begin{pmatrix}
+1+y^2+z^2&amp;-xy&amp;-xz\\
+-xy&amp;1+x^2+z^2&amp;-yz\\
+-xz&amp;-yz&amp;1+x^2+y^2
+\end{pmatrix},\]</span> pois a parcela linear tem derivadas segundas nulas. Em <span class="math inline">\((-1,-1,-1)\)</span>, <span class="math display">\[\operatorname{Hess} f(-1,-1,-1)=
+\frac18
+\begin{pmatrix}
+3&amp;-1&amp;-1\\
+-1&amp;3&amp;-1\\
+-1&amp;-1&amp;3
+\end{pmatrix}.\]</span> Para calcular os autovalores, fazemos <span class="math inline">\(\mu=8\lambda\)</span> no polinômio característico: <span class="math display">\[\det
+\begin{pmatrix}
+3-\mu&amp;-1&amp;-1\\
+-1&amp;3-\mu&amp;-1\\
+-1&amp;-1&amp;3-\mu
+\end{pmatrix}.\]</span> Somando as duas últimas linhas à primeira, obtemos uma linha com todas as entradas iguais a <span class="math inline">\(1-\mu\)</span>, que sai como fator comum; subtraindo, em seguida, a primeira coluna das demais, o determinante se reduz a <span class="math display">\[(1-\mu)
+\det
+\begin{pmatrix}
+1&amp;0&amp;0\\
+-1&amp;4-\mu&amp;0\\
+-1&amp;0&amp;4-\mu
+\end{pmatrix}
+=(1-\mu)(4-\mu)^2.\]</span> Portanto, os autovalores da Hessiana são <span class="math display">\[\lambda_1=\frac18,
+\qquad
+\lambda_2=\lambda_3=\frac12,\]</span> todos positivos, e <span class="math inline">\((-1,-1,-1)\)</span> é ponto de mínimo local, com <span class="math inline">\(f(-1,-1,-1)=\dfrac12\)</span>.</p>
+<p>Observe também que, como <span class="math inline">\(f\)</span> tem um único ponto crítico e <span class="math inline">\(f(x,y,z)\to+\infty\)</span> quando <span class="math inline">\(\|(x,y,z)\|\to\infty\)</span> (pois <span class="math inline">\(|x+y+z|\leq\sqrt3\,\sqrt{x^2+y^2+z^2}\)</span>), o mínimo local é, na verdade, global.</p></li>
+<li><p>Para <span class="math inline">\(f(x,y,z)=-x^2-y^2-z^2-xy-yz+4x+4y+4z\)</span>, resolvemos <span class="math display">\[\begin{cases}
+f_x(x,y,z)=-2x-y+4=0,\\[.5em]
+f_y(x,y,z)=-x-2y-z+4=0,\\[.5em]
+f_z(x,y,z)=-y-2z+4=0,
+\end{cases}\]</span> cuja solução é <span class="math inline">\((2,0,2)\)</span>, logo, o único ponto críticos da função.</p>
+<p>A matriz Hessiana é constante: <span class="math display">\[\operatorname{Hess} f(x,y,z)=
+\begin{pmatrix}
+-2&amp;-1&amp;0\\
+-1&amp;-2&amp;-1\\
+0&amp;-1&amp;-2
+\end{pmatrix}.\]</span> Seu polinômio característico é <span class="math display">\[\det(\operatorname{Hess} f-\lambda I)
+=
+-(\lambda+2)\big((\lambda+2)^2-2\big),\]</span> cujas raízes são <span class="math display">\[\lambda_1=-2-\sqrt2,\qquad
+\lambda_2=-2,\qquad
+\lambda_3=-2+\sqrt2,\]</span> todas negativas. Portanto, <span class="math inline">\((2,0,2)\)</span> é ponto de máximo local, com <span class="math inline">\(f(2,0,2)=8\)</span>.</p></li>
+<li><p>Para <span class="math inline">\(f(x,y,z)=x^2+2y^2-z^2+2xy\)</span>, resolvemos <span class="math display">\[\begin{cases}
+f_x(x,y,z)=2x+2y=0,\\[.5em]
+f_y(x,y,z)=2x+4y=0,\\[.5em]
+f_z(x,y,z)=-2z=0,
+\end{cases}\]</span> que tem como única solução <span class="math inline">\((0,0,0)\)</span>.</p>
+<p>A matriz Hessiana é constante: <span class="math display">\[\operatorname{Hess} f(x,y,z)=
+\begin{pmatrix}
+2&amp;2&amp;0\\
+2&amp;4&amp;0\\
+0&amp;0&amp;-2
+\end{pmatrix},\]</span> com polinômio característico <span class="math display">\[\det(\operatorname{Hess} f-\lambda I)
+=
+(-2-\lambda)\big[(2-\lambda)(4-\lambda)-4\big]
+=
+(-2-\lambda)(\lambda^2-6\lambda+4).\]</span> Os autovalores são <span class="math display">\[\lambda_1=-2,\qquad
+\lambda_2=3-\sqrt5&gt;0,\qquad
+\lambda_3=3+\sqrt5&gt;0.\]</span> Como há autovalores positivos e um autovalor negativo, <span class="math inline">\((0,0,0)\)</span> é ponto de sela. De fato, <span class="math inline">\(f(0,0,t)=-t^2&lt;0=f(0,0,0)\)</span> para todo <span class="math inline">\(t\neq0\)</span>, enquanto <span class="math inline">\(f(t,t,0)=5t^2&gt;0\)</span>.</p></li>
+<li><p>Para <span class="math inline">\(f(x,y)=x^4-4x^3+7x^2+2xy+y^2-8x-4y+5\)</span> resolvemos <span class="math display">\[\begin{cases}
+f_x(x,y)=4x^3-12x^2+14x+2y-8=0,\\[.5em]
+f_y(x,y)=2x+2y-4=0,
+\end{cases}\]</span> cuja única solução é <span class="math inline">\((1,1)\)</span>.</p>
+<p>Como <span class="math inline">\(f_{xx}(x,y)=12x^2-24x+14\)</span>, <span class="math inline">\(f_{xy}(x,y)=2\)</span> e <span class="math inline">\(f_{yy}(x,y)=2\)</span>, a matriz Hessiana de <span class="math inline">\(f\)</span> em cada ponto é dada por <span class="math display">\[\operatorname{Hess} f(x,y)=
+\begin{pmatrix}
+12x^2-24x+14&amp;2\\
+2&amp;2
+\end{pmatrix}.\]</span></p>
+<p>No ponto crítico <span class="math inline">\((1,1)\)</span>, temos <span class="math display">\[\operatorname{Hess} f(1,1)=
+\begin{pmatrix}
+2&amp;2\\
+2&amp;2
+\end{pmatrix}.\]</span> Seu polinômio característico é <span class="math inline">\(\lambda^2-4\lambda=\lambda(\lambda-4)\)</span>, de modo que os autovalores são <span class="math inline">\(\lambda_1=0\)</span> e <span class="math inline">\(\lambda_2=4\)</span>. Como a Hessiana é semidefinida positiva, mas não definida positiva, o teste da segunda derivada é inconclusivo nesse ponto.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} f(1,1)=0\)</span>, e o critério do determinante também não decide.</p>
+<p>Neste caso, uma ideia que podemos seguir para classificar <span class="math inline">\((1,1)\)</span>, é completar quadrados e reescrever <span class="math inline">\(f\)</span>: <span class="math display">\[f(x,y)=(x+y-2)^2+(x-1)^4,\]</span> que é uma soma de dois termos não negativos. Logo, <span class="math display">\[f(x,y)\geq0=f(1,1),
+\qquad\text{para todo }(x,y),\]</span> e <span class="math inline">\(f(x,y)=0\)</span> somente quando <span class="math inline">\(x+y-2=0\)</span> e <span class="math inline">\(x-1=0\)</span> ao mesmo tempo, isto é, somente em <span class="math inline">\((x,y)=(1,1)\)</span>. Portanto, <span class="math inline">\((1,1)\)</span> é ponto de mínimo global de <span class="math inline">\(f\)</span> (em particular, ponto de mínimo local), com <span class="math inline">\(f(1,1)=0\)</span>.</p></li>
+<li><p>Para <span class="math inline">\(f(x,y,z)=x^4+y^4+x^2+y^2+z^2+2xy+2xz+2yz-2x-2y-2z+1\)</span> resolvemos <span class="math display">\[\begin{cases}
+f_x=4x^3+2x+2y+2z-2=0,\\[.5em]
+f_y=4y^3+2x+2y+2z-2=0,\\[.5em]
+f_z=2x+2y+2z-2=0. 
+\end{cases}\]</span> Logo, o único ponto crítico é <span class="math inline">\((0,0,1)\)</span>.</p>
+<p>Como <span class="math inline">\(f_{xx}=12x^2+2\)</span>, <span class="math inline">\(f_{yy}=12y^2+2\)</span>, <span class="math inline">\(f_{zz}=2\)</span> e <span class="math inline">\(f_{xy}=f_{xz}=f_{yz}=2\)</span>, a matriz Hessiana de <span class="math inline">\(f\)</span> em cada ponto é dada por <span class="math display">\[\operatorname{Hess} f(x,y,z)=
+\begin{pmatrix}
+12x^2+2&amp;2&amp;2\\
+2&amp;12y^2+2&amp;2\\
+2&amp;2&amp;2
+\end{pmatrix}.\]</span></p>
+<p>No ponto crítico <span class="math inline">\((0,0,1)\)</span>, temos <span class="math display">\[\operatorname{Hess} f(0,0,1)=
+\begin{pmatrix}
+2&amp;2&amp;2\\
+2&amp;2&amp;2\\
+2&amp;2&amp;2
+\end{pmatrix}.\]</span> Os autovalores são <span class="math inline">\(0\)</span>, <span class="math inline">\(0\)</span> e <span class="math inline">\(6\)</span>. Como a Hessiana é semidefinida positiva, o teste da segunda derivada é inconclusivo nesse ponto.</p>
+<p>Para classificar <span class="math inline">\((0,0,1)\)</span>, completamos quadrados e reescrevemos <span class="math inline">\(f\)</span> como <span class="math display">\[f(x,y,z)=(x+y+z-1)^2+x^4+y^4,\]</span> que é uma soma de termos não negativos. Logo, <span class="math display">\[f(x,y,z)\geq0=f(0,0,1),
+\qquad\text{para todo }(x,y,z),\]</span> com igualdade somente quando <span class="math inline">\(x+y+z-1=0\)</span>, <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span> ao mesmo tempo, isto é, somente em <span class="math inline">\((x,y,z)=(0,0,1)\)</span>. Portanto, <span class="math inline">\((0,0,1)\)</span> é ponto de mínimo global de <span class="math inline">\(f\)</span> (em particular, ponto de mínimo local), com <span class="math inline">\(f(0,0,1)=0\)</span>.</p></li>
+</ol></div></details></li>
+<li><p>Uma firma produz dois bens, em quantidades <span class="math inline">\(x\geq0\)</span> e <span class="math inline">\(y\geq0\)</span>, com custo total <span class="math display">\[C(x,y)=x^2+xy+y^2.\]</span> Os bens são vendidos por <span class="math inline">\(5\)</span> e <span class="math inline">\(4\)</span> unidades monetárias, respectivamente, de modo que a receita da firma é <span class="math inline">\(R(x,y)=5x+4y\)</span>.</p>
+<ol class="sub">
+<li><p>Determine as quantidades <span class="math inline">\(x\)</span> e <span class="math inline">\(y\)</span> que maximizam o lucro da firma.</p></li>
+<li><p>Calcule o lucro máximo.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>O lucro da firma é <span class="math display">\[L(x,y)=R(x,y)-C(x,y)=5x+4y-x^2-xy-y^2,
+\qquad x\geq0,\ y\geq0.\]</span></p>
+<ol class="sub">
+<li><p>Os pontos críticos no interior do domínio são as soluções de <span class="math display">\[\begin{cases}
+L_x(x,y)=5-2x-y=0\\[.5em]
+L_y(x,y)=4-x-2y=0.
+\end{cases}\]</span> Logo, o único ponto crítico é <span class="math inline">\((2,1)\)</span>, que pertence ao domínio.</p>
+<p>A matriz Hessiana é constante: <span class="math display">\[\operatorname{Hess} L(x,y)=
+\begin{pmatrix}
+-2&amp;-1\\
+-1&amp;-2
+\end{pmatrix},\]</span> com autovalores <span class="math inline">\(\lambda_1=-1\)</span> e <span class="math inline">\(\lambda_2=-3\)</span>, ambos negativos. Portanto, <span class="math inline">\((2,1)\)</span> é ponto de máximo local.</p>
+<p>Equivalentemente, <span class="math inline">\(\det\operatorname{Hess} L=3&gt;0\)</span> e <span class="math inline">\(L_{xx}=-2&lt;0\)</span>, o que confirma o máximo local pelo critério do determinante.</p>
+<p>Resta comparar com a fronteira do domínio. Se <span class="math inline">\(x=0\)</span>, então <span class="math inline">\(L(0,y)=4y-y^2\leq4\)</span>; se <span class="math inline">\(y=0\)</span>, então <span class="math inline">\(L(x,0)=5x-x^2\leq\dfrac{25}{4}\)</span>. Como <span class="math inline">\(L(2,1)=7\)</span> é maior do que esses dois valores e <span class="math inline">\(L(x,y)\to-\infty\)</span> quando <span class="math inline">\(x+y\to\infty\)</span>, o lucro máximo é atingido em <span class="math inline">\((2,1)\)</span>.</p></li>
+<li><p>O lucro máximo é <span class="math display">\[L(2,1)=10+4-4-2-1=7.\]</span></p></li>
+</ol></div></details></li>
+</ol><div class="pager"><a href="./#lista13">← Lista 13</a></div></section></main><script>
+document.documentElement.classList.remove("nojs");
+(function(){
+
+
+  function fixWide(){
+    [].forEach.call(document.querySelectorAll('mjx-container[display]'),function(m){
+      try{
+        var svg=m.querySelector('svg'); if(!svg||svg.dataset.fixed) return;
+        var g=svg.querySelector('g[data-mml-node=math]'); var b=g.getBBox();
+        var vb=svg.getAttribute('viewBox').split(/\s+/).map(Number);
+        var w0=parseFloat(svg.getAttribute('width')); // in ex
+        var k=w0/vb[2];
+        var left=Math.min(vb[0],b.x), right=Math.max(vb[0]+vb[2],b.x+b.width);
+        svg.setAttribute('viewBox',left+' '+vb[1]+' '+(right-left)+' '+vb[3]);
+        svg.setAttribute('width',((right-left)*k)+'ex');
+        svg.dataset.fixed='1';
+      }catch(e){}
+    });
+  }
+  window.fixWide=fixWide;
+  var tb=[].slice.call(document.querySelectorAll('.eqtoggle button'));
+  function mark(){document.documentElement.dataset.eq=window.eqMode;tb.forEach(function(b){var on=b.dataset.mode===window.eqMode;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});}
+  tb.forEach(function(b){b.addEventListener('click',function(){
+    if(window.eqMode===b.dataset.mode) return;
+    window.eqMode=b.dataset.mode; try{localStorage.setItem('eqMode',window.eqMode);}catch(e){}
+    mark();
+    var y=window.scrollY;
+    try{ if(window.MathJax&&MathJax.startup&&MathJax.startup.document){ MathJax.startup.document.rerender(); setTimeout(fixWide,300); setTimeout(fixWide,1500); if(window.MathJax.startup.promise) MathJax.startup.promise.then(function(){window.scrollTo(0,y);}); } }catch(e){}
+  });});
+  mark();
+  var lastW=window.innerWidth,rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      if(Math.abs(window.innerWidth-lastW)<60) return;
+      lastW=window.innerWidth;
+      try{ if(window.MathJax&&MathJax.startup&&MathJax.startup.document){ MathJax.startup.document.rerender(); } }catch(e){}
+    },400);
+  });
+  var fx=0,fxi=setInterval(function(){fixWide(); if(++fx>40) clearInterval(fxi);},500);
+  document.querySelector('.pagetabs a.active').scrollIntoView({block:'nearest',inline:'nearest'});
+})();
+</script>
+<footer>© 2026 Yunelsy N Alvarez</footer>
+</body></html>
