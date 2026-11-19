@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html class="nojs" lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Cálculo II - Exercícios resolvidos (Lista 16: Otimização com restrições de desigualdade)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400;1,600&amp;display=swap" rel="stylesheet"/>
+<script>
+var eqMode="scroll";try{eqMode=localStorage.getItem("eqMode")==="break"?"break":"scroll";}catch(e){}
+window.eqMode=eqMode;
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['\\[','\\]']],
+    processEscapes: true,
+    macros: { sen: "\\operatorname{sen}" }
+  },
+  output: { font: 'mathjax-tex', displayOverflow: 'linebreak', linebreaks: { inline: false, width: '92%' } },
+  svg: { fontCache: 'global' },
+  startup: { ready: function(){
+    MathJax.startup.defaultReady();
+    var o=MathJax.startup.output, orig=o.typeset;
+    o.typeset=function(math,doc){
+      o.options.displayOverflow = (math.display && /\\begin\{aligned\}/.test(math.math)) ? 'overflow' : 'linebreak';
+      return orig.call(o,math,doc);
+    };
+  } }
+};
+</script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js"></script>
+<style>
+:root { --dark: #043c7c; --light: #0494d4; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: clamp(17px, 1.2vw + 13px, 20px); line-height: 1.55; overflow-wrap: break-word; color: #1a1a1a;
+  margin: 0; background: #fff;
+}
+.topbar {
+  background: linear-gradient(100deg, var(--dark) 0%, #0a4d99 40%, var(--light) 100%);
+  color: #fff; text-align: center; padding: 34px 16px 26px;
+}
+.topbar .t1 { font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: .5px; text-transform: uppercase; }
+.topbar .t2 { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 17px; margin-top: 6px; opacity: .95; }
+.topbar .t3 { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14px; margin-top: 14px; opacity: .9; }
+nav {
+  position: sticky; top: 0; z-index: 5; background: #fff;
+  border-bottom: 2px solid var(--light);
+  display: flex; gap: 6px; justify-content: center; padding: 10px 8px; flex-wrap: wrap;
+}
+nav a {
+  font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14.5px;
+  color: var(--dark); text-decoration: none; padding: 5px 14px; border-radius: 16px;
+  border: 1.5px solid var(--light);
+}
+nav a:hover { background: var(--light); color: #fff; }
+nav.sitenav {
+  position: static; border-bottom: none; flex-wrap: wrap; padding-bottom: 2px;
+}
+nav.sitenav a[aria-current="page"] { background: var(--dark); border-color: var(--dark); color: #fff; }
+main { max-width: 900px; margin: 0 auto; padding: 12px clamp(14px,4vw,32px) 60px; }
+section.lista { margin-top: 34px; }
+h2 {
+  font-family: 'Open Sans', sans-serif; color: var(--dark);
+  border-bottom: 2.5px solid var(--light); padding-bottom: 8px; margin: 26px 0 6px;
+  display: flex; flex-direction: column; gap: 2px;
+}
+h2 .lnum { font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--light); }
+h2 .ltitle { font-size: 23px; font-weight: 700; }
+h3 {
+  font-family: 'Open Sans', sans-serif; font-size: 18px; font-weight: 700;
+  color: var(--dark); margin: 26px 0 4px;
+}
+ol.ex { counter-reset: ex; list-style: none; padding-left: 0; }
+ol.ex > li { counter-increment: ex; margin-top: 22px; }
+ol.ex > li::before {
+  content: "Exercício " counter(ex) ".";
+  display: block; font-family: 'Open Sans', sans-serif; font-weight: 700;
+  color: var(--light); font-size: 15.5px; margin-bottom: 2px;
+}
+ol.sub { counter-reset: sub; list-style: none; padding-left: 6px; margin-top: 6px; }
+ol.sub > li { counter-increment: sub; margin-top: 10px; position: relative; padding-left: 38px; }
+ol.sub > li::before {
+  content: "(" counter(sub, lower-alpha) ")";
+  position: absolute; left: 0; font-family: 'Open Sans', sans-serif;
+  font-weight: 700; color: var(--light); font-size: 15px;
+}
+ol.sub ul, ul { margin: 6px 0; }
+ul li::marker { color: var(--dark); }
+figure { text-align: center; margin: 14px 0; }
+figure svg { max-width: 100%; height: auto; }
+details.gabarito {
+  margin-top: 30px; border: 1.5px solid var(--dark); border-radius: 10px;
+  overflow: hidden;
+}
+details.gabarito > summary {
+  cursor: pointer; list-style: none; padding: 12px 18px;
+  display: flex; align-items: baseline; gap: 10px;
+  user-select: none;
+}
+details.gabarito > summary::-webkit-details-marker { display: none; }
+details.gabarito > summary .h3 {
+  font-family: 'Open Sans', sans-serif; font-weight: 700; font-size: 15.5px; color: var(--light);
+}
+details.gabarito > summary .hint { font-family: 'Open Sans', sans-serif; font-size: 12.5px; color: #555; }
+details.gabarito > summary::after {
+  content: "+"; margin-left: auto; font-family: 'Open Sans', sans-serif;
+  font-weight: 700; color: var(--dark); font-size: 18px;
+}
+details.gabarito[open] > summary::after { content: "–"; }
+.gab-body { padding: 4px 18px 18px; }
+.remark {
+  border-left: 2.5px solid #d33; background: rgba(221,51,51,.06);
+  padding: 10px 14px; margin: 16px 0;
+}
+.remark .remark-title {
+  font-family: 'Open Sans', sans-serif; font-weight: 700; color: #d33;
+  margin: 0 0 4px; font-size: 15px;
+}
+footer {
+  margin-top: 50px; padding: 18px; text-align: center;
+  font-family: 'Open Sans', sans-serif; font-size: 13px; color: #666;
+  border-top: 1.5px solid var(--light);
+}
+a { color: var(--dark); }
+@media (max-width: 600px) { body { font-size: 18px; } .topbar .t1 { font-size: 21px; } }
+
+.page { display: none; }
+.page.active, .nojs .page { display: block; }
+nav a.active { background: var(--dark); border-color: var(--dark); color: #fff; }
+nav { overflow-x: auto; flex-wrap: nowrap; }
+nav a { white-space: nowrap; flex: 0 0 auto; }
+@media (min-width: 700px) { nav { justify-content: center; } }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding: 2px 0; }
+mjx-container { max-width: 100%; }
+figure { margin: 14px 0; } figure svg { max-width: 100%; height: auto; }
+details.gabarito { background: transparent; }
+details.gabarito > summary { flex-wrap: wrap; }
+ol.ex > li > details.gabarito { margin-top: 18px; }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 44px; }
+.pager a { font-family: 'Open Sans', sans-serif; font-weight: 600; font-size: 14.5px; text-decoration: none; color: var(--dark); border: 1.5px solid var(--light); border-radius: 16px; padding: 6px 16px; }
+.pager a:hover { background: var(--light); color: #fff; }
+@media (max-width: 600px) {
+  .topbar { padding: 22px 12px 18px; } .topbar .t2 { font-size: 15px; } .topbar .t3 { font-size: 13px; margin-top: 8px; }
+  h2 .ltitle { font-size: 20px; }
+  ol.sub { padding-left: 0; } ol.sub > li { padding-left: 30px; }
+  details.gabarito > summary { padding: 10px 12px; } .gab-body { padding: 2px 12px 14px; }
+  details.gabarito > summary .hint { display: none; }
+}
+@media (min-width: 1100px) { main { max-width: 980px; } }
+@media (max-width: 480px) { mjx-container[display="true"] { font-size: 92%; } }
+mjx-container[display="true"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; }
+.eqpair .split{display:none}[data-eq=break] .eqpair .split{display:block}[data-eq=break] .eqpair .one{display:none}.eqtoggle{display:flex;gap:6px;align-items:center;justify-content:center;flex-wrap:wrap;padding:8px 10px 0;font-family:'Open Sans',sans-serif;font-size:13px;color:#555}
+.eqtoggle button{font:inherit;font-weight:600;color:var(--dark);background:#fff;border:1.5px solid var(--light);border-radius:14px;padding:3px 12px;cursor:pointer}
+.eqtoggle button.on{background:var(--dark);border-color:var(--dark);color:#fff}
+table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border-collapse: collapse; margin: 14px 0; }
+table th, table td { white-space: nowrap; padding: 6px 12px; border: 1px solid #c9d6e2; text-align: left; }
+table th { background: #eef5fb; color: var(--dark); font-family: 'Open Sans', sans-serif; font-size: .85em; }
+ul.lab{list-style:none;padding-left:6px}
+@media (max-width: 699px) { nav { justify-content: flex-start; } }
+#lista15 > ol.ex > li > ol.sub > li .math.inline{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto;overflow-y:hidden}
+.box{border:1.5px solid #043c7c;border-radius:8px;padding:16px 18px;margin:22px 0}.box h3{margin:0 0 8px;font-family:'Open Sans',sans-serif;font-weight:700;font-size:15.5px}.remark{border-color:#c00000;background:rgb(255,229.5,229.5)}.remark h3{color:#c00000}
+</style>
+<style>
+/* Navegação global dentro do cabeçalho; itens da página fora, com sublinhado (2026-10-31) */
+.topbar nav.sitenav{position:static;background:transparent;border-bottom:none;margin-top:16px;padding:0 8px;gap:8px;justify-content:center;flex-wrap:wrap}
+.topbar nav.sitenav a{color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.85);padding:4px 11px;font-size:14px}
+.topbar nav.sitenav a:hover{background:rgba(255,255,255,.15);color:#fff}
+.topbar nav.sitenav a[aria-current="page"]{background:#fff;border-color:#fff;color:var(--dark)}
+nav.pagetabs{position:sticky;top:0;z-index:5;background:#fff;border-bottom:2px solid #d7e5f2;gap:4px;padding:0 10px}
+nav.pagetabs a{color:#5b7186;background:transparent;border:none;border-radius:0;padding:11px 12px 8px;border-bottom:3px solid transparent;margin-bottom:-2px;font-size:15px}
+nav.pagetabs a:hover{background:transparent;color:var(--dark)}
+nav.pagetabs a.active{background:transparent;color:var(--dark);border-bottom:3px solid var(--light)}
+.eqtoggle{gap:16px;align-items:baseline;padding:9px 14px;border-bottom:1px solid #e3ebf3}
+.eqtoggle span{font-size:12px;color:#677d92}
+.eqtoggle button{background:none;border:none;border-radius:0;border-bottom:2px solid transparent;padding:0 0 1px;color:#47617c;font-size:13px}
+.eqtoggle button.on{background:none;color:var(--dark);border-color:transparent;border-bottom:2px solid var(--dark)}
+#lista15 > ol.ex > li > ol.sub > li .math.inline{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto;overflow-y:hidden}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="t1">Cálculo II · FGV EPGE</div>
+<nav aria-label="Cálculo II" class="sitenav"><a href="../">Início</a><a href="../aulas/">Aulas</a><a href="notas-de-aula.html">Notas de aula</a><a aria-current="page" href="./">Listas</a><a href="provas/">Provas</a></nav>
+</header>
+<nav aria-label="Listas" class="pagetabs"><a data-page="lista6" href="./#lista6">Lista 6</a><a data-page="lista7" href="./#lista7">Lista 7</a><a data-page="lista8" href="./#lista8">Lista 8</a><a data-page="lista9" href="./#lista9">Lista 9</a><a data-page="lista11" href="./#lista11">Lista 11</a><a data-page="lista12" href="./#lista12">Lista 12</a><a data-page="lista13" href="./#lista13">Lista 13</a><a data-page="lista14" href="lista14.html">Lista 14</a><a aria-current="page" data-page="lista15" href="lista15.html">Lista 15</a><a class="active" href="lista16.html">Lista 16</a></nav>
+<div aria-label="Equações longas" class="eqtoggle" role="group"><span>Equações longas:</span><button data-mode="scroll" type="button">Rolar de lado</button><button data-mode="break" type="button">Quebrar linhas</button></div>
+<main><section class="lista page active" id="lista16"><h2><span class="lnum">Lista 16</span><span class="ltitle">Otimização com restrições de desigualdade</span></h2><ol class="ex"><li id="ex1"><p>Determine os pontos de máximo de <span class="math inline">\(f\)</span> nos itens (a) e (b), e os pontos de mínimo de <span class="math inline">\(f\)</span> nos itens (c) e (d), sujeita às restrições dadas.</p>
+<ol class="sub">
+<li><p><span class="math inline">\(f(x,y)=x+2y\)</span>, <span class="math inline">\(x^2+y^2\le5\)</span> e <span class="math inline">\(x+y\le1\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=4y-x^2-y^2\)</span>, <span class="math inline">\(x^2+y^2\le9\)</span> e <span class="math inline">\(y\le1\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=x^2+y^2\)</span>, <span class="math inline">\(x^2+y^2\le25\)</span> e <span class="math inline">\(x\ge3\)</span>.</p></li>
+<li><p><span class="math inline">\(f(x,y)=(x-8)^2+y^2\)</span>, <span class="math inline">\(x^2+y^2\le25\)</span> e <span class="math inline">\(y\ge3\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 1</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub">
+<li><p>Aqui, <span class="math inline">\(g_1(x,y)=x^2+y^2\le5\)</span> e <span class="math inline">\(g_2(x,y)=x+y\le1\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco fechado de centro na origem e raio <span class="math inline">\(\sqrt{5}\)</span> com um semiplano fechado, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g_1(x,y)=(2x,2y)\)</span> e <span class="math inline">\(\nabla g_2(x,y)=(1,1)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((2,-1)\)</span> temos que <span class="math inline">\(g_1(x,y)=5\)</span> e <span class="math inline">\(g_2(x,y)=1\)</span>, e os vetores <span class="math inline">\(\nabla g_1(2,-1)=(4,-2)\)</span> e <span class="math inline">\(\nabla g_2(2,-1)=(1,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((-1,2)\)</span> temos que <span class="math inline">\(g_1(x,y)=5\)</span> e <span class="math inline">\(g_2(x,y)=1\)</span>, e os vetores <span class="math inline">\(\nabla g_1(-1,2)=(-2,4)\)</span> e <span class="math inline">\(\nabla g_2(-1,2)=(1,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula: <span class="math inline">\(\nabla g_1\)</span> só se anula na origem, que não pertence à circunferência, e <span class="math inline">\(\nabla g_2\)</span> é constante e não nulo. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(1,2)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+1=2\lambda_1x+\lambda_2, &amp; (1)\\[4pt]
+2=2\lambda_1y+\lambda_2, &amp; (2)\\[4pt]
+\lambda_1(x^2+y^2-5)=0, &amp; (3)\\[4pt]
+\lambda_2(x+y-1)=0, &amp; (4)\\[4pt]
+\lambda_1\ge0,\lambda_2\ge0, &amp; (5)\\[4pt]
+x^2+y^2\le5, &amp; (6)\\[4pt]
+x+y\le1. &amp; (7)
+\end{cases}\]</span></p>
+<p>Se <span class="math inline">\(\lambda_1=0\)</span>, as condições (1) e (2) dão <span class="math inline">\(\lambda_2=1\)</span> e <span class="math inline">\(\lambda_2=2\)</span>, um absurdo. Se <span class="math inline">\(\lambda_2=0\)</span> e <span class="math inline">\(\lambda_1&gt;0\)</span>, a condição (3) dá <span class="math inline">\(x^2+y^2=5\)</span> e as condições (1) e (2) dão <span class="math inline">\((x,y)=(1,2)/(2\lambda_1)\)</span>; substituindo, <span class="math inline">\(\lambda_1=1/2\)</span> e <span class="math inline">\((x,y)=(1,2)\)</span>, que viola (7). Resta o caso <span class="math inline">\(\lambda_1&gt;0\)</span> e <span class="math inline">\(\lambda_2&gt;0\)</span>: as condições (3) e (4) dão <span class="math inline">\(x^2+y^2=5\)</span> e <span class="math inline">\(x+y=1\)</span>, donde <span class="math inline">\(x^2-x-2=0\)</span>, logo <span class="math inline">\(x=2\)</span> ou <span class="math inline">\(x=-1\)</span>. Assim, temos os pontos <span class="math inline">\((2,-1)\)</span> e <span class="math inline">\((-1,2)\)</span>. Subtraindo (1) de (2), obtemos <span class="math inline">\(1=2\lambda_1(y-x)\)</span>. No ponto <span class="math inline">\((2,-1)\)</span>, isso dá <span class="math inline">\(\lambda_1=-1/6\)</span>, contradizendo (5). No ponto <span class="math inline">\((-1,2)\)</span>, temos <span class="math inline">\(\lambda_1=1/6&gt;0\)</span>, e, por (1), <span class="math inline">\(\lambda_2=4/3\)</span>, satisfazendo (5)–(7).</p>
+<p>Logo, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(3\)</span> e é atingido em <span class="math inline">\((-1,2)\)</span>.</p></li>
+<li><p>Aqui, <span class="math inline">\(g_1(x,y)=x^2+y^2\le9\)</span> e <span class="math inline">\(g_2(x,y)=y\le1\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco fechado de centro na origem e raio <span class="math inline">\(3\)</span> com um semiplano fechado, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g_1(x,y)=(2x,2y)\)</span> e <span class="math inline">\(\nabla g_2(x,y)=(0,1)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((2\sqrt{2},1)\)</span> temos que <span class="math inline">\(g_1(x,y)=9\)</span> e <span class="math inline">\(y=1\)</span>, e os vetores <span class="math inline">\(\nabla g_1(2\sqrt{2},1)=(4\sqrt{2},2)\)</span> e <span class="math inline">\(\nabla g_2(2\sqrt{2},1)=(0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((-2\sqrt{2},1)\)</span> temos que <span class="math inline">\(g_1(x,y)=9\)</span> e <span class="math inline">\(y=1\)</span>, e os vetores <span class="math inline">\(\nabla g_1(-2\sqrt{2},1)=(-4\sqrt{2},2)\)</span> e <span class="math inline">\(\nabla g_2(-2\sqrt{2},1)=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula: <span class="math inline">\(\nabla g_1\)</span> só se anula na origem, que não pertence à circunferência, e <span class="math inline">\(\nabla g_2\)</span> é constante e não nulo. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(-2x,4-2y)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+-2x=2\lambda_1x, &amp; (1)\\[4pt]
+4-2y=2\lambda_1y+\lambda_2, &amp; (2)\\[4pt]
+\lambda_1(x^2+y^2-9)=0, &amp; (3)\\[4pt]
+\lambda_2(y-1)=0, &amp; (4)\\[4pt]
+\lambda_1\ge0,\lambda_2\ge0, &amp; (5)\\[4pt]
+x^2+y^2\le9, &amp; (6)\\[4pt]
+y\le1. &amp; (7)
+\end{cases}\]</span></p>
+<p>A condição (1) dá <span class="math inline">\(2x(1+\lambda_1)=0\)</span> e, por (5), <span class="math inline">\(x=0\)</span>. Se <span class="math inline">\(\lambda_2=0\)</span>: se <span class="math inline">\(\lambda_1=0\)</span>, (2) dá <span class="math inline">\(y=2\)</span>, contra (7); se <span class="math inline">\(\lambda_1&gt;0\)</span>, (3) dá <span class="math inline">\(y=\pm3\)</span>, mas <span class="math inline">\(y=3\)</span> viola (7) e, com <span class="math inline">\(y=-3\)</span>, (2) dá <span class="math inline">\(\lambda_1=-5/3\)</span>, contra (5). Se <span class="math inline">\(\lambda_2&gt;0\)</span>, (4) dá <span class="math inline">\(y=1\)</span>; como <span class="math inline">\(x^2+y^2=1&lt;9\)</span>, a condição (3) dá <span class="math inline">\(\lambda_1=0\)</span> e (2) dá <span class="math inline">\(\lambda_2=2\)</span>, satisfazendo (5)–(7).</p>
+<p>O único candidato é <span class="math inline">\((0,1)\)</span>. Como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(3\)</span> e é atingido em <span class="math inline">\((0,1)\)</span>.</p></li>
+<li><p>Aqui, <span class="math inline">\(g_1(x,y)=x^2+y^2\le25\)</span> e <span class="math inline">\(g_2(x,y)=-x\le-3\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco fechado de centro na origem e raio <span class="math inline">\(5\)</span> com o semiplano <span class="math inline">\(x\ge3\)</span>, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o mínimo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g_1(x,y)=(2x,2y)\)</span> e <span class="math inline">\(\nabla g_2(x,y)=(-1,0)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((3,4)\)</span> temos que <span class="math inline">\(g_1(x,y)=25\)</span> e <span class="math inline">\(x=3\)</span>, e os vetores <span class="math inline">\(\nabla g_1(3,4)=(6,8)\)</span> e <span class="math inline">\(\nabla g_2(3,4)=(-1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((3,-4)\)</span> temos que <span class="math inline">\(g_1(x,y)=25\)</span> e <span class="math inline">\(x=3\)</span>, e os vetores <span class="math inline">\(\nabla g_1(3,-4)=(6,-8)\)</span> e <span class="math inline">\(\nabla g_2(3,-4)=(-1,0)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula: <span class="math inline">\(\nabla g_1\)</span> só se anula na origem, que não pertence à circunferência, e <span class="math inline">\(\nabla g_2\)</span> é constante e não nulo. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de mínimo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(2x,2y)\)</span> e, como se trata de um problema de minimização, o sistema fica <span class="math display">\[\begin{cases}
+2x=2\lambda_1x-\lambda_2, &amp; (1)\\[4pt]
+2y=2\lambda_1y, &amp; (2)\\[4pt]
+\lambda_1(x^2+y^2-25)=0, &amp; (3)\\[4pt]
+\lambda_2(-x+3)=0, &amp; (4)\\[4pt]
+\lambda_1\le0,\lambda_2\le0, &amp; (5)\\[4pt]
+x^2+y^2\le25, &amp; (6)\\[4pt]
+x\ge3. &amp; (7)
+\end{cases}\]</span></p>
+<p>A condição (2) dá <span class="math inline">\(2y(1-\lambda_1)=0\)</span> e, por (5), <span class="math inline">\(y=0\)</span>. Se <span class="math inline">\(\lambda_2=0\)</span>, a condição (1) dá <span class="math inline">\(2x(1-\lambda_1)=0\)</span>, logo <span class="math inline">\(x=0\)</span>, contra (7). Assim, <span class="math inline">\(\lambda_2&lt;0\)</span> e (4) dá <span class="math inline">\(x=3\)</span>. Como <span class="math inline">\(x^2+y^2=9&lt;25\)</span>, a condição (3) dá <span class="math inline">\(\lambda_1=0\)</span> e (1) dá <span class="math inline">\(\lambda_2=-6\)</span>, satisfazendo (5)–(7).</p>
+<p>O único candidato é <span class="math inline">\((3,0)\)</span>. Como o mínimo existe, o mínimo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(9\)</span> e é atingido em <span class="math inline">\((3,0)\)</span>.</p></li>
+<li><p>Aqui, <span class="math inline">\(g_1(x,y)=x^2+y^2\le25\)</span> e <span class="math inline">\(g_2(x,y)=-y\le-3\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco fechado de centro na origem e raio <span class="math inline">\(5\)</span> com o semiplano <span class="math inline">\(y\ge3\)</span>, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o mínimo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g_1(x,y)=(2x,2y)\)</span> e <span class="math inline">\(\nabla g_2(x,y)=(0,-1)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((4,3)\)</span> temos que <span class="math inline">\(g_1(x,y)=25\)</span> e <span class="math inline">\(y=3\)</span>, e os vetores <span class="math inline">\(\nabla g_1(4,3)=(8,6)\)</span> e <span class="math inline">\(\nabla g_2(4,3)=(0,-1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((-4,3)\)</span> temos que <span class="math inline">\(g_1(x,y)=25\)</span> e <span class="math inline">\(y=3\)</span>, e os vetores <span class="math inline">\(\nabla g_1(-4,3)=(-8,6)\)</span> e <span class="math inline">\(\nabla g_2(-4,3)=(0,-1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula: <span class="math inline">\(\nabla g_1\)</span> só se anula na origem, que não pertence à circunferência, e <span class="math inline">\(\nabla g_2\)</span> é constante e não nulo. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de mínimo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(2(x-8),2y)\)</span> e, como se trata de um problema de minimização, o sistema fica <span class="math display">\[\begin{cases}
+2(x-8)=2\lambda_1x, &amp; (1)\\[4pt]
+2y=2\lambda_1y-\lambda_2, &amp; (2)\\[4pt]
+\lambda_1(x^2+y^2-25)=0, &amp; (3)\\[4pt]
+\lambda_2(-y+3)=0, &amp; (4)\\[4pt]
+\lambda_1\le0,\lambda_2\le0, &amp; (5)\\[4pt]
+x^2+y^2\le25, &amp; (6)\\[4pt]
+y\ge3. &amp; (7)
+\end{cases}\]</span></p>
+<p>Se <span class="math inline">\(\lambda_1=0\)</span>, a condição (1) dá <span class="math inline">\(x=8\)</span>, contra (6). Logo <span class="math inline">\(\lambda_1&lt;0\)</span> e (3) dá <span class="math inline">\(x^2+y^2=25\)</span>. Se <span class="math inline">\(\lambda_2=0\)</span>, (2) dá <span class="math inline">\(y=0\)</span>, contra (7). Logo <span class="math inline">\(\lambda_2&lt;0\)</span> e (4) dá <span class="math inline">\(y=3\)</span>, donde <span class="math inline">\(x=\pm4\)</span>. Em <span class="math inline">\((-4,3)\)</span>, (1) dá <span class="math inline">\(\lambda_1=3\)</span>, contra (5). Em <span class="math inline">\((4,3)\)</span>, (1) dá <span class="math inline">\(\lambda_1=-1\)</span> e (2) dá <span class="math inline">\(\lambda_2=-12\)</span>, satisfazendo (5)–(7).</p>
+<p>O único candidato é <span class="math inline">\((4,3)\)</span>. Como o mínimo existe, o mínimo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(25\)</span> e é atingido em <span class="math inline">\((4,3)\)</span>.</p></li>
+</ol></div></details></li><li id="ex2"><p>Determine os pontos de máximo de <span class="math inline">\(f\)</span> sujeita às restrições dadas.</p>
+<ol class="sub">
+<li><p><span class="math inline">\(f(x,y)=x^2+y^2\)</span>, <span class="math inline">\(2x+y\le2\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>. (Simon &amp; Blume, Exercício 18.10)</p></li>
+<li><p><span class="math inline">\(f(x,y)=2y^2-x\)</span>, <span class="math inline">\(x^2+y^2\le1\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>. (Simon &amp; Blume, Exercício 18.11)</p></li>
+<li><p><span class="math inline">\(f(x,y)=xy\)</span>, <span class="math inline">\(x+y\le6\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 2</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub">
+<li><p>Aqui, <span class="math inline">\(g(x,y)=2x+y\le2\)</span>. O conjunto <span class="math inline">\(D\)</span> é o triângulo de vértices <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((1,0)\)</span> e <span class="math inline">\((0,2)\)</span>, não vazio e compacto, e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g(x,y)=(2,1)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((1,0)\)</span> temos que <span class="math inline">\(g(x,y)=2\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g(1,0)=(2,1)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,2)\)</span> temos que <span class="math inline">\(g(x,y)=2\)</span> e <span class="math inline">\(x=0\)</span>, e os vetores <span class="math inline">\(\nabla g(0,2)=(2,1)\)</span> e <span class="math inline">\(\vec{e}_1=(1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(2x,2y)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+2x\le2\lambda, &amp; (1)\\[4pt]
+2y\le\lambda, &amp; (2)\\[4pt]
+x(2x-2\lambda)=0, &amp; (3)\\[4pt]
+y(2y-\lambda)=0, &amp; (4)\\[4pt]
+x\ge0, &amp; (5)\\[4pt]
+y\ge0, &amp; (6)\\[4pt]
+\lambda(2x+y-2)=0, &amp; (7)\\[4pt]
+\lambda\ge0, &amp; (8)\\[4pt]
+2x+y\le2. &amp; (9)
+\end{cases}\]</span></p>
+<p>Se <span class="math inline">\(\lambda=0\)</span>, as condições (1) e (2) dão <span class="math inline">\(x=y=0\)</span>. Se <span class="math inline">\(\lambda&gt;0\)</span>, a condição (7) dá <span class="math inline">\(2x+y=2\)</span>. Sendo <span class="math inline">\(x&gt;0\)</span> e <span class="math inline">\(y&gt;0\)</span>, as condições (3) e (4) dão <span class="math inline">\(x=\lambda\)</span> e <span class="math inline">\(2y=\lambda\)</span>, isto é, <span class="math inline">\(x=2y\)</span>; substituindo em <span class="math inline">\(2x+y=2\)</span>, obtemos <span class="math inline">\(y=2/5\)</span> e <span class="math inline">\(x=4/5\)</span>. Restam os casos em que uma das variáveis se anula. Se <span class="math inline">\(x=0\)</span>, então <span class="math inline">\(y=2\)</span> e a condição (4) dá <span class="math inline">\(\lambda=4\)</span>, e a condição (1) é satisfeita, pois <span class="math inline">\(-8\le0\)</span>. Se <span class="math inline">\(y=0\)</span>, então <span class="math inline">\(x=1\)</span> e a condição (3) dá <span class="math inline">\(\lambda=1\)</span>, e a condição (2) é satisfeita, pois <span class="math inline">\(-1\le0\)</span>.</p>
+<p>Os candidatos são <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((4/5,2/5)\)</span>, <span class="math inline">\((0,2)\)</span> e <span class="math inline">\((1,0)\)</span>, com <span class="math inline">\(f(0,0)=0\)</span>, <span class="math inline">\(f(4/5,2/5)=4/5\)</span>, <span class="math inline">\(f(0,2)=4\)</span> e <span class="math inline">\(f(1,0)=1\)</span>. Como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(4\)</span> e é atingido em <span class="math inline">\((0,2)\)</span>.</p></li>
+<li><p>Aqui, <span class="math inline">\(g(x,y)=x^2+y^2\le1\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco unitário fechado com o primeiro quadrante, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g(x,y)=(2x,2y)\)</span>, que só se anula na origem. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((1,0)\)</span> temos que <span class="math inline">\(g(x,y)=1\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g(1,0)=(2,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,1)\)</span> temos que <span class="math inline">\(g(x,y)=1\)</span> e <span class="math inline">\(x=0\)</span>, e os vetores <span class="math inline">\(\nabla g(0,1)=(0,2)\)</span> e <span class="math inline">\(\vec{e}_1=(1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(-1,4y)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+-1\le2\lambda x, &amp; (1)\\[4pt]
+4y\le2\lambda y, &amp; (2)\\[4pt]
+x(-1-2\lambda x)=0, &amp; (3)\\[4pt]
+y(4y-2\lambda y)=0, &amp; (4)\\[4pt]
+x\ge0, &amp; (5)\\[4pt]
+y\ge0, &amp; (6)\\[4pt]
+\lambda(x^2+y^2-1)=0, &amp; (7)\\[4pt]
+\lambda\ge0, &amp; (8)\\[4pt]
+x^2+y^2\le1. &amp; (9)
+\end{cases}\]</span></p>
+<p>Como <span class="math inline">\(\lambda\ge0\)</span> e <span class="math inline">\(x\ge0\)</span>, temos <span class="math inline">\(-1-2\lambda x\le-1&lt;0\)</span>, e a condição (3) dá <span class="math inline">\(x=0\)</span>. Se <span class="math inline">\(y=0\)</span>, obtemos o candidato <span class="math inline">\((0,0)\)</span>. Se <span class="math inline">\(y&gt;0\)</span>, a condição (4) dá <span class="math inline">\(\lambda=2\)</span> e, por (7), <span class="math inline">\(y^2=1\)</span>, isto é, <span class="math inline">\(y=1\)</span>; as demais condições são satisfeitas.</p>
+<p>Os candidatos são <span class="math inline">\((0,0)\)</span> e <span class="math inline">\((0,1)\)</span>, com <span class="math inline">\(f(0,0)=0\)</span> e <span class="math inline">\(f(0,1)=2\)</span>. Como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(2\)</span> e é atingido em <span class="math inline">\((0,1)\)</span>.</p></li>
+<li><p>Aqui, <span class="math inline">\(g(x,y)=x+y\leq 6\)</span>. O conjunto <span class="math inline">\(D\)</span> é o triângulo da figura, não vazio e compacto, e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math display">\[\nabla g(x,y)=(1,1)\ne(0,0).\]</span> Em cada vértice do triângulo, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((6,0)\)</span> temos que <span class="math inline">\(g(x,y)=6\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x,y)=(1,1)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,6)\)</span> temos que <span class="math inline">\(g(x,y)=6\)</span> e <span class="math inline">\(x=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x,y)=(1,1)\)</span> e <span class="math inline">\(\vec{e}_1=(1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos, claramente, <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema <a data-reference="sistema-sinal" data-reference-type="eqref" href="#sistema-sinal">abaixo</a>.</p>
+<p>Temos <span class="math display">\[\nabla f(x,y)=(y,x)\]</span> e o sistema <a data-reference="sistema-sinal" data-reference-type="eqref" href="#sistema-sinal">abaixo</a> fica <span class="math display" id="sistema-sinal">\[
+\begin{cases}
+y\le\lambda, &amp; (1)\\[4pt]
+x\le\lambda, &amp; (2)\\[4pt]
+x(y-\lambda)=0, &amp; (3)\\[4pt]
+y(x-\lambda)=0, &amp; (4)\\[4pt]
+x\ge0,  &amp; (5) \\[4pt] 
+y\ge0,   &amp; (6)\\[4pt]
+\lambda(x+y-6)=0, &amp; (7)\\[4pt]
+\lambda\ge0, &amp; (8)\\[4pt]
+x+y\le6. &amp; (9)
+\end{cases}\]</span></p>
+<p>Se <span class="math inline">\(\lambda=0\)</span>, as condições (3) e (4) dão <span class="math inline">\(xy=0\)</span>, isto é, <span class="math inline">\(f=0\)</span>. Mas zero não é o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span>, pois <span class="math inline">\(f(1,1)=1&gt;0\)</span>. Logo, nos candidatos a máximo, devemos ter <span class="math inline">\(\lambda&gt;0\)</span> por (8) e também <span class="math inline">\(x\ne0\)</span> e <span class="math inline">\(y\ne0\)</span>, já que <span class="math inline">\(x=0\)</span> ou <span class="math inline">\(y=0\)</span> dariam <span class="math inline">\(f=0\)</span>. Sendo <span class="math inline">\(x&gt;0\)</span>, a condição (3) dá <span class="math inline">\(y=\lambda\)</span> e, sendo <span class="math inline">\(y&gt;0\)</span>, a condição (4) dá <span class="math inline">\(x=\lambda\)</span>. Portanto, <span class="math inline">\(x=y=\lambda\)</span>. Como <span class="math inline">\(\lambda&gt;0\)</span>, a condição (7) dá <span class="math inline">\(x+y=6\)</span>, isto é, <span class="math inline">\(2x=6\)</span>, e concluímos que <span class="math inline">\(x=y=\lambda=3\)</span>. O único candidato é <span class="math inline">\((3,3)\)</span> e, como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(9\)</span> e é atingido em <span class="math inline">\((3,3)\)</span>.</p></li>
+</ol></div></details></li><li id="ex3"><p>Considere o problema de maximizar <span class="math inline">\(f(x,y,z)=xyz+z\)</span> sujeita às restrições <span class="math inline">\(x^2+y^2+z\le6\)</span>, <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(y\ge0\)</span> e <span class="math inline">\(z\ge0\)</span>. (Simon &amp; Blume, Exercício 18.12)</p>
+<ol class="sub">
+<li><p>Escreva um sistema completo de condições de primeira ordem para este problema.</p></li>
+<li><p>Determine se a restrição <span class="math inline">\(x^2+y^2+z\le6\)</span> está ativa em alguma solução.</p></li>
+<li><p>Encontre uma solução das condições de primeira ordem que inclui <span class="math inline">\(x=0\)</span>.</p></li>
+<li><p>Determine três equações nas três incógnitas <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span> que devem ser satisfeitas se <span class="math inline">\(x\ne0\)</span> na solução.</p></li>
+<li><p>Mostre que <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=1\)</span> e <span class="math inline">\(z=4\)</span> satisfazem essas equações.</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 3</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Aqui, <span class="math inline">\(g(x,y,z)=x^2+y^2+z\le6\)</span>. O conjunto <span class="math inline">\(D\)</span> é não vazio e compacto, pois é fechado e limitado (em <span class="math inline">\(D\)</span> temos <span class="math inline">\(0\le z\le6\)</span> e <span class="math inline">\(x^2+y^2\le6\)</span>), e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe.</p>
+<p>A hipótese de regularidade vale em todo <span class="math inline">\(D\)</span>: temos <span class="math inline">\(\nabla g(x,y,z)=(2x,2y,1)\ne(0,0,0)\)</span>, pois sua terceira componente é <span class="math inline">\(1\)</span>; nos pontos em que duas ou três restrições estão ativas, os gradientes correspondentes são linearmente independentes, pois <span class="math inline">\(\nabla g(x,y,z)\)</span> não é combinação dos vetores <span class="math inline">\(\vec{e}_i\)</span> envolvidos (a terceira componente de qualquer combinação deles é nula) e os vetores <span class="math inline">\(\vec{e}_i\)</span> são linearmente independentes entre si. Logo, todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<ol class="sub">
+<li><p>Temos <span class="math inline">\(\nabla f(x,y,z)=(yz,xz,xy+1)\)</span> e um sistema completo de condições de primeira ordem é <span class="math display">\[\begin{cases}
+yz\le2\lambda x, &amp; (1)\\[4pt]
+xz\le2\lambda y, &amp; (2)\\[4pt]
+xy+1\le\lambda, &amp; (3)\\[4pt]
+x(yz-2\lambda x)=0, &amp; (4)\\[4pt]
+y(xz-2\lambda y)=0, &amp; (5)\\[4pt]
+z(xy+1-\lambda)=0, &amp; (6)\\[4pt]
+x\ge0,\ y\ge0,\ z\ge0, &amp; (7)\\[4pt]
+\lambda(x^2+y^2+z-6)=0, &amp; (8)\\[4pt]
+\lambda\ge0, &amp; (9)\\[4pt]
+x^2+y^2+z\le6. &amp; (10)
+\end{cases}\]</span></p></li>
+<li><p>A restrição está ativa em toda solução. De fato, a condição (3) dá <span class="math inline">\(\lambda\ge xy+1\ge1&gt;0\)</span> e, por (8), <span class="math inline">\(x^2+y^2+z=6\)</span>.</p></li>
+<li><p>Se <span class="math inline">\(x=0\)</span>, a condição (1) dá <span class="math inline">\(yz\le0\)</span>, isto é, <span class="math inline">\(yz=0\)</span>, pois <span class="math inline">\(y,z\ge0\)</span>. Se <span class="math inline">\(z&gt;0\)</span>, então <span class="math inline">\(y=0\)</span> e a condição (6) dá <span class="math inline">\(\lambda=1\)</span>; por (8), <span class="math inline">\(z=6\)</span>, e obtemos a solução <span class="math inline">\((0,0,6)\)</span> das condições de primeira ordem. (Se <span class="math inline">\(z=0\)</span>, as condições dão <span class="math inline">\(y=\sqrt{6}\)</span>, com <span class="math inline">\(\lambda\ge1\)</span> qualquer, e obtemos também <span class="math inline">\((0,\sqrt{6},0)\)</span>.)</p></li>
+<li><p>Se <span class="math inline">\(x\ne0\)</span>, então <span class="math inline">\(x&gt;0\)</span> e a condição (4) dá <span class="math inline">\(yz=2\lambda x\)</span>. Como <span class="math inline">\(\lambda&gt;0\)</span> pelo item (b), devemos ter <span class="math inline">\(y&gt;0\)</span>; caso contrário, <span class="math inline">\(2\lambda x=0\)</span>. Da condição (5), <span class="math inline">\(xz=2\lambda y\)</span>, e o mesmo argumento mostra que <span class="math inline">\(z&gt;0\)</span>; a condição (6) dá então <span class="math inline">\(\lambda=xy+1\)</span>. Eliminando <span class="math inline">\(\lambda\)</span>, obtemos as três equações em <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span> <span class="math display">\[y=x, \qquad z=2(x^2+1), \qquad x^2+y^2+z=6,\]</span> a primeira obtida dividindo <span class="math inline">\(yz=2\lambda x\)</span> por <span class="math inline">\(xz=2\lambda y\)</span>, a segunda de <span class="math inline">\(xz=2\lambda y\)</span> com <span class="math inline">\(\lambda=xy+1\)</span> e a terceira do item (b).</p></li>
+<li><p>Substituindo, vemos que <span class="math inline">\(x=1\)</span>, <span class="math inline">\(y=1\)</span> e <span class="math inline">\(z=4\)</span> satisfazem essas equações: <span class="math inline">\(1=1\)</span>, <span class="math inline">\(4=2(1^2+1)\)</span> e <span class="math inline">\(1+1+4=6\)</span>.</p></li>
+</ol>
+<p>Os candidatos são <span class="math inline">\((0,0,6)\)</span>, <span class="math inline">\((0,\sqrt{6},0)\)</span> e <span class="math inline">\((1,1,4)\)</span>, com <span class="math inline">\(f(0,0,6)=6\)</span>, <span class="math inline">\(f(0,\sqrt{6},0)=0\)</span> e <span class="math inline">\(f(1,1,4)=8\)</span>. Como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(8\)</span> e é atingido em <span class="math inline">\((1,1,4)\)</span>.</p></div></details></li><li id="ex4"><ol class="sub">
+<li><p>Seja <span class="math inline">\(U(x_1,x_2)\)</span> uma função utilidade de classe <span class="math inline">\(\mathscr{C}^1\)</span> tal que, para cada cesta <span class="math inline">\((x_1,x_2)\)</span>, ao menos uma das derivadas parciais <span class="math inline">\(\partial U/\partial x_1(x_1,x_2)\)</span> e <span class="math inline">\(\partial U/\partial x_2(x_1,x_2)\)</span> é positiva. Considere o problema de maximizar <span class="math inline">\(U\)</span> sujeita a <span class="math inline">\(p_1x_1+p_2x_2\le I\)</span>, <span class="math inline">\(x_1\ge0\)</span> e <span class="math inline">\(x_2\ge0\)</span>, com <span class="math inline">\(p_1,p_2&gt;0\)</span> e <span class="math inline">\(I&gt;0\)</span>. Verifique a hipótese de regularidade e mostre que a restrição orçamentária está ativa em qualquer solução, isto é, o consumidor gasta toda a sua renda. (Simon &amp; Blume, Exercício 18.13)</p></li>
+<li><p>Determine os pontos de máximo de <span class="math inline">\(f(x,y,z)=xyz\)</span> sujeita a <span class="math inline">\(p_1x+p_2y+p_3z\le I\)</span>, <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(y\ge0\)</span> e <span class="math inline">\(z\ge0\)</span>, em que <span class="math inline">\(p_1,p_2,p_3&gt;0\)</span> e <span class="math inline">\(I&gt;0\)</span>. (Simon &amp; Blume, Exercício 18.14)</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 4</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub">
+<li><p>Temos <span class="math inline">\(\nabla g(x_1,x_2)=(p_1,p_2)\ne(0,0)\)</span>, pois <span class="math inline">\(p_1,p_2&gt;0\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((I/p_1,0)\)</span> temos que <span class="math inline">\(p_1x_1+p_2x_2=I\)</span> e <span class="math inline">\(x_2=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x_1,x_2)=(p_1,p_2)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes, pois o determinante vale <span class="math inline">\(-p_1\not=0\)</span>.</p></li>
+<li><p>no ponto <span class="math inline">\((0,I/p_2)\)</span> temos que <span class="math inline">\(p_1x_1+p_2x_2=I\)</span> e <span class="math inline">\(x_1=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x_1,x_2)=(p_1,p_2)\)</span> e <span class="math inline">\(\vec{e}_1=(1,0)\)</span> são linearmente independentes, pois o determinante vale <span class="math inline">\(p_2\not=0\)</span>.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos <span class="math inline">\(x_1=0\)</span> e <span class="math inline">\(x_2=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo o conjunto admissível e toda solução está entre as soluções do sistema de Karush-Kuhn-Tucker.</p>
+<p>Seja <span class="math inline">\((x_1^*,x_2^*)\)</span> uma solução. As condições de primeira ordem dão <span class="math display">\[\frac{\partial U}{\partial x_i}(x_1^*,x_2^*)\le\lambda p_i, \qquad x_i^*\Bigl(\frac{\partial U}{\partial x_i}(x_1^*,x_2^*)-\lambda p_i\Bigr)=0 \qquad (i=1,2),\]</span> com <span class="math inline">\(\lambda\ge0\)</span> e <span class="math inline">\(\lambda(p_1x_1^*+p_2x_2^*-I)=0\)</span>. Se <span class="math inline">\(\lambda=0\)</span>, então <span class="math inline">\(\dfrac{\partial U}{\partial x_i}(x_1^*,x_2^*)\le0\)</span> para <span class="math inline">\(i=1\)</span> e <span class="math inline">\(i=2\)</span>, o que contradiz a hipótese de monotonia. Logo, <span class="math inline">\(\lambda&gt;0\)</span> e, portanto, <span class="math inline">\(p_1x_1^*+p_2x_2^*=I\)</span>, isto é, a restrição orçamentária está ativa.</p></li>
+<li><p>O conjunto admissível é não vazio e compacto, pois é fechado e limitado (<span class="math inline">\(0\le x\le I/p_1\)</span>, <span class="math inline">\(0\le y\le I/p_2\)</span> e <span class="math inline">\(0\le z\le I/p_3\)</span>), e <span class="math inline">\(f\)</span> é contínua, logo o máximo existe. Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g(x,y,z)=(p_1,p_2,p_3)\not=(0,0,0)\)</span>, pois <span class="math inline">\(p_1,p_2,p_3&gt;0\)</span>. Em cada vértice do conjunto admissível, três restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((I/p_1,0,0)\)</span> temos que <span class="math inline">\(p_1x+p_2y+p_3z=I\)</span>, <span class="math inline">\(y=0\)</span> e <span class="math inline">\(z=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x,y,z)=(p_1,p_2,p_3)\)</span>, <span class="math inline">\(\vec{e}_2=(0,1,0)\)</span> e <span class="math inline">\(\vec{e}_3=(0,0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,I/p_2,0)\)</span> temos que <span class="math inline">\(p_1x+p_2y+p_3z=I\)</span>, <span class="math inline">\(x=0\)</span> e <span class="math inline">\(z=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x,y,z)=(p_1,p_2,p_3)\)</span>, <span class="math inline">\(\vec{e}_1=(1,0,0)\)</span> e <span class="math inline">\(\vec{e}_3=(0,0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0,I/p_3)\)</span> temos que <span class="math inline">\(p_1x+p_2y+p_3z=I\)</span>, <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g(x,y,z)=(p_1,p_2,p_3)\)</span>, <span class="math inline">\(\vec{e}_1=(1,0,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0,0)\)</span> temos <span class="math inline">\(x=0\)</span>, <span class="math inline">\(y=0\)</span> e <span class="math inline">\(z=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0,0)\)</span>, <span class="math inline">\(\vec{e}_2=(0,1,0)\)</span> e <span class="math inline">\(\vec{e}_3=(0,0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nas arestas do conjunto admissível, exatamente duas restrições estão ativas e os gradientes correspondentes são linearmente independentes, pois todas as componentes de <span class="math inline">\(\nabla g\)</span> são positivas e os vetores <span class="math inline">\(\vec{e}_i\)</span> são linearmente independentes entre si. Nos demais pontos, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo o conjunto admissível.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y,z)=(yz,xz,xy)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+yz\le\lambda p_1, &amp; x(yz-\lambda p_1)=0,\\[4pt]
+xz\le\lambda p_2, &amp; y(xz-\lambda p_2)=0,\\[4pt]
+xy\le\lambda p_3, &amp; z(xy-\lambda p_3)=0,\\[4pt]
+\lambda\ge0, &amp; \lambda(p_1x+p_2y+p_3z-I)=0,
+\end{cases}\]</span> com <span class="math inline">\(x\ge0\)</span>, <span class="math inline">\(y\ge0\)</span>, <span class="math inline">\(z\ge0\)</span> e <span class="math inline">\(p_1x+p_2y+p_3z\le I\)</span>.</p>
+<p>Como <span class="math inline">\(f\)</span> assume valores positivos em pontos admissíveis, o máximo é positivo e, nos candidatos a máximo, <span class="math inline">\(xyz&gt;0\)</span>, isto é, <span class="math inline">\(x&gt;0\)</span>, <span class="math inline">\(y&gt;0\)</span> e <span class="math inline">\(z&gt;0\)</span>. As condições de primeira ordem dão então <span class="math inline">\(yz=\lambda p_1\)</span>, <span class="math inline">\(xz=\lambda p_2\)</span> e <span class="math inline">\(xy=\lambda p_3\)</span>; multiplicando cada igualdade por <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> e <span class="math inline">\(z\)</span>, respectivamente, obtemos <span class="math inline">\(xyz=\lambda p_1x=\lambda p_2y=\lambda p_3z\)</span>. Se <span class="math inline">\(\lambda=0\)</span>, então <span class="math inline">\(yz=xz=xy=0\)</span> e <span class="math inline">\(f=0\)</span>, o que não é o máximo; logo, <span class="math inline">\(\lambda&gt;0\)</span> e a restrição está ativa. De <span class="math inline">\(p_1x=p_2y=p_3z\)</span> e <span class="math inline">\(p_1x+p_2y+p_3z=I\)</span>, concluímos que <span class="math inline">\(p_1x=p_2y=p_3z=I/3\)</span>, isto é, <span class="math inline">\(x=I/(3p_1)\)</span>, <span class="math inline">\(y=I/(3p_2)\)</span> e <span class="math inline">\(z=I/(3p_3)\)</span>. Como o máximo existe, o máximo de <span class="math inline">\(f\)</span> vale <span class="math inline">\(\dfrac{I^3}{27p_1p_2p_3}\)</span> e é atingido nesse ponto.</p></li>
+</ol></div></details></li><li id="ex5"><p>Determine os pontos de mínimo de <span class="math inline">\(f\)</span> sujeita às restrições dadas.</p>
+<ol class="sub">
+<li><p><span class="math inline">\(f(x,y)=x^2-2y\)</span>, <span class="math inline">\(x^2+y^2\le1\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>. (Simon &amp; Blume, Exercício 18.17)</p></li>
+<li><p><span class="math inline">\(f(x,y)=2x^2+2y^2-2xy-9y\)</span>, <span class="math inline">\(4x+3y\le10\)</span>, <span class="math inline">\(y-4x^2\ge-2\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>. (Simon &amp; Blume, Exercício 18.18)</p></li>
+</ol><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 5</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><ol class="sub">
+<li><p>Aqui, <span class="math inline">\(g(x,y)=x^2+y^2\le1\)</span>. O conjunto <span class="math inline">\(D\)</span> é a interseção do disco unitário fechado com o primeiro quadrante, não vazia e compacta, e <span class="math inline">\(f\)</span> é contínua, logo o mínimo existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g(x,y)=(2x,2y)\)</span>, que só se anula na origem. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((1,0)\)</span> temos que <span class="math inline">\(g(x,y)=1\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g(1,0)=(2,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,1)\)</span> temos que <span class="math inline">\(g(x,y)=1\)</span> e <span class="math inline">\(x=0\)</span>, e os vetores <span class="math inline">\(\nabla g(0,1)=(0,2)\)</span> e <span class="math inline">\(\vec{e}_1=(1,0)\)</span> são linearmente independentes.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de mínimo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(2x,-2)\)</span> e, como se trata de um problema de minimização, o sistema fica <span class="math display">\[\begin{cases}
+2x\ge2\lambda x, &amp; (1)\\[4pt]
+-2\ge2\lambda y, &amp; (2)\\[4pt]
+x(2x-2\lambda x)=0, &amp; (3)\\[4pt]
+y(-2-2\lambda y)=0, &amp; (4)\\[4pt]
+x\ge0, &amp; (5)\\[4pt]
+y\ge0, &amp; (6)\\[4pt]
+\lambda(x^2+y^2-1)=0, &amp; (7)\\[4pt]
+\lambda\le0, &amp; (8)\\[4pt]
+x^2+y^2\le1. &amp; (9)
+\end{cases}\]</span></p>
+<p>Pela condição (2), temos <span class="math inline">\(-2\lambda y\ge2&gt;0\)</span>, logo <span class="math inline">\(\lambda&lt;0\)</span> e <span class="math inline">\(y&gt;0\)</span>. A condição (4) dá então <span class="math inline">\(\lambda y=-1\)</span> e a condição (7) dá <span class="math inline">\(x^2+y^2=1\)</span>. Se <span class="math inline">\(x&gt;0\)</span>, a condição (3) daria <span class="math inline">\(2x(1-\lambda)=0\)</span>, isto é, <span class="math inline">\(\lambda=1\)</span>, o que contradiz <span class="math inline">\(\lambda&lt;0\)</span>; logo, <span class="math inline">\(x=0\)</span> e, portanto, <span class="math inline">\(y=1\)</span> e <span class="math inline">\(\lambda=-1\)</span>.</p>
+<p>O único candidato é <span class="math inline">\((0,1)\)</span> e, como o mínimo existe, o mínimo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(-2\)</span> e é atingido em <span class="math inline">\((0,1)\)</span>.</p></li>
+<li><p>Escrevemos a segunda restrição na forma <span class="math inline">\(g_2(x,y)=4x^2-y\le2\)</span> e denotamos <span class="math inline">\(g_1(x,y)=4x+3y\le10\)</span>. O conjunto <span class="math inline">\(D\)</span> é não vazio e fechado. Como <span class="math inline">\(f(x,y)=2x^2+2y^2-2xy-9y\to+\infty\)</span> quando <span class="math inline">\(\|(x,y)\|\to+\infty\)</span>, podemos procurar o mínimo na interseção de <span class="math inline">\(D\)</span> com uma bola fechada de raio suficientemente grande, que é compacta e não vazia; logo, o mínimo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> existe.</p>
+<p>Verifiquemos a hipótese de regularidade. Temos <span class="math inline">\(\nabla g_1(x,y)=(4,3)\ne(0,0)\)</span> e <span class="math inline">\(\nabla g_2(x,y)=(8x,-1)\ne(0,0)\)</span>. Em cada ponto de interseção das restrições, duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((1,2)\)</span> temos <span class="math inline">\(4x+3y=10\)</span> e <span class="math inline">\(y=4x^2-2\)</span>, e os vetores <span class="math inline">\(\nabla g_1(1,2)=(4,3)\)</span> e <span class="math inline">\(\nabla g_2(1,2)=(8,-1)\)</span> são linearmente independentes, pois o determinante vale <span class="math inline">\(-4-24x=-28\not=0\)</span>.</p></li>
+<li><p>no ponto <span class="math inline">\((\sqrt{2}/2,0)\)</span> temos <span class="math inline">\(y=4x^2-2\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\nabla g_2(x,y)=(8x,-1)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes, como se verifica diretamente.</p></li>
+<li><p>no ponto <span class="math inline">\((0,10/3)\)</span> temos <span class="math inline">\(x=0\)</span> e <span class="math inline">\(4x+3y=10\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\nabla g_1(x,y)=(4,3)\)</span> são linearmente independentes, como se verifica diretamente.</p></li>
+<li><p>no ponto <span class="math inline">\((0,0)\)</span> temos <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y=0\)</span>, e os vetores <span class="math inline">\(\vec{e}_1=(1,0)\)</span> e <span class="math inline">\(\vec{e}_2=(0,1)\)</span> são linearmente independentes.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, no máximo uma restrição está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de mínimo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(4x-2y,\,4y-2x-9)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+4x-2y\ge4\lambda_1+8\lambda_2x, &amp;(1)\\[4pt]
+4y-2x-9\ge3\lambda_1-\lambda_2, &amp;(2)\\[4pt]
+x(4x-2y-4\lambda_1-8\lambda_2x)=0, &amp;(3)\\[4pt]
+y(4y-2x-9-3\lambda_1+\lambda_2)=0, &amp;(4)\\[4pt]
+x\ge0,\ y\ge0, &amp;(5)\\[4pt]
+\lambda_1(4x+3y-10)=0, &amp;(6)\\[4pt]
+\lambda_2(4x^2-y-2)=0, &amp;(7)\\[4pt]
+\lambda_1\le0,\ \lambda_2\le0, &amp;(8)\\[4pt]
+4x+3y\le10,\ 4x^2-y\le2. &amp;(9)
+\end{cases}\]</span></p>
+<p>Primeiro, mostramos que <span class="math inline">\(x&gt;0\)</span> e <span class="math inline">\(y&gt;0\)</span>. Se <span class="math inline">\(x=y=0\)</span>, as condições (6) e (7) dão <span class="math inline">\(\lambda_1=\lambda_2=0\)</span> e a condição (2) fica <span class="math inline">\(-9\ge0\)</span>, o que não vale. Se <span class="math inline">\(x&gt;0\)</span> e <span class="math inline">\(y=0\)</span>, a condição (3) dá <span class="math inline">\(x(1-2\lambda_2)=\lambda_1\)</span>; como <span class="math inline">\(\lambda_2\le0\)</span>, o lado esquerdo é positivo, o que contradiz <span class="math inline">\(\lambda_1\le0\)</span>. Se <span class="math inline">\(x=0\)</span> e <span class="math inline">\(y&gt;0\)</span>, a condição (7) dá <span class="math inline">\(\lambda_2=0\)</span>, a condição (4) dá <span class="math inline">\(\lambda_1=(4y-9)/3\)</span> e a condição (6), com <span class="math inline">\(3y&lt;10\)</span>, dá <span class="math inline">\(\lambda_1=0\)</span>, isto é, <span class="math inline">\(y=9/4\)</span>; mas a condição (1) fica <span class="math inline">\(-9/2\ge0\)</span>, o que não vale (e se <span class="math inline">\(3y=10\)</span>, então <span class="math inline">\(\lambda_1=13/9&gt;0\)</span>).</p>
+<p>Sendo <span class="math inline">\(x&gt;0\)</span> e <span class="math inline">\(y&gt;0\)</span>, as condições (3) e (4) viram igualdades. Analisamos os quatro casos para os sinais de <span class="math inline">\(\lambda_1\)</span> e <span class="math inline">\(\lambda_2\)</span>. Se <span class="math inline">\(\lambda_1=\lambda_2=0\)</span>, então <span class="math inline">\(y=2x\)</span> e <span class="math inline">\(6x=9\)</span>, isto é, <span class="math inline">\((x,y)=(3/2,3)\)</span>, que viola <span class="math inline">\(4x+3y\le10\)</span>. Se <span class="math inline">\(\lambda_1=0\)</span> e <span class="math inline">\(\lambda_2&lt;0\)</span>, a condição (7) dá <span class="math inline">\(y=4x^2-2\)</span> e a condição (3) dá <span class="math inline">\(\lambda_2=(-2x^2+x+1)/(2x)\)</span>, de modo que <span class="math inline">\(\lambda_2&lt;0\)</span> exige <span class="math inline">\(x&gt;1\)</span>; mas então <span class="math inline">\(4x+3y=12x^2+4x-6&gt;10\)</span>, o que viola (9). Se <span class="math inline">\(\lambda_1&lt;0\)</span> e <span class="math inline">\(\lambda_2&lt;0\)</span>, as condições (6) e (7) dão <span class="math inline">\(4x+3y=10\)</span> e <span class="math inline">\(y=4x^2-2\)</span>, donde <span class="math inline">\(3x^2+x-4=0\)</span> e <span class="math inline">\((x,y)=(1,2)\)</span>; as condições (3) e (4) dão <span class="math inline">\(\lambda_1=-2\lambda_2\)</span> e <span class="math inline">\(7\lambda_2=3\)</span>, isto é, <span class="math inline">\(\lambda_2=3/7&gt;0\)</span>, o que contradiz (8).</p>
+<p>Resta o caso <span class="math inline">\(\lambda_1&lt;0\)</span> e <span class="math inline">\(\lambda_2=0\)</span>. A condição (6) dá <span class="math inline">\(4x+3y=10\)</span> e as condições (3) e (4) ficam <span class="math inline">\(2x-y=2\lambda_1\)</span> e <span class="math inline">\(4y-2x-9=3\lambda_1\)</span>. Somando essas duas igualdades, obtemos <span class="math inline">\(3y-9=5\lambda_1\)</span>; escrevendo <span class="math inline">\(2x=y+2\lambda_1\)</span> e substituindo em <span class="math inline">\(4x+3y=10\)</span>, obtemos <span class="math inline">\(5y+4\lambda_1=10\)</span>, donde <span class="math inline">\(y=86/37\)</span>, <span class="math inline">\(x=28/37\)</span> e <span class="math inline">\(\lambda_1=-15/37&lt;0\)</span>. Além disso, <span class="math inline">\(4x^2-y=-46/1369&lt;2\)</span>, de modo que a condição (7) é satisfeita com <span class="math inline">\(\lambda_2=0\)</span>.</p>
+<p>O único candidato é <span class="math inline">\((28/37,86/37)\)</span> e, como o mínimo existe, o mínimo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(f(28/37,86/37)=-462/37\)</span> e é atingido em <span class="math inline">\((28/37,86/37)\)</span>.</p></li>
+</ol></div></details></li><li id="ex6"><p>Determine o ponto de máximo de <span class="math inline">\(f(x,y)=3xy-x^3\)</span> sujeita às restrições <span class="math inline">\(2x-y=-5\)</span>, <span class="math inline">\(5x+2y\ge37\)</span>, <span class="math inline">\(x\ge0\)</span> e <span class="math inline">\(y\ge0\)</span>. (Simon &amp; Blume, Exercício 18.15)</p><details class="gabarito"><summary><span class="h3">Gabarito do Exercício 6</span><span class="hint">(clique para abrir ou fechar)</span></summary><div class="gab-body"><p>Escrevemos a segunda restrição na forma <span class="math inline">\(g(x,y)=-5x-2y\le-37\)</span> e denotamos <span class="math inline">\(h(x,y)=2x-y=-5\)</span>. Sobre a reta <span class="math inline">\(2x-y=-5\)</span>, a restrição <span class="math inline">\(5x+2y\ge37\)</span> equivale a <span class="math inline">\(x\ge3\)</span>; assim, o conjunto admissível <span class="math inline">\(D\)</span> é a semirreta <span class="math inline">\(\{(x,2x+5)\mid x\ge3\}\)</span>, que é fechada e não vazia. Como <span class="math inline">\(f(x,2x+5)=-x^3+6x^2+15x\to-\infty\)</span> quando <span class="math inline">\(x\to+\infty\)</span>, podemos procurar o máximo na interseção de <span class="math inline">\(D\)</span> com uma bola fechada de raio suficientemente grande, que é compacta e não vazia; logo, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> existe.</p>
+<p>Verifiquemos a hipótese de regularidade. A restrição de igualdade está ativa em todo ponto de <span class="math inline">\(D\)</span> e <span class="math inline">\(\nabla h(x,y)=(2,-1)\)</span> não se anula. No único ponto de interseção das restrições, as duas restrições estão ativas e os gradientes correspondentes são linearmente independentes:</p>
+<ul>
+<li><p>no ponto <span class="math inline">\((3,11)\)</span> temos <span class="math inline">\(2x-y=-5\)</span> e <span class="math inline">\(5x+2y=37\)</span>, e os vetores <span class="math inline">\(\nabla h(x,y)=(2,-1)\)</span> e <span class="math inline">\(\nabla g(x,y)=(-5,-2)\)</span> são linearmente independentes, pois o determinante vale <span class="math inline">\(-9\not=0\)</span>.</p></li>
+</ul>
+<p>Nos demais pontos de <span class="math inline">\(D\)</span>, somente a restrição de igualdade está ativa e seu gradiente não se anula. Logo, a hipótese de regularidade vale em todo <span class="math inline">\(D\)</span> e todo ponto de máximo está entre as soluções do sistema a seguir.</p>
+<p>Temos <span class="math inline">\(\nabla f(x,y)=(3y-3x^2,\,3x)\)</span> e o sistema fica <span class="math display">\[\begin{cases}
+3y-3x^2\le2\mu-5\lambda, &amp;(1)\\[4pt]
+3x\le-\mu-2\lambda, &amp;(2)\\[4pt]
+x(3y-3x^2-2\mu+5\lambda)=0, &amp;(3)\\[4pt]
+y(3x+\mu+2\lambda)=0, &amp;(4)\\[4pt]
+x\ge0,\ y\ge0, &amp;(5)\\[4pt]
+\lambda(37-5x-2y)=0, &amp;(6)\\[4pt]
+\lambda\ge0, &amp;(7)\\[4pt]
+2x-y=-5, &amp;(8)\\[4pt]
+5x+2y\ge37. &amp;(9)
+\end{cases}\]</span></p>
+<p>Pelas condições (8) e (9), temos <span class="math inline">\(y=2x+5\)</span> e <span class="math inline">\(x\ge3\)</span>; em particular, <span class="math inline">\(x&gt;0\)</span> e <span class="math inline">\(y&gt;0\)</span>, e as condições (3) e (4) viram igualdades. A condição (4) dá <span class="math inline">\(\mu=-3x-2\lambda\)</span> e, substituindo na condição (3), obtemos <span class="math inline">\(\lambda=(x-5)(x+1)/3\)</span>, de modo que a condição (7) exige <span class="math inline">\(x\ge5\)</span>. Se <span class="math inline">\(5x+2y=37\)</span>, então <span class="math inline">\(9x+10=37\)</span>, isto é, <span class="math inline">\(x=3\)</span>, o que daria <span class="math inline">\(\lambda=-8/3&lt;0\)</span>; logo, pela condição (6), devemos ter <span class="math inline">\(\lambda=0\)</span>, donde <span class="math inline">\(x=5\)</span>, <span class="math inline">\(y=15\)</span> e <span class="math inline">\(\mu=-15\)</span>.</p>
+<p>O único candidato é <span class="math inline">\((5,15)\)</span> e, como o máximo existe, o máximo de <span class="math inline">\(f\)</span> em <span class="math inline">\(D\)</span> vale <span class="math inline">\(f(5,15)=100\)</span> e é atingido em <span class="math inline">\((5,15)\)</span>.</p></div></details></li></ol><div class="pager"><a href="lista15.html">← Lista 15</a></div></section></main><script>
+document.documentElement.classList.remove("nojs");
+(function(){
+
+
+  function fixWide(){
+    [].forEach.call(document.querySelectorAll('mjx-container[display]'),function(m){
+      try{
+        var svg=m.querySelector('svg'); if(!svg||svg.dataset.fixed) return;
+        var g=svg.querySelector('g[data-mml-node=math]'); var b=g.getBBox();
+        var vb=svg.getAttribute('viewBox').split(/\s+/).map(Number);
+        var w0=parseFloat(svg.getAttribute('width')); // in ex
+        var k=w0/vb[2];
+        var left=Math.min(vb[0],b.x), right=Math.max(vb[0]+vb[2],b.x+b.width);
+        svg.setAttribute('viewBox',left+' '+vb[1]+' '+(right-left)+' '+vb[3]);
+        svg.setAttribute('width',((right-left)*k)+'ex');
+        svg.dataset.fixed='1';
+      }catch(e){}
+    });
+  }
+  window.fixWide=fixWide;
+  var tb=[].slice.call(document.querySelectorAll('.eqtoggle button'));
+  function mark(){document.documentElement.dataset.eq=window.eqMode;tb.forEach(function(b){var on=b.dataset.mode===window.eqMode;b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);});}
+  tb.forEach(function(b){b.addEventListener('click',function(){
+    if(window.eqMode===b.dataset.mode) return;
+    window.eqMode=b.dataset.mode; try{localStorage.setItem('eqMode',window.eqMode);}catch(e){}
+    mark();
+    var y=window.scrollY;
+    try{ if(window.MathJax&&MathJax.startup&&MathJax.startup.document){ MathJax.startup.document.rerender(); setTimeout(fixWide,300); setTimeout(fixWide,1500); if(window.MathJax.startup.promise) MathJax.startup.promise.then(function(){window.scrollTo(0,y);}); } }catch(e){}
+  });});
+  mark();
+  var lastW=window.innerWidth,rt;
+  window.addEventListener('resize',function(){
+    clearTimeout(rt);
+    rt=setTimeout(function(){
+      if(Math.abs(window.innerWidth-lastW)<60) return;
+      lastW=window.innerWidth;
+      try{ if(window.MathJax&&MathJax.startup&&MathJax.startup.document){ MathJax.startup.document.rerender(); } }catch(e){}
+    },400);
+  });
+  var fx=0,fxi=setInterval(function(){fixWide(); if(++fx>40) clearInterval(fxi);},500);
+  document.querySelector('.pagetabs a.active').scrollIntoView({block:'nearest',inline:'nearest'});
+})();
+</script>
+<footer>© 2026 Yunelsy N Alvarez</footer>
+</body></html>
